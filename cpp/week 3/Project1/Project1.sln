@@ -11,6 +11,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "分解浮点数", "分解�
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cpptest1", "cpptest1\cpptest1.vcxproj", "{31FCBE45-5387-4556-B5C8-FCADEB5D00CE}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "三角形两边一夹角求面积", "三角形两边一夹角求面积\三角形两边一夹角求面积.vcxproj", "{203917BD-73F6-4DE5-972F-8A94370D7CF8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -51,6 +53,14 @@ Global
 		{31FCBE45-5387-4556-B5C8-FCADEB5D00CE}.Release|x64.Build.0 = Release|x64
 		{31FCBE45-5387-4556-B5C8-FCADEB5D00CE}.Release|x86.ActiveCfg = Release|Win32
 		{31FCBE45-5387-4556-B5C8-FCADEB5D00CE}.Release|x86.Build.0 = Release|Win32
+		{203917BD-73F6-4DE5-972F-8A94370D7CF8}.Debug|x64.ActiveCfg = Debug|x64
+		{203917BD-73F6-4DE5-972F-8A94370D7CF8}.Debug|x64.Build.0 = Debug|x64
+		{203917BD-73F6-4DE5-972F-8A94370D7CF8}.Debug|x86.ActiveCfg = Debug|Win32
+		{203917BD-73F6-4DE5-972F-8A94370D7CF8}.Debug|x86.Build.0 = Debug|Win32
+		{203917BD-73F6-4DE5-972F-8A94370D7CF8}.Release|x64.ActiveCfg = Release|x64
+		{203917BD-73F6-4DE5-972F-8A94370D7CF8}.Release|x64.Build.0 = Release|x64
+		{203917BD-73F6-4DE5-972F-8A94370D7CF8}.Release|x86.ActiveCfg = Release|Win32
+		{203917BD-73F6-4DE5-972F-8A94370D7CF8}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
