@@ -6,9 +6,9 @@ using namespace std;
 int main()
 {
 	double number;
-	cout << setiosflags(ios::left) << "请输入[0 - 100亿)之间的数字:" << endl;
+	cout << setiosflags(ios::left) << "请输入[0-100亿)之间的数字: " << endl;
 	cin >> number;
-	number += 0.00000095367431640625;
+	number += 0.009;
 	//加了该矫正值之后能避免小数点后第二位的数值改变,因为输入数据以小数点第二位为末尾,
 	//所以当向下rounding的时候会改变小数点后第二位的数值,
 	//加上该校正值后可避免该情况且不会改变小数点后第二位及之前的数值
@@ -24,6 +24,6 @@ int main()
 	cout <<setw(6)<<"圆"<<" : "<<floor((number -= floor(number / pow(10, 1)) * pow(10, 1)) / pow(10, 0)) << endl;
 	cout <<setw(6)<<"角"<<" : "<<floor((number -= floor(number / pow(10, 0)) * pow(10, 0)) / pow(10, -1)) << endl;
 	cout <<setw(6)<<"分"<<" : "<<floor((number -= floor(number / pow(10, -1)) * pow(10, -1)) / pow(10, -2)) << endl;
-
+ 
 	return 0;
 }
