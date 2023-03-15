@@ -1,8 +1,0 @@
-/* 2254298 –≈11 ∑∂‰Ï */
-#include<iostream>
-using namespace std;
-int main()
-{
-
-	return 0;
-}
