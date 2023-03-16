@@ -1,22 +1,36 @@
-/* warning, this file is reserved for testing file only*/
-/* warning, this file is reserved for testing file only*/
-/* warning, this file is reserved for testing file only*/
-#include<iostream>
+#include <iostream>
 using namespace std;
 int main()
 {
-	double pi=0;
-	int index = 1,k;
+    int score;
+    cout << "请输入成绩[0-100]" << endl;
+    cin >> score;
+    switch (score / 10+int(score>100)-int(score<0)) {
+    case 10:
+    case 9:
+        cout << "优" << endl;
+        break;
+    case 8:
+        cout << "良" << endl;
+        break;
+    case 7:
+        cout << "中" << endl;
+        break;
+    case 6:
+        cout << "及格" << endl;
+        break;
+    case 5:
+    case 4:
+    case 3:
+    case 2:
+    case 1:
+    case 0:
+        cout << "不及格" << endl;
+        break;
+    default:
+        cout << "输入错误" << endl;
+        break;
+    }
 
-	while (1)
-	{
-		pi += ((2.0) * (index % 2) - 1) / (2.0 * index - 1);
-		if ((((2.0) * (index % 2) - 1) / (2.0 * index - 1)) < 1.0e-8 && (((2.0) * (index % 2) - 1) / (2.0 * index - 1)>-1.0e-8))
-			break;
-		index++;
-	}
-	cout << pi*4 << endl;
-
-
-	return 0;
+    return 0;
 }
