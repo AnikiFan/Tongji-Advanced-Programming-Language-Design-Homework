@@ -9,22 +9,22 @@ int main()
 	int  sh, ba, qi, wa, sw, bw, qw, yi, sy, by, yu, ji, fe;
 	bool zh = true, febl = false, jibl = false, wabl = false, yubl = false, yibl = false;//zh为真时有整,其他位数对应bl值默认为负,即认为该为为0
 	bool zero = false, nozero = false;
-	cout << setiosflags(ios::left) << "请输入[0-100亿)之间的数字: " << endl;
+	cout << setiosflags(ios::left) << "请输入[0-100亿)之间的数字:" << endl;
 	cin >> number;
 	number += 0.009;
-	by = floor(number / pow(10, 10));
-	sy = floor((number -= floor(number / pow(10, 10)) * pow(10, 10)) / pow(10, 9));
-	yi = floor((number -= floor(number / pow(10, 9)) * pow(10, 9)) / pow(10, 8));//一个中文字符占2个宽度
-	qw = floor((number -= floor(number / pow(10, 8)) * pow(10, 8)) / pow(10, 7));
-	bw = floor((number -= floor(number / pow(10, 7)) * pow(10, 7)) / pow(10, 6));
-	sw = floor((number -= floor(number / pow(10, 6)) * pow(10, 6)) / pow(10, 5));
-	wa = floor((number -= floor(number / pow(10, 5)) * pow(10, 5)) / pow(10, 4));
-	qi = floor((number -= floor(number / pow(10, 4)) * pow(10, 4)) / pow(10, 3));
-	ba = floor((number -= floor(number / pow(10, 3)) * pow(10, 3)) / pow(10, 2));
-	sh = floor((number -= floor(number / pow(10, 2)) * pow(10, 2)) / pow(10, 1));
-	yu = floor((number -= floor(number / pow(10, 1)) * pow(10, 1)) / pow(10, 0));
-	ji = floor((number -= floor(number / pow(10, 0)) * pow(10, 0)) / pow(10, -1));
-	fe = floor((number -= floor(number / pow(10, -1)) * pow(10, -1)) / pow(10, -2));
+	by = int(floor(number / pow(10, 10)));
+	sy = int(floor((number -= floor(number / pow(10, 10)) * pow(10, 10)) / pow(10, 9)));
+	yi = int(floor((number -= floor(number / pow(10, 9)) * pow(10, 9)) / pow(10, 8)));//一个中文字符占2个宽度
+	qw = int(floor((number -= floor(number / pow(10, 8)) * pow(10, 8)) / pow(10, 7)));
+	bw = int(floor((number -= floor(number / pow(10, 7)) * pow(10, 7)) / pow(10, 6)));
+	sw = int(floor((number -= floor(number / pow(10, 6)) * pow(10, 6)) / pow(10, 5)));
+	wa = int(floor((number -= floor(number / pow(10, 5)) * pow(10, 5)) / pow(10, 4)));
+	qi = int(floor((number -= floor(number / pow(10, 4)) * pow(10, 4)) / pow(10, 3)));
+	ba = int(floor((number -= floor(number / pow(10, 3)) * pow(10, 3)) / pow(10, 2)));
+	sh = int(floor((number -= floor(number / pow(10, 2)) * pow(10, 2)) / pow(10, 1)));
+	yu = int(floor((number -= floor(number / pow(10, 1)) * pow(10, 1)) / pow(10, 0)));
+	ji = int(floor((number -= floor(number / pow(10, 0)) * pow(10, 0)) / pow(10, -1)));
+	fe = int(floor((number -= floor(number / pow(10, -1)) * pow(10, -1)) / pow(10, -2)));
 	//判断是否有整
 	if (fe != 0) {
 		zh = false;
@@ -50,7 +50,7 @@ int main()
 	//
 	//输出
 	//
-	cout << "大写结果是: " << endl;
+	cout << "大写结果是:" << endl;
 
 	if (by) {//是否为零
 		switch (by) {
