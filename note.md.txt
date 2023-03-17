@@ -1,0 +1,55 @@
+## 程序编写细节处理
+
+dev中用32debug
+vs中用x86debug
+一个语句一行
+变量名不要用中文
+不要使用全文替换
+推荐使用常变量而不是符号变量
+禁用goto语句
+vs中使用sin等数学公式时不需要cmath的头文件,但是如果要使用的话一定要加上去
+推荐格式
+``` c++
+#include <iostream> 
+#include <cmath> //数学函数对应头文件，VS可省略 
+using namespace std; 
+int main() 
+{	double a = 0, b = 5.78 * 3.5, c = 2 * sin(2.0);
+	cout << a << endl;
+	cout << b << endl;
+	cout << c << endl;
+	return 0;
+}
+```
+
+C方式（源程序后缀为.c）加 #include <stdbool.h>后， 也可使用bool/true/false
+对于实型变量,在判断是否相等时不要用==,而是应该相减的绝对值小于一个误差值
+
+分号单独一行，表示为空语句形式，更直观
+
+if语句格式
+if(	){
+
+	}
+
+
+if(	){
+
+	}
+else{
+
+	}
+整个可以视为一个语句
+只有一个语句时{}可省,可省尽省
+
+switch格式
+switch(	){
+	case 整型常量1 :
+		xxxx;
+		xxxx;
+		多语句无需{};
+	case 整型常量2 :
+		如果不想要继续跳到下一个case就要加break可以利用这一特性来共用case,最后一个case可以不用但是建议加;
+	default:
+		多语句也不用{},无需break;
+}

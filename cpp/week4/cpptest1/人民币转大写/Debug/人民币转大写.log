@@ -1,0 +1,16 @@
+﻿  3-b6-2.cpp
+C:\Users\15800\Desktop\高程\HomeworkCodingFile\cpp\week4\cpptest1\人民币转大写\3-b6-2.cpp(15,12): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\15800\Desktop\高程\HomeworkCodingFile\cpp\week4\cpptest1\人民币转大写\3-b6-2.cpp(16,12): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\15800\Desktop\高程\HomeworkCodingFile\cpp\week4\cpptest1\人民币转大写\3-b6-2.cpp(17,12): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\15800\Desktop\高程\HomeworkCodingFile\cpp\week4\cpptest1\人民币转大写\3-b6-2.cpp(18,12): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\15800\Desktop\高程\HomeworkCodingFile\cpp\week4\cpptest1\人民币转大写\3-b6-2.cpp(19,12): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\15800\Desktop\高程\HomeworkCodingFile\cpp\week4\cpptest1\人民币转大写\3-b6-2.cpp(20,12): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\15800\Desktop\高程\HomeworkCodingFile\cpp\week4\cpptest1\人民币转大写\3-b6-2.cpp(21,12): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\15800\Desktop\高程\HomeworkCodingFile\cpp\week4\cpptest1\人民币转大写\3-b6-2.cpp(22,12): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\15800\Desktop\高程\HomeworkCodingFile\cpp\week4\cpptest1\人民币转大写\3-b6-2.cpp(23,12): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\15800\Desktop\高程\HomeworkCodingFile\cpp\week4\cpptest1\人民币转大写\3-b6-2.cpp(24,12): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\15800\Desktop\高程\HomeworkCodingFile\cpp\week4\cpptest1\人民币转大写\3-b6-2.cpp(25,12): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\15800\Desktop\高程\HomeworkCodingFile\cpp\week4\cpptest1\人民币转大写\3-b6-2.cpp(26,12): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\15800\Desktop\高程\HomeworkCodingFile\cpp\week4\cpptest1\人民币转大写\3-b6-2.cpp(27,12): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+  LINK : C:\Users\15800\Desktop\高程\HomeworkCodingFile\cpp\week4\cpptest1\Debug\人民币转大写.exe not found or not built by the last incremental link; performing full link
+  人民币转大写.vcxproj -> C:\Users\15800\Desktop\高程\HomeworkCodingFile\cpp\week4\cpptest1\Debug\人民币转大写.exe
