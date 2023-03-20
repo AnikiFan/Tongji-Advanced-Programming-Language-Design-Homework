@@ -55,33 +55,33 @@ int main()//TODO:输出为浮点数的且未指定格式的，均要求 double 型，C++为 cout 缺省
 
 	if (by) {//是否为零
 		switch (by) {
-		case 1:
-			printf("壹");
-			break;
-		case 2:
-			printf("贰");
-			break;
-		case 3:
-			printf("叁");
-			break;
-		case 4:
-			printf("肆");
-			break;
-		case 5:
-			printf("伍");
-			break;
-		case 6:
-			printf("陆");
-			break;
-		case 7:
-			printf("柒");
-			break;
-		case 8:
-			printf("捌");
-			break;
-		case 9:
-			printf("玖");
-			break;
+			case 1:
+				printf("壹");
+				break;
+			case 2:
+				printf("贰");
+				break;
+			case 3:
+				printf("叁");
+				break;
+			case 4:
+				printf("肆");
+				break;
+			case 5:
+				printf("伍");
+				break;
+			case 6:
+				printf("陆");
+				break;
+			case 7:
+				printf("柒");
+				break;
+			case 8:
+				printf("捌");
+				break;
+			case 9:
+				printf("玖");
+				break;
 		}
 		printf("佰");
 		zero = false;
@@ -97,33 +97,33 @@ int main()//TODO:输出为浮点数的且未指定格式的，均要求 double 型，C++为 cout 缺省
 
 	if (sy) {//是否为零
 		switch (sy) {
-		case 1:
-			printf("壹");
-			break;
-		case 2:
-			printf("贰");
-			break;
-		case 3:
-			printf("叁");
-			break;
-		case 4:
-			printf("肆");
-			break;
-		case 5:
-			printf("伍");
-			break;
-		case 6:
-			printf("陆");
-			break;
-		case 7:
-			printf("柒");
-			break;
-		case 8:
-			printf("捌");
-			break;
-		case 9:
-			printf("玖");
-			break;
+			case 1:
+				printf("壹");
+				break;
+			case 2:
+				printf("贰");
+				break;
+			case 3:
+				printf("叁");
+				break;
+			case 4:
+				printf("肆");
+				break;
+			case 5:
+				printf("伍");
+				break;
+			case 6:
+				printf("陆");
+				break;
+			case 7:
+				printf("柒");
+				break;
+			case 8:
+				printf("捌");
+				break;
+			case 9:
+				printf("玖");
+				break;
 		}
 		printf("拾");
 		zero = false;
@@ -139,33 +139,33 @@ int main()//TODO:输出为浮点数的且未指定格式的，均要求 double 型，C++为 cout 缺省
 
 	if (yi) {//是否为零
 		switch (yi) {
-		case 1:
-			printf("壹");
-			break;
-		case 2:
-			printf("贰");
-			break;
-		case 3:
-			printf("叁");
-			break;
-		case 4:
-			printf("肆");
-			break;
-		case 5:
-			printf("伍");
-			break;
-		case 6:
-			printf("陆");
-			break;
-		case 7:
-			printf("柒");
-			break;
-		case 8:
-			printf("捌");
-			break;
-		case 9:
-			printf("玖");
-			break;
+			case 1:
+				printf("壹");
+				break;
+			case 2:
+				printf("贰");
+				break;
+			case 3:
+				printf("叁");
+				break;
+			case 4:
+				printf("肆");
+				break;
+			case 5:
+				printf("伍");
+				break;
+			case 6:
+				printf("陆");
+				break;
+			case 7:
+				printf("柒");
+				break;
+			case 8:
+				printf("捌");
+				break;
+			case 9:
+				printf("玖");
+				break;
 		}
 		zero = false;
 		nozero = true;
@@ -180,33 +180,33 @@ int main()//TODO:输出为浮点数的且未指定格式的，均要求 double 型，C++为 cout 缺省
 
 	if (qw) {//是否为零
 		switch (qw) {
-		case 1:
-			printf("壹");
-			break;
-		case 2:
-			printf("贰");
-			break;
-		case 3:
-			printf("叁");
-			break;
-		case 4:
-			printf("肆");
-			break;
-		case 5:
-			printf("伍");
-			break;
-		case 6:
-			printf("陆");
-			break;
-		case 7:
-			printf("柒");
-			break;
-		case 8:
-			printf("捌");
-			break;
-		case 9:
-			printf("玖");
-			break;
+			case 1:
+				printf("壹");
+				break;
+			case 2:
+				printf("贰");
+				break;
+			case 3:
+				printf("叁");
+				break;
+			case 4:
+				printf("肆");
+				break;
+			case 5:
+				printf("伍");
+				break;
+			case 6:
+				printf("陆");
+				break;
+			case 7:
+				printf("柒");
+				break;
+			case 8:
+				printf("捌");
+				break;
+			case 9:
+				printf("玖");
+				break;
 		}
 		printf("仟");
 		zero = false;
@@ -223,33 +223,33 @@ int main()//TODO:输出为浮点数的且未指定格式的，均要求 double 型，C++为 cout 缺省
 
 	if (bw) {//是否为零
 		switch (bw) {
-		case 1:
-			printf("壹");
-			break;
-		case 2:
-			printf("贰");
-			break;
-		case 3:
-			printf("叁");
-			break;
-		case 4:
-			printf("肆");
-			break;
-		case 5:
-			printf("伍");
-			break;
-		case 6:
-			printf("陆");
-			break;
-		case 7:
-			printf("柒");
-			break;
-		case 8:
-			printf("捌");
-			break;
-		case 9:
-			printf("玖");
-			break;
+			case 1:
+				printf("壹");
+				break;
+			case 2:
+				printf("贰");
+				break;
+			case 3:
+				printf("叁");
+				break;
+			case 4:
+				printf("肆");
+				break;
+			case 5:
+				printf("伍");
+				break;
+			case 6:
+				printf("陆");
+				break;
+			case 7:
+				printf("柒");
+				break;
+			case 8:
+				printf("捌");
+				break;
+			case 9:
+				printf("玖");
+				break;
 		}
 		printf("佰");
 		zero = false;
@@ -266,33 +266,33 @@ int main()//TODO:输出为浮点数的且未指定格式的，均要求 double 型，C++为 cout 缺省
 
 	if (sw) {//是否为零
 		switch (sw) {
-		case 1:
-			printf("壹");
-			break;
-		case 2:
-			printf("贰");
-			break;
-		case 3:
-			printf("叁");
-			break;
-		case 4:
-			printf("肆");
-			break;
-		case 5:
-			printf("伍");
-			break;
-		case 6:
-			printf("陆");
-			break;
-		case 7:
-			printf("柒");
-			break;
-		case 8:
-			printf("捌");
-			break;
-		case 9:
-			printf("玖");
-			break;
+			case 1:
+				printf("壹");
+				break;
+			case 2:
+				printf("贰");
+				break;
+			case 3:
+				printf("叁");
+				break;
+			case 4:
+				printf("肆");
+				break;
+			case 5:
+				printf("伍");
+				break;
+			case 6:
+				printf("陆");
+				break;
+			case 7:
+				printf("柒");
+				break;
+			case 8:
+				printf("捌");
+				break;
+			case 9:
+				printf("玖");
+				break;
 		}
 		printf("拾");
 		zero = false;
@@ -307,33 +307,33 @@ int main()//TODO:输出为浮点数的且未指定格式的，均要求 double 型，C++为 cout 缺省
 
 	if (wa) {//是否为零
 		switch (wa) {
-		case 1:
-			printf("壹");
-			break;
-		case 2:
-			printf("贰");
-			break;
-		case 3:
-			printf("叁");
-			break;
-		case 4:
-			printf("肆");
-			break;
-		case 5:
-			printf("伍");
-			break;
-		case 6:
-			printf("陆");
-			break;
-		case 7:
-			printf("柒");
-			break;
-		case 8:
-			printf("捌");
-			break;
-		case 9:
-			printf("玖");
-			break;
+			case 1:
+				printf("壹");
+				break;
+			case 2:
+				printf("贰");
+				break;
+			case 3:
+				printf("叁");
+				break;
+			case 4:
+				printf("肆");
+				break;
+			case 5:
+				printf("伍");
+				break;
+			case 6:
+				printf("陆");
+				break;
+			case 7:
+				printf("柒");
+				break;
+			case 8:
+				printf("捌");
+				break;
+			case 9:
+				printf("玖");
+				break;
 		}
 		zero = false;
 		nozero = true;
@@ -348,33 +348,33 @@ int main()//TODO:输出为浮点数的且未指定格式的，均要求 double 型，C++为 cout 缺省
 
 	if (qi) {//是否为零
 		switch (qi) {
-		case 1:
-			printf("壹");
-			break;
-		case 2:
-			printf("贰");
-			break;
-		case 3:
-			printf("叁");
-			break;
-		case 4:
-			printf("肆");
-			break;
-		case 5:
-			printf("伍");
-			break;
-		case 6:
-			printf("陆");
-			break;
-		case 7:
-			printf("柒");
-			break;
-		case 8:
-			printf("捌");
-			break;
-		case 9:
-			printf("玖");
-			break;
+			case 1:
+				printf("壹");
+				break;
+			case 2:
+				printf("贰");
+				break;
+			case 3:
+				printf("叁");
+				break;
+			case 4:
+				printf("肆");
+				break;
+			case 5:
+				printf("伍");
+				break;
+			case 6:
+				printf("陆");
+				break;
+			case 7:
+				printf("柒");
+				break;
+			case 8:
+				printf("捌");
+				break;
+			case 9:
+				printf("玖");
+				break;
 		}
 		printf("仟");
 		zero = false;
@@ -390,33 +390,33 @@ int main()//TODO:输出为浮点数的且未指定格式的，均要求 double 型，C++为 cout 缺省
 
 	if (ba) {//是否为零
 		switch (ba) {
-		case 1:
-			printf("壹");
-			break;
-		case 2:
-			printf("贰");
-			break;
-		case 3:
-			printf("叁");
-			break;
-		case 4:
-			printf("肆");
-			break;
-		case 5:
-			printf("伍");
-			break;
-		case 6:
-			printf("陆");
-			break;
-		case 7:
-			printf("柒");
-			break;
-		case 8:
-			printf("捌");
-			break;
-		case 9:
-			printf("玖");
-			break;
+			case 1:
+				printf("壹");
+				break;
+			case 2:
+				printf("贰");
+				break;
+			case 3:
+				printf("叁");
+				break;
+			case 4:
+				printf("肆");
+				break;
+			case 5:
+				printf("伍");
+				break;
+			case 6:
+				printf("陆");
+				break;
+			case 7:
+				printf("柒");
+				break;
+			case 8:
+				printf("捌");
+				break;
+			case 9:
+				printf("玖");
+				break;
 		}
 		printf("佰");
 		zero = false;
@@ -432,33 +432,33 @@ int main()//TODO:输出为浮点数的且未指定格式的，均要求 double 型，C++为 cout 缺省
 
 	if (sh) {//是否为零
 		switch (sh) {
-		case 1:
-			printf("壹");
-			break;
-		case 2:
-			printf("贰");
-			break;
-		case 3:
-			printf("叁");
-			break;
-		case 4:
-			printf("肆");
-			break;
-		case 5:
-			printf("伍");
-			break;
-		case 6:
-			printf("陆");
-			break;
-		case 7:
-			printf("柒");
-			break;
-		case 8:
-			printf("捌");
-			break;
-		case 9:
-			printf("玖");
-			break;
+			case 1:
+				printf("壹");
+				break;
+			case 2:
+				printf("贰");
+				break;
+			case 3:
+				printf("叁");
+				break;
+			case 4:
+				printf("肆");
+				break;
+			case 5:
+				printf("伍");
+				break;
+			case 6:
+				printf("陆");
+				break;
+			case 7:
+				printf("柒");
+				break;
+			case 8:
+				printf("捌");
+				break;
+			case 9:
+				printf("玖");
+				break;
 		}
 		printf("拾");
 		zero = false;
@@ -474,33 +474,33 @@ int main()//TODO:输出为浮点数的且未指定格式的，均要求 double 型，C++为 cout 缺省
 
 	if (yu) {//是否为零
 		switch (yu) {
-		case 1:
-			printf("壹");
-			break;
-		case 2:
-			printf("贰");
-			break;
-		case 3:
-			printf("叁");
-			break;
-		case 4:
-			printf("肆");
-			break;
-		case 5:
-			printf("伍");
-			break;
-		case 6:
-			printf("陆");
-			break;
-		case 7:
-			printf("柒");
-			break;
-		case 8:
-			printf("捌");
-			break;
-		case 9:
-			printf("玖");
-			break;
+			case 1:
+				printf("壹");
+				break;
+			case 2:
+				printf("贰");
+				break;
+			case 3:
+				printf("叁");
+				break;
+			case 4:
+				printf("肆");
+				break;
+			case 5:
+				printf("伍");
+				break;
+			case 6:
+				printf("陆");
+				break;
+			case 7:
+				printf("柒");
+				break;
+			case 8:
+				printf("捌");
+				break;
+			case 9:
+				printf("玖");
+				break;
 		}
 		zero = false;
 		nozero = true;
@@ -517,33 +517,33 @@ int main()//TODO:输出为浮点数的且未指定格式的，均要求 double 型，C++为 cout 缺省
 	//角和分
 	if (jibl) {
 		switch (ji) {
-		case 1:
-			printf("壹");
-			break;
-		case 2:
-			printf("贰");
-			break;
-		case 3:
-			printf("叁");
-			break;
-		case 4:
-			printf("肆");
-			break;
-		case 5:
-			printf("伍");
-			break;
-		case 6:
-			printf("陆");
-			break;
-		case 7:
-			printf("柒");
-			break;
-		case 8:
-			printf("捌");
-			break;
-		case 9:
-			printf("玖");
-			break;
+			case 1:
+				printf("壹");
+				break;
+			case 2:
+				printf("贰");
+				break;
+			case 3:
+				printf("叁");
+				break;
+			case 4:
+				printf("肆");
+				break;
+			case 5:
+				printf("伍");
+				break;
+			case 6:
+				printf("陆");
+				break;
+			case 7:
+				printf("柒");
+				break;
+			case 8:
+				printf("捌");
+				break;
+			case 9:
+				printf("玖");
+				break;
 		}
 		printf("角");
 	}
@@ -552,33 +552,33 @@ int main()//TODO:输出为浮点数的且未指定格式的，均要求 double 型，C++为 cout 缺省
 	}
 	if (febl) {
 		switch (fe) {
-		case 1:
-			printf("壹");
-			break;
-		case 2:
-			printf("贰");
-			break;
-		case 3:
-			printf("叁");
-			break;
-		case 4:
-			printf("肆");
-			break;
-		case 5:
-			printf("伍");
-			break;
-		case 6:
-			printf("陆");
-			break;
-		case 7:
-			printf("柒");
-			break;
-		case 8:
-			printf("捌");
-			break;
-		case 9:
-			printf("玖");
-			break;
+			case 1:
+				printf("壹");
+				break;
+			case 2:
+				printf("贰");
+				break;
+			case 3:
+				printf("叁");
+				break;
+			case 4:
+				printf("肆");
+				break;
+			case 5:
+				printf("伍");
+				break;
+			case 6:
+				printf("陆");
+				break;
+			case 7:
+				printf("柒");
+				break;
+			case 8:
+				printf("捌");
+				break;
+			case 9:
+				printf("玖");
+				break;
 		}
 		printf("分");
 	}

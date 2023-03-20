@@ -54,33 +54,33 @@ int main()
 
 	if (by) {//ÊÇ·ñÎªÁã
 		switch (by) {
-		case 1:
-			cout << "Ò¼";
-			break;
-		case 2:
-			cout << "·¡";
-			break;
-		case 3:
-			cout << "Èş";
-			break;
-		case 4:
-			cout << "ËÁ";
-			break;
-		case 5:
-			cout << "Îé";
-			break;
-		case 6:
-			cout << "Â½";
-			break;
-		case 7:
-			cout << "Æâ";
-			break;
-		case 8:
-			cout << "°Æ";
-			break;
-		case 9:
-			cout << "¾Á";
-			break;
+			case 1:
+				cout << "Ò¼";
+				break;
+			case 2:
+				cout << "·¡";
+				break;
+			case 3:
+				cout << "Èş";
+				break;
+			case 4:
+				cout << "ËÁ";
+				break;
+			case 5:
+				cout << "Îé";
+				break;
+			case 6:
+				cout << "Â½";
+				break;
+			case 7:
+				cout << "Æâ";
+				break;
+			case 8:
+				cout << "°Æ";
+				break;
+			case 9:
+				cout << "¾Á";
+				break;
 		}
 		cout << "°Û";
 		zero = false;
@@ -96,33 +96,33 @@ int main()
 
 	if (sy) {//ÊÇ·ñÎªÁã
 		switch (sy) {
-		case 1:
-			cout << "Ò¼";
-			break;
-		case 2:
-			cout << "·¡";
-			break;
-		case 3:
-			cout << "Èş";
-			break;
-		case 4:
-			cout << "ËÁ";
-			break;
-		case 5:
-			cout << "Îé";
-			break;
-		case 6:
-			cout << "Â½";
-			break;
-		case 7:
-			cout << "Æâ";
-			break;
-		case 8:
-			cout << "°Æ";
-			break;
-		case 9:
-			cout << "¾Á";
-			break;
+			case 1:
+				cout << "Ò¼";
+				break;
+			case 2:
+				cout << "·¡";
+				break;
+			case 3:
+				cout << "Èş";
+				break;
+			case 4:
+				cout << "ËÁ";
+				break;
+			case 5:
+				cout << "Îé";
+				break;
+			case 6:
+				cout << "Â½";
+				break;
+			case 7:
+				cout << "Æâ";
+				break;
+			case 8:
+				cout << "°Æ";
+				break;
+			case 9:
+				cout << "¾Á";
+				break;
 		}
 		cout << "Ê°";
 		zero = false;
@@ -138,33 +138,33 @@ int main()
 
 	if (yi) {//ÊÇ·ñÎªÁã
 		switch (yi) {
-		case 1:
-			cout << "Ò¼";
-			break;
-		case 2:
-			cout << "·¡";
-			break;
-		case 3:
-			cout << "Èş";
-			break;
-		case 4:
-			cout << "ËÁ";
-			break;
-		case 5:
-			cout << "Îé";
-			break;
-		case 6:
-			cout << "Â½";
-			break;
-		case 7:
-			cout << "Æâ";
-			break;
-		case 8:
-			cout << "°Æ";
-			break;
-		case 9:
-			cout << "¾Á";
-			break;
+			case 1:
+				cout << "Ò¼";
+				break;
+			case 2:
+				cout << "·¡";
+				break;
+			case 3:
+				cout << "Èş";
+				break;
+			case 4:
+				cout << "ËÁ";
+				break;
+			case 5:
+				cout << "Îé";
+				break;
+			case 6:
+				cout << "Â½";
+				break;
+			case 7:
+				cout << "Æâ";
+				break;
+			case 8:
+				cout << "°Æ";
+				break;
+			case 9:
+				cout << "¾Á";
+				break;
 		}
 		zero = false;
 		nozero = true;
@@ -179,33 +179,33 @@ int main()
 
 	if (qw) {//ÊÇ·ñÎªÁã
 		switch (qw) {
-		case 1:
-			cout << "Ò¼";
-			break;
-		case 2:
-			cout << "·¡";
-			break;
-		case 3:
-			cout << "Èş";
-			break;
-		case 4:
-			cout << "ËÁ";
-			break;
-		case 5:
-			cout << "Îé";
-			break;
-		case 6:
-			cout << "Â½";
-			break;
-		case 7:
-			cout << "Æâ";
-			break;
-		case 8:
-			cout << "°Æ";
-			break;
-		case 9:
-			cout << "¾Á";
-			break;
+			case 1:
+				cout << "Ò¼";
+				break;
+			case 2:
+				cout << "·¡";
+				break;
+			case 3:
+				cout << "Èş";
+				break;
+			case 4:
+				cout << "ËÁ";
+				break;
+			case 5:
+				cout << "Îé";
+				break;
+			case 6:
+				cout << "Â½";
+				break;
+			case 7:
+				cout << "Æâ";
+				break;
+			case 8:
+				cout << "°Æ";
+				break;
+			case 9:
+				cout << "¾Á";
+				break;
 		}
 		cout << "Çª";
 		zero = false;
@@ -222,33 +222,33 @@ int main()
 
 	if (bw) {//ÊÇ·ñÎªÁã
 		switch (bw) {
-		case 1:
-			cout << "Ò¼";
-			break;
-		case 2:
-			cout << "·¡";
-			break;
-		case 3:
-			cout << "Èş";
-			break;
-		case 4:
-			cout << "ËÁ";
-			break;
-		case 5:
-			cout << "Îé";
-			break;
-		case 6:
-			cout << "Â½";
-			break;
-		case 7:
-			cout << "Æâ";
-			break;
-		case 8:
-			cout << "°Æ";
-			break;
-		case 9:
-			cout << "¾Á";
-			break;
+			case 1:
+				cout << "Ò¼";
+				break;
+			case 2:
+				cout << "·¡";
+				break;
+			case 3:
+				cout << "Èş";
+				break;
+			case 4:
+				cout << "ËÁ";
+				break;
+			case 5:
+				cout << "Îé";
+				break;
+			case 6:
+				cout << "Â½";
+				break;
+			case 7:
+				cout << "Æâ";
+				break;
+			case 8:
+				cout << "°Æ";
+				break;
+			case 9:
+				cout << "¾Á";
+				break;
 		}
 		cout << "°Û";
 		zero = false;
@@ -265,33 +265,33 @@ int main()
 
 	if (sw) {//ÊÇ·ñÎªÁã
 		switch (sw) {
-		case 1:
-			cout << "Ò¼";
-			break;
-		case 2:
-			cout << "·¡";
-			break;
-		case 3:
-			cout << "Èş";
-			break;
-		case 4:
-			cout << "ËÁ";
-			break;
-		case 5:
-			cout << "Îé";
-			break;
-		case 6:
-			cout << "Â½";
-			break;
-		case 7:
-			cout << "Æâ";
-			break;
-		case 8:
-			cout << "°Æ";
-			break;
-		case 9:
-			cout << "¾Á";
-			break;
+			case 1:
+				cout << "Ò¼";
+				break;
+			case 2:
+				cout << "·¡";
+				break;
+			case 3:
+				cout << "Èş";
+				break;
+			case 4:
+				cout << "ËÁ";
+				break;
+			case 5:
+				cout << "Îé";
+				break;
+			case 6:
+				cout << "Â½";
+				break;
+			case 7:
+				cout << "Æâ";
+				break;
+			case 8:
+				cout << "°Æ";
+				break;
+			case 9:
+				cout << "¾Á";
+				break;
 		}
 		cout << "Ê°";
 		zero = false;
@@ -306,33 +306,33 @@ int main()
 
 	if (wa) {//ÊÇ·ñÎªÁã
 		switch (wa) {
-		case 1:
-			cout << "Ò¼";
-			break;
-		case 2:
-			cout << "·¡";
-			break;
-		case 3:
-			cout << "Èş";
-			break;
-		case 4:
-			cout << "ËÁ";
-			break;
-		case 5:
-			cout << "Îé";
-			break;
-		case 6:
-			cout << "Â½";
-			break;
-		case 7:
-			cout << "Æâ";
-			break;
-		case 8:
-			cout << "°Æ";
-			break;
-		case 9:
-			cout << "¾Á";
-			break;
+			case 1:
+				cout << "Ò¼";
+				break;
+			case 2:
+				cout << "·¡";
+				break;
+			case 3:
+				cout << "Èş";
+				break;
+			case 4:
+				cout << "ËÁ";
+				break;
+			case 5:
+				cout << "Îé";
+				break;
+			case 6:
+				cout << "Â½";
+				break;
+			case 7:
+				cout << "Æâ";
+				break;
+			case 8:
+				cout << "°Æ";
+				break;
+			case 9:
+				cout << "¾Á";
+				break;
 		}
 		zero = false;
 		nozero = true;
@@ -347,33 +347,33 @@ int main()
 
 	if (qi) {//ÊÇ·ñÎªÁã
 		switch (qi) {
-		case 1:
-			cout << "Ò¼";
-			break;
-		case 2:
-			cout << "·¡";
-			break;
-		case 3:
-			cout << "Èş";
-			break;
-		case 4:
-			cout << "ËÁ";
-			break;
-		case 5:
-			cout << "Îé";
-			break;
-		case 6:
-			cout << "Â½";
-			break;
-		case 7:
-			cout << "Æâ";
-			break;
-		case 8:
-			cout << "°Æ";
-			break;
-		case 9:
-			cout << "¾Á";
-			break;
+			case 1:
+				cout << "Ò¼";
+				break;
+			case 2:
+				cout << "·¡";
+				break;
+			case 3:
+				cout << "Èş";
+				break;
+			case 4:
+				cout << "ËÁ";
+				break;
+			case 5:
+				cout << "Îé";
+				break;
+			case 6:
+				cout << "Â½";
+				break;
+			case 7:
+				cout << "Æâ";
+				break;
+			case 8:
+				cout << "°Æ";
+				break;
+			case 9:
+				cout << "¾Á";
+				break;
 		}
 		cout << "Çª";
 		zero = false;
@@ -389,33 +389,33 @@ int main()
 
 	if (ba) {//ÊÇ·ñÎªÁã
 		switch (ba) {
-		case 1:
-			cout << "Ò¼";
-			break;
-		case 2:
-			cout << "·¡";
-			break;
-		case 3:
-			cout << "Èş";
-			break;
-		case 4:
-			cout << "ËÁ";
-			break;
-		case 5:
-			cout << "Îé";
-			break;
-		case 6:
-			cout << "Â½";
-			break;
-		case 7:
-			cout << "Æâ";
-			break;
-		case 8:
-			cout << "°Æ";
-			break;
-		case 9:
-			cout << "¾Á";
-			break;
+			case 1:
+				cout << "Ò¼";
+				break;
+			case 2:
+				cout << "·¡";
+				break;
+			case 3:
+				cout << "Èş";
+				break;
+			case 4:
+				cout << "ËÁ";
+				break;
+			case 5:
+				cout << "Îé";
+				break;
+			case 6:
+				cout << "Â½";
+				break;
+			case 7:
+				cout << "Æâ";
+				break;
+			case 8:
+				cout << "°Æ";
+				break;
+			case 9:
+				cout << "¾Á";
+				break;
 		}
 		cout << "°Û";
 		zero = false;
@@ -431,33 +431,33 @@ int main()
 
 	if (sh) {//ÊÇ·ñÎªÁã
 		switch (sh) {
-		case 1:
-			cout << "Ò¼";
-			break;
-		case 2:
-			cout << "·¡";
-			break;
-		case 3:
-			cout << "Èş";
-			break;
-		case 4:
-			cout << "ËÁ";
-			break;
-		case 5:
-			cout << "Îé";
-			break;
-		case 6:
-			cout << "Â½";
-			break;
-		case 7:
-			cout << "Æâ";
-			break;
-		case 8:
-			cout << "°Æ";
-			break;
-		case 9:
-			cout << "¾Á";
-			break;
+			case 1:
+				cout << "Ò¼";
+				break;
+			case 2:
+				cout << "·¡";
+				break;
+			case 3:
+				cout << "Èş";
+				break;
+			case 4:
+				cout << "ËÁ";
+				break;
+			case 5:
+				cout << "Îé";
+				break;
+			case 6:
+				cout << "Â½";
+				break;
+			case 7:
+				cout << "Æâ";
+				break;
+			case 8:
+				cout << "°Æ";
+				break;
+			case 9:
+				cout << "¾Á";
+				break;
 		}
 		cout << "Ê°";
 		zero = false;
@@ -473,33 +473,33 @@ int main()
 
 	if (yu) {//ÊÇ·ñÎªÁã
 		switch (yu) {
-		case 1:
-			cout << "Ò¼";
-			break;
-		case 2:
-			cout << "·¡";
-			break;
-		case 3:
-			cout << "Èş";
-			break;
-		case 4:
-			cout << "ËÁ";
-			break;
-		case 5:
-			cout << "Îé";
-			break;
-		case 6:
-			cout << "Â½";
-			break;
-		case 7:
-			cout << "Æâ";
-			break;
-		case 8:
-			cout << "°Æ";
-			break;
-		case 9:
-			cout << "¾Á";
-			break;
+			case 1:
+				cout << "Ò¼";
+				break;
+			case 2:
+				cout << "·¡";
+				break;
+			case 3:
+				cout << "Èş";
+				break;
+			case 4:
+				cout << "ËÁ";
+				break;
+			case 5:
+				cout << "Îé";
+				break;
+			case 6:
+				cout << "Â½";
+				break;
+			case 7:
+				cout << "Æâ";
+				break;
+			case 8:
+				cout << "°Æ";
+				break;
+			case 9:
+				cout << "¾Á";
+				break;
 		}
 		zero = false;
 		nozero = true;
@@ -516,33 +516,33 @@ int main()
 	//½ÇºÍ·Ö
 	if (jibl) {
 		switch (ji) {
-		case 1:
-			cout << "Ò¼";
-			break;
-		case 2:
-			cout << "·¡";
-			break;
-		case 3:
-			cout << "Èş";
-			break;
-		case 4:
-			cout << "ËÁ";
-			break;
-		case 5:
-			cout << "Îé";
-			break;
-		case 6:
-			cout << "Â½";
-			break;
-		case 7:
-			cout << "Æâ";
-			break;
-		case 8:
-			cout << "°Æ";
-			break;
-		case 9:
-			cout << "¾Á";
-			break;
+			case 1:
+				cout << "Ò¼";
+				break;
+			case 2:
+				cout << "·¡";
+				break;
+			case 3:
+				cout << "Èş";
+				break;
+			case 4:
+				cout << "ËÁ";
+				break;
+			case 5:
+				cout << "Îé";
+				break;
+			case 6:
+				cout << "Â½";
+				break;
+			case 7:
+				cout << "Æâ";
+				break;
+			case 8:
+				cout << "°Æ";
+				break;
+			case 9:
+				cout << "¾Á";
+				break;
 		}
 		cout << "½Ç";
 	}
@@ -551,33 +551,33 @@ int main()
 	}
 	if (febl) {
 		switch (fe) {
-		case 1:
-			cout << "Ò¼";
-			break;
-		case 2:
-			cout << "·¡";
-			break;
-		case 3:
-			cout << "Èş";
-			break;
-		case 4:
-			cout << "ËÁ";
-			break;
-		case 5:
-			cout << "Îé";
-			break;
-		case 6:
-			cout << "Â½";
-			break;
-		case 7:
-			cout << "Æâ";
-			break;
-		case 8:
-			cout << "°Æ";
-			break;
-		case 9:
-			cout << "¾Á";
-			break;
+			case 1:
+				cout << "Ò¼";
+				break;
+			case 2:
+				cout << "·¡";
+				break;
+			case 3:
+				cout << "Èş";
+				break;
+			case 4:
+				cout << "ËÁ";
+				break;
+			case 5:
+				cout << "Îé";
+				break;
+			case 6:
+				cout << "Â½";
+				break;
+			case 7:
+				cout << "Æâ";
+				break;
+			case 8:
+				cout << "°Æ";
+				break;
+			case 9:
+				cout << "¾Á";
+				break;
 		}
 		cout << "·Ö";
 	}

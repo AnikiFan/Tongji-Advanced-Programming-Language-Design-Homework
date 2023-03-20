@@ -53,36 +53,36 @@ int main()//TODO:输出为浮点数的且未指定格式的，均要求 double 型，C++为 cout 缺省
 	//
 	//输出
 	//
-	printf("共%d张找零，具体如下：\n",wsy + esy + sy + wy + yy + wj + yj + wf + ef + yf);//TODO:（中文逗号及冒号）
+	printf("共%d张找零，具体如下：\n", wsy + esy + sy + wy + yy + wj + yj + wf + ef + yf);//TODO:（中文逗号及冒号）
 	if (wsy) {
-		printf("50元 : %d张\n",wsy );//TODO:每种纸币的币值及数量（英文冒号，前后英文空格，上下对齐，数量为 0 不输出）
+		printf("50元 : %d张\n", wsy);//TODO:每种纸币的币值及数量（英文冒号，前后英文空格，上下对齐，数量为 0 不输出）
 	}
 	if (esy) {
-		printf("20元 : %d张\n",esy );
+		printf("20元 : %d张\n", esy);
 	}
 	if (sy) {
-		printf("10元 : %d张\n",sy );
+		printf("10元 : %d张\n", sy);
 	}
 	if (wy) {
-		printf("5元  : %d张\n",wy );
+		printf("5元  : %d张\n", wy);
 	}
 	if (yy) {
-		printf("1元  : %d张\n",yy );
+		printf("1元  : %d张\n", yy);
 	}
 	if (wj) {
-		printf("5角  : %d张\n",wj );
+		printf("5角  : %d张\n", wj);
 	}
 	if (yj) {
-		printf("1角  : %d张\n",yj );
+		printf("1角  : %d张\n", yj);
 	}
 	if (wf) {
-		printf("5分  : %d张\n",wf );
+		printf("5分  : %d张\n", wf);
 	}
 	if (ef) {
-		printf("2分  : %d张\n",ef );
+		printf("2分  : %d张\n", ef);
 	}
 	if (yf) {
-		printf("1分  : %d张\n",yf );
+		printf("1分  : %d张\n", yf);
 	}
 	return 0;
 }
