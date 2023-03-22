@@ -1,6 +1,6 @@
 /* 2254298 信11 范潇 */
 #include<iostream>//
-#include<cmath>//单位为亿,(仟佰拾)万,(仟佰拾)圆,角,分/整
+#include<math.h>//单位为亿,(仟佰拾)万,(仟佰拾)圆,角,分/整
 #include<iomanip>
 using namespace std;
 int main()
