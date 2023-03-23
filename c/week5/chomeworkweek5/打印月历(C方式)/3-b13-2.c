@@ -16,8 +16,9 @@ int main()//TODO:输出为浮点数的且未指定格式的，均要求 double 型，C++为 cout 缺省
 		}
 	}
 	while (1) {
-		printf("请输入%d年%d月1日的星期(0 - 6表示星期日 - 星期六) : ",year,month);
+		printf("请输入%d年%d月1日的星期(0-6表示星期日-星期六) : ",year,month);
 		ret = scanf("%d", &week);
+		printf("\n");
 		if (week >= 0 && week <= 6 && ret == 1)
 			break;
 		printf("输入非法，请重新输入\n");

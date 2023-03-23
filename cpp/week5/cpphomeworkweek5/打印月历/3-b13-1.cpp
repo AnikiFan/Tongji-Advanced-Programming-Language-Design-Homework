@@ -18,8 +18,9 @@ int main()
 		cout << "输入非法，请重新输入" << endl;
 	}
 	while (1) {
-		cout << "请输入" << year << "年" << month << "月1日的星期(0 - 6表示星期日 - 星期六) : ";
+		cout << "请输入" << year << "年" << month << "月1日的星期(0-6表示星期日-星期六) : ";
 		cin >> week;
+		cout << endl;
 		if (week >= 0 && week <= 6 && !cin.rdstate())
 			break;
 		else if (cin.rdstate()) {
@@ -29,7 +30,7 @@ int main()
 		}
 		cout << "输入非法，请重新输入" << endl;
 	}
-	cout << year << "年" << month << "月的月历为: " << endl;
+	cout << year << "年" << month << "月的月历为:" << endl;
 	cout << "星期日  星期一  星期二  星期三  星期四  星期五  星期六" << endl;
 	switch (month) {
 		case 1:
