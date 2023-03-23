@@ -1,9 +1,0 @@
-/* 2254298 –≈11 ∑∂‰Ï */
-#include<iostream>
-using namespace std;
-int main()
-{
-	cout << "" << endl;
-	cin >> ;
-	return 0;
-}

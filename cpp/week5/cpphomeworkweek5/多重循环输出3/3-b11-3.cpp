@@ -18,7 +18,9 @@ int main() {
 			}
 		}
 		cout << endl;
-		/************/
+		if (i == 2) {
+			break;
+		}
 	}
 	cout << "sum=" << sum << endl;
 	cout << "i=" << i << endl;
