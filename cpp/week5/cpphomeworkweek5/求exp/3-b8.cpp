@@ -7,8 +7,13 @@ int main()
 {
 	int x,n=1,pi=1,i;
 	double exp=1;
-	cout << "请输入 x 的值[-10 ~ +65]" << endl;
-	cin >> x;
+	while (1) {
+		cout << "请输入 x 的值[-10 ~ +65]" << endl;
+		cin >> x;
+		if (x >= -10 && x <= 65)
+			break;
+		cout << "输入非法，请重新输入" << endl;
+	}
 	while (1) {
 		pi = 1;
 		for (i = 1; i <= n;  i++) {
@@ -23,6 +28,6 @@ int main()
 	}
 
 
-	cout <<setprecision(10)<<"e^x=" <<exp<< endl;
+	cout <<setprecision(10)<<"e^"<<x<<"=" <<exp<< endl;
 	return 0;
 }

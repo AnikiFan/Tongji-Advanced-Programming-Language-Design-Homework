@@ -1,9 +1,15 @@
 /* 2254298 信11 范潇 */
-#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
-#include<stdbool.h>
-int main()//TODO:输出为浮点数的且未指定格式的，均要求 double 型，C++为 cout 缺省输出，C 为%lf 的缺省输出
+#include <windows.h> //取系统时间
+#include <stdbool.h>
+int main()
 {
+	LARGE_INTEGER tick, begin, end;
+
+	QueryPerformanceFrequency(&tick);	//获得计数器频率
+	QueryPerformanceCounter(&begin);	//获得初始硬件计数器计数
+
+	/* 此处是你的程序开始 */
 	int i, j, k, no = 1;
 	bool sum, zero, unique;
 	for (i = 100; i <= 999; i++) {
@@ -27,5 +33,15 @@ int main()//TODO:输出为浮点数的且未指定格式的，均要求 double 型，C++为 cout 缺省
 			}
 		}
 	}
+	no--;
+	printf("total=%d\n", no);
+	/* 此处是你的程序结束 */
+
+	QueryPerformanceCounter(&end);		//获得终止硬件计数器计数
+
+	printf("计数器频率 : %lldHz\n", tick.QuadPart);
+	printf("计数器计数 : %lld\n", end.QuadPart - begin.QuadPart);
+	printf("%.6f秒\n", (double)(end.QuadPart - begin.QuadPart) / tick.QuadPart);
+
 	return 0;
 }
