@@ -5,8 +5,8 @@
 using namespace std;
 int main()
 {
-	int x,n=1,pi=1,i;
-	double exp=1;
+	int x,n=1,i;
+	double exp=1,pi=1;
 	while (1) {
 		cout << "ÇëÊäÈë x µÄÖµ[-10 ~ +65]" << endl;
 		cin >> x;
@@ -19,7 +19,7 @@ int main()
 		for (i = 1; i <= n;  i++) {
 			pi *= i;//ÀÛ³Ë
 		}
-		if (pow(x, n) / pi < 1e-6) {
+		if (pow(x, n)  < 1e-6*pi|| isinf(1e-6 * pi)) {
 			break;
 		}
 		exp += pow(x, n) / pi;
