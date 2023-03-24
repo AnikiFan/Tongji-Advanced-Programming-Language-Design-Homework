@@ -19,7 +19,7 @@ int main()
 		for (i = 1; i <= n;  i++) {
 			pi *= i;//ÀÛ³Ë
 		}
-		if (pow(x, n)  < 1e-6*pi|| isinf(1e-6 * pi)) {
+		if (fabs(pow(x, n)  )< 1e-6*pi|| isinf(1e-6 * pi)) {
 			break;
 		}
 		exp += pow(x, n) / pi;
