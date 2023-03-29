@@ -1,2 +1,4 @@
 ﻿  3-b10-1.cpp
+C:\Users\15800\Desktop\高程\HomeworkCodingFile\cpp\week5\cpphomeworkweek5\1-9相加得1953\3-b10-1.cpp(17,7): warning C4101: 'sum': unreferenced local variable
+C:\Users\15800\Desktop\高程\HomeworkCodingFile\cpp\week5\cpphomeworkweek5\1-9相加得1953\3-b10-1.cpp(17,12): warning C4101: 'unique': unreferenced local variable
   1-9相加得1953.vcxproj -> C:\Users\15800\Desktop\高程\HomeworkCodingFile\cpp\week5\cpphomeworkweek5\Debug\1-9相加得1953.exe
