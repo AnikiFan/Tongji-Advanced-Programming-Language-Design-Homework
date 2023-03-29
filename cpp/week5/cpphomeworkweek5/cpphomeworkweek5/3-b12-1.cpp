@@ -13,7 +13,6 @@ int main()
 			break;
 		else if (cin.rdstate()) {
 			cin.clear();	
-			cin.sync();
 			cin.ignore(10000000,'\n');//删了这个以后会死循环
 		}
 	}
