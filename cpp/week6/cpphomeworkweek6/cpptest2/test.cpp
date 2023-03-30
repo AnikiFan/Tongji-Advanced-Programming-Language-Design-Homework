@@ -21,6 +21,7 @@ void fun(char a)
 }
 int main()
 {
-	gotoxy(hout,1,1);
-	return 0;
+	cout << _getch() << endl;
+	cout << _getch() << endl;
+return 0;
 }
