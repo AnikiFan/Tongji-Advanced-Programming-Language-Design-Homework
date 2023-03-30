@@ -16,8 +16,8 @@ int zeller(int y, int m, int d)
 
 void calendar(int y, int m, int w)
 {
-	int max,i=0;
-	cout << y << "年" << m <<"月"<< endl;
+	int max, i = 0;
+	cout << y << "年" << m << "月" << endl;
 	cout << "======================================================" << endl;
 	cout << "星期日  星期一  星期二  星期三  星期四  星期五  星期六" << endl;
 	cout << "======================================================" << endl;
@@ -68,21 +68,22 @@ void calendar(int y, int m, int w)
 	}
 	for (i = 1; i <= max; i++) {
 		cout << setw(4) << i << "    ";
-		if (!((w + i) % 7) || i == max) {
+		if (i == max)
 			cout << endl;
-		}
+		if (!((w + i) % 7))
+			cout << endl;
 	}
-	return ;
+	cout << endl;
+	return;
 }
 
 int main()
 {
-	int y, m,d=1;
+	int y, m, d = 1;
 	cout << "请输入年[1900-2100]、月" << endl;
-
 	while (1) {
-	cin >> y>>m;
-		if (y >= 1900 && y <= 2100 && m >= 1 && m <= 12  && !cin.rdstate())
+		cin >> y >> m;
+		if (y >= 1900 && y <= 2100 && m >= 1 && m <= 12 && !cin.rdstate())
 			break;
 		else if (cin.rdstate()) {
 			cin.clear();
@@ -91,6 +92,7 @@ int main()
 		cout << "输入错误，请重新输入" << endl;
 		cout << "请输入年[1900-2100]、月" << endl;
 	}
-	calendar(y,m,zeller(y,m,1));
+	cout << endl;
+	calendar(y, m, zeller(y, m, 1));
 	return 0;
 }
