@@ -69,7 +69,7 @@ int main()
 		cin >> y >> m >> d;  
 		if (y>=1900&&y<=2100  &&m>=1&&m<=12&&invaliddaytest(y,m,d)&& !cin.rdstate())
 			break;
-		else if (cin.rdstate()) {
+		else {
 			cin.clear();
 			cin.ignore(10000000, '\n');//删了这个以后会死循环
 		}
