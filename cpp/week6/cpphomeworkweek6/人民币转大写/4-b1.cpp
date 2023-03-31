@@ -49,8 +49,18 @@ int main()
 	int  sh, ba, qi, wa, sw, bw, qw, yi, sy, by, yu, ji, fe;
 	bool zh = true, febl = false, jibl = false, wabl = false, yubl = false, yibl = false;//zh为真时有整,其他位数对应bl值默认为负,即认为该为为0
 	bool zero = false, nozero = false;
-	cout << setiosflags(ios::left) << "请输入[0-100亿)之间的数字:" << endl;
-	cin >> number;
+	cout << setiosflags(ios::left);
+	cout << "请输入[0-100亿)之间的数字:" << endl;
+	while (1) {	
+		cin >> number;
+		if ((0.01<=number&&number<=9999999999.99||number==0) && !cin.rdstate())
+			break;
+		else {
+			cin.clear();
+			cin.ignore(10000000, '\n');//删了这个以后会死循环
+		}
+		cout << "请输入[0 - 100亿)之间的数字:" << endl;
+	}
 	number += 0.009;
 	by = int(floor(number / pow(10, 10)));
 	sy = int(floor((number -= floor(number / pow(10, 10)) * pow(10, 10)) / pow(10, 9)));
@@ -73,7 +83,7 @@ int main()
 	if (ji != 0) {
 		jibl = true;
 	}
-	//判断亿千圆
+	//判断亿千圆 
 	if (yi || sy || by) {
 		yibl = true;
 	}
