@@ -14,7 +14,7 @@ int zeller(int y, int m, int d)
 	return ((w + 77) % 7);//若只加7,则数据2000 4 13得出来的是-3
 }
 
-int invaliddaytest(int y,int m,int d)
+int invaliddaytest(int y, int m, int d)
 {
 	int max;
 	switch (m) {
@@ -58,7 +58,7 @@ int invaliddaytest(int y,int m,int d)
 				max = 28;
 			break;
 	}
-	return(1 <= d &&d<= max);
+	return(1 <= d && d <= max);
 }
 
 int main()
@@ -66,17 +66,22 @@ int main()
 	int y, m, d;
 	cout << "请输入年[1900-2100]、月、日：" << endl;
 	while (1) {
-		cin >> y >> m >> d;  
-		if (y>=1900&&y<=2100  &&m>=1&&m<=12&&invaliddaytest(y,m,d)&& !cin.rdstate())
+		cin >> y >> m >> d;
+		if (y >= 1900 && y <= 2100 && m >= 1 && m <= 12 && invaliddaytest(y, m, d) && !cin.rdstate())
 			break;
-		else {
-			cin.clear();
-			cin.ignore(10000000, '\n');//删了这个以后会死循环
-		}
-		cout << "输入错误，请重新输入" << endl;
+		else if (cin.rdstate())
+			cout << "输入错误，请重新输入" << endl;
+		else if (!(y >= 1900 && y <= 2100))
+			cout << "年份不正确，请重新输入" << endl;
+		else if (!(m >= 1 && m <= 12))
+			cout << "月份不正确，请重新输入" << endl;
+		else if (!invaliddaytest(y, m, d))
+			cout << "日不正确，请重新输入" << endl;
 		cout << "请输入年[1900-2100]、月、日：" << endl;
+		cin.clear();
+		cin.ignore(10000000, '\n');//删了这个以后会死循环
 	}
-	switch (zeller(y,m,d)) {
+	switch (zeller(y, m, d)) {
 		case 0:
 			cout << "星期日" << endl;
 			break;
@@ -100,4 +105,4 @@ int main()
 			break;
 	}
 	return 0;
-} 
+}

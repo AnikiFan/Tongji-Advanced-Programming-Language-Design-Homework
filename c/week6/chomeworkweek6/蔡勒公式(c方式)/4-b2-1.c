@@ -69,10 +69,17 @@ int main()
 
 		if (y >= 1900 && y <= 2100 && m >= 1 && m <= 12 && invaliddaytest(y, m, d) && ret == 3)
 			break;
+		else if (ret != 3)
+			printf("输入错误，请重新输入\n");
+		else if (!(y >= 1900 && y <= 2100))
+			printf("年份不正确，请重新输入\n");
+		else if (!(m >= 1 && m <= 12))
+			printf("月份不正确，请重新输入\n");
+		else if (!invaliddaytest(y, m, d))
+			printf("日不正确，请重新输入\n");
+		printf("请输入年[1900-2100]、月、日：\n");
 		while (getchar() != '\n')
 			;
-		printf("输入错误，请重新输入\n");
-		printf("请输入年[1900-2100]、月、日：\n");
 	}
 	switch (zeller(y, m, d)) {
 		case 0:
