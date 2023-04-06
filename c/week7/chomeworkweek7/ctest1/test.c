@@ -1,6 +1,6 @@
 /* 2254298 信11 范潇 */
-#include <iostream>
-using namespace std;
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
 
 /* ----具体要求----
    1、不允许添加其它头文件
@@ -19,27 +19,26 @@ using namespace std;
    ***************************************************************************/
 void convert(int n)
 {
-	int neg = 0, min = 0;
-	if (n == -2147483648) {
-		n = 2147483647;
-		min = 1;
-		neg = 1;
-	}
+	int min = 0;
+
 	if (n < 0) {
-		neg = 1;
+		printf("- ");
 		n = -n;
 	}
+	if (n < 0 && n == -n)
+		min = 1;//需要特判的原因在于n为-2147483648时n - n % 10得不到预期结果,而这一步的预期目标是提取最小位
 	if (n / 10 == 0) {
-		cout << char(n + 48) << " ";
+		printf("%c ", n % 10 + 48);//0的ascill码是48
 		return;
 	}
-	if (min == 0)
-		cout << char(n % 10 + 48) << " ";
-	else
-		cout << char(8 + 48) << " ";
-	convert((n - n % 10) / 10);
-	if (neg)
-		cout << "- ";
+	if (min == 1) {
+		convert(214748364);
+		printf("%c ", 8 + 48);
+	}
+	else {
+		convert((n - n % 10) / 10);
+		printf("%c ", n % 10 + 48);
+	}
 	return;
 }
 
@@ -53,11 +52,10 @@ void convert(int n)
 int main()
 {
 	int n;
-	cout << "请输入一个整数" << endl;
-	cin >> n;
+	printf("请输入一个整数\n");
 
-	convert(n);
-	cout << endl;
+	convert(n = -2147483648);
+	printf("\n");
 
 	return 0;
 }
