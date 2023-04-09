@@ -21,7 +21,7 @@ using namespace std;
 	 说    明：1、函数名、形参、返回类型均不准动
 			   2、本函数不允许出现任何形式的循环
    ***************************************************************************/
-//对于n层汉诺塔,先将起始柱上的n-1层移至中间柱,然后将留在起始柱的底层移至目标柱,再将中间柱上的n-1层移至目标柱上.
+   //对于n层汉诺塔,先将起始柱上的n-1层移至中间柱,然后将留在起始柱的底层移至目标柱,再将中间柱上的n-1层移至目标柱上.
 void hanoi(int n, char src, char tmp, char dst)
 {
 	if (n == 1) {
@@ -52,16 +52,19 @@ int main()
 	cout << "请输入汉诺塔的层数(1-16)" << endl;
 	while (1) {
 		cin >> n;
-		if (n >= 0 && n <= 16 &&  !cin.rdstate())
-			break;
+		if (n >= 0 && n <= 16 && !cin.rdstate()) {
 			cin.clear();
 			cin.ignore(10000000, '\n');//删了这个以后会死循环
-			cout << "请输入汉诺塔的层数(1-16)" << endl;
+			break;
+		}
+		cin.clear();
+		cin.ignore(10000000, '\n');//删了这个以后会死循环
+		cout << "请输入汉诺塔的层数(1-16)" << endl;
 	}
 	cout << "请输入起始柱(A-C)" << endl;
 	while (1) {
 		cin >> src;
-		if ((src=='A'|| src == 'B' || src == 'C' || src == 'a' || src == 'b' || src == 'c'  ) && !cin.rdstate())
+		if ((src == 'A' || src == 'B' || src == 'C' || src == 'a' || src == 'b' || src == 'c') && !cin.rdstate()) {
 			switch (src) {
 				case 'a':
 					src = 'A';
@@ -73,7 +76,10 @@ int main()
 					src = 'C';
 					break;
 			}
+			cin.clear();
+			cin.ignore(10000000, '\n');//删了这个以后会死循环
 			break;
+		}
 		cin.clear();
 		cin.ignore(10000000, '\n');//删了这个以后会死循环
 		cout << "请输入起始柱(A-C)" << endl;
@@ -82,12 +88,15 @@ int main()
 	while (1) {
 		cin >> dst;
 		if ((dst == 'A' || dst == 'B' || dst == 'C' || dst == 'a' || dst == 'b' || dst == 'c') && !cin.rdstate()
-			&&dst!=src&&dst!=(src-32)&& dst != (src+32))
+			&& dst != src && dst != (src - 32) && dst != (src + 32)) {
+			cin.clear();
+			cin.ignore(10000000, '\n');//删了这个以后会死循环
 			break;
+		}
 		cin.clear();
 		cin.ignore(10000000, '\n');//删了这个以后会死循环
-		if(dst == src || dst == (src - 32) || dst == (src + 32))
-			cout << "目标柱(" << src << ")不能与起始柱(" << src << ")相同"<<endl;
+		if (dst == src || dst == (src - 32) || dst == (src + 32))
+			cout << "目标柱(" << src << ")不能与起始柱(" << src << ")相同" << endl;
 		cout << "请输入目标柱(A-C)" << endl;
 	}
 	switch (dst) {
@@ -102,7 +111,7 @@ int main()
 			break;
 	}
 	cout << "移动步骤为:" << endl;
-	tmp = int(src != 'A') * int(dst != 'A') * 'A' + int(src != 'B') * int(dst != 'B') * 'B' + int(src != 'C') *int( dst != 'C') * 'C';
+	tmp = int(src != 'A') * int(dst != 'A') * 'A' + int(src != 'B') * int(dst != 'B') * 'B' + int(src != 'C') * int(dst != 'C') * 'C';
 	hanoi(n, src, tmp, dst);
 	return 0;
 }

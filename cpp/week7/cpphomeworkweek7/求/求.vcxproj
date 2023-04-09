@@ -21,10 +21,10 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{cd6e709e-3901-4d7d-ac6d-7baa47d14ebf}</ProjectGuid>
+    <ProjectGuid>{209132B1-6420-4397-ADB7-D6DE5C0A8F7E}</ProjectGuid>
     <RootNamespace>求1_2_…_n_2_编译器VS_编译器Dev_Y</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
-    <ProjectName>求1^2+…+n^2</ProjectName>
+    <ProjectName>求</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

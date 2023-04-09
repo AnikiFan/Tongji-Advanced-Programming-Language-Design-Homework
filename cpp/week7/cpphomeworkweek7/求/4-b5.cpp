@@ -42,6 +42,6 @@ int main()
 	cin >> n; //[3..1860]间的正整数，不考虑输入错误
 
 	/* 此处允许添加一句cout语句 */
-	cout << "1^2+2^2+...+1860^2=" << (sum_of_square(n)) << endl;
+	cout << "1^2+2^2+...+" << n << "^2=" << (sum_of_square(n)) << endl;
 	return 0;
 }

@@ -39,6 +39,6 @@ int main()
 	unsigned int n;
 	printf("计算legendre，请输入x和n的值\n");
 	scanf("%lf %u", &x, &n);
-	printf("legendre[%u](%lf)=%lf\n",n,x,legendre(x,n));
+	printf("legendre[%u](%lf)=%lf\n", n, x, legendre(x, n));
 	return 0;
 }
