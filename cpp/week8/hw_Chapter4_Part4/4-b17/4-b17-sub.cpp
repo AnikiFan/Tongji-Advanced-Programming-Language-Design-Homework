@@ -12,7 +12,10 @@ void invalid()
 void same_real_root()
 {
 	cout << "有两个相等实根：" << endl;
-	cout << "x1=x2=" << -b / (2 * a) << endl;
+	if (-b / (2 * a) == -0)
+		cout << "x1=x2=0" << endl;
+	else
+		cout << "x1=x2=" << -b / (2 * a) << endl;
 	return;
 }
 void dif_real_roots()
