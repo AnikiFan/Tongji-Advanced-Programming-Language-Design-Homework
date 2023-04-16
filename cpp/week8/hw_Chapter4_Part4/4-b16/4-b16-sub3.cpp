@@ -8,6 +8,12 @@ void dif_real_roots(double a, double b, double c)
 	double neg, pos;
 	neg = (-b - sqrt(delta)) / (2 * a);
 	pos = (-b + sqrt(delta)) / (2 * a);
+	if (fabs(sqrt(delta) / (2 * a)) < 1e-6)
+		neg = pos = -b / (2 * a);
+	if (fabs(pos) < 1e-6)
+		pos = 0;
+	if (fabs(neg) < 1e-6)
+		neg = 0;
 	cout << "有两个不等实根：" << endl;
 	if (a > 0) {
 		cout << "x1=" << pos << endl;
