@@ -3,18 +3,56 @@
 #include <iomanip>
 #define arrow "-->"
 using namespace std;
-int top[3]={0}, int plate[3][10]={0}, count;
+int top[3] = { 0 }, plate[3][10] = { 0 }, num = 0;
+void horizontal()
+{
+	int i, tenflag = 0;
+	cout << "A:";
+	for (i = 0; i < top[0]; i++) {
+		if (plate[0][i] == 10)
+			tenflag = 1;
+		cout << plate[0][i] << " ";
+	}
+	cout << setw(2 * (10 - top[0]) + 1 * tenflag + 2);
+	tenflag = 0;
 
+	cout << "B:";
+	for (i = 0; i < top[1]; i++) {
+		if (plate[1][i] == 10)
+			tenflag = 1;
+		cout << plate[1][i] << " ";
+	}
+	cout << setw(2 * (10 - top[1]) + 1 * tenflag + 2);
+
+	cout << "C:";
+	for (i = 0; i < top[2]; i++) {
+		cout << plate[2][i] << " ";
+	}
+	cout << endl;
+}
 
 void hanoi(int n, char src, char tmp, char dst)
 {
-	cout << setw(21) << "起始:";
+	int temp;
 	if (n == 1) {
-		cout << " 1# " << src << arrow << dst << endl;
+		num++;
+		plate[dst - 'A'][top[dst - 'A']] = plate[src - 'A'][top[src - 'A'] - 1];
+		plate[src - 'A'][top[src - 'A'] - 1] = 0;
+		top[dst - 'A']++;
+		top[src - 'A']--;
+		cout << "第" << setw(4) << num << " 步" << "(" << setw(2) << "1" << ")" << src << arrow << dst << " ";
+		horizontal();
 		return;
 	}
 	hanoi(n - 1, src, dst, tmp);
-	cout << setw(2) << n << "# " << src << arrow << dst << endl;
+	num++;
+	plate[dst - 'A'][top[dst - 'A']] = plate[src - 'A'][top[src - 'A'] - 1];
+	temp = plate[src - 'A'][top[src - 'A'] - 1];
+	plate[src - 'A'][top[src - 'A'] - 1] = 0;
+	top[dst - 'A']++;
+	top[src - 'A']--;
+	cout << "第" << setw(4) << num << " 步" << "(" << setw(2) << temp << ")" << src << arrow << dst << " ";
+	horizontal();
 	hanoi(n - 1, tmp, src, dst);
 	return;
 }
@@ -22,9 +60,9 @@ void hanoi(int n, char src, char tmp, char dst)
 
 int main()
 {
-	int n,i;
+	int n, i;
 	char src, tmp, dst;
-	cout << "请输入汉诺塔的层数(1-16)" << endl;
+	cout << "请输入汉诺塔的层数(1-10)" << endl;
 	while (1) {
 		cin >> n;
 		if (n >= 0 && n <= 16 && !cin.rdstate()) {
@@ -34,7 +72,7 @@ int main()
 		}
 		cin.clear();
 		cin.ignore(10000000, '\n');//删了这个以后会死循环
-		cout << "请输入汉诺塔的层数(1-16)" << endl;
+		cout << "请输入汉诺塔的层数(1-10)" << endl;
 	}
 	cout << "请输入起始柱(A-C)" << endl;
 	while (1) {
@@ -90,20 +128,24 @@ int main()
 	switch (src) {
 		case('A'):
 			top[0] = n;
-			for (i = 0; i < n - 1; i++)
+			for (i = 0; i < n; i++)
 				plate[0][i] = n - i;
 			break;
 		case('B'):
 			top[1] = n;
-			for (i = 0; i < n - 1; i++)
+			for (i = 0; i < n; i++)
 				plate[1][i] = n - i;
 			break;
 		case('C'):
-			top[1] = n;
-			for (i = 0; i < n - 1; i++)
+			top[2] = n;
+			for (i = 0; i < n; i++)
 				plate[2][i] = n - i;
 			break;
 	}
+
+	cout << "起始:" << setw(14) << " ";
+	horizontal();
 	hanoi(n, src, tmp, dst);
+
 	return 0;
 }
