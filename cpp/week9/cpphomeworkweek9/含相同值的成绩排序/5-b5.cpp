@@ -29,7 +29,7 @@ int main()
 				break;
 			}
 		}
-		cout << "分数与人数的对应关系为:" << endl;
+		cout << "分数与名次的对应关系为:" << endl;
 		for (i = 0; i < max - 1; i++)//冒泡法排序
 			for (j = 0; j < max - (i + 1); j++)
 				if (array[j] > array[j + 1]) {

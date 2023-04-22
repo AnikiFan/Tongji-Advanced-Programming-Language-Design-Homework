@@ -7,24 +7,24 @@ int top[3] = { 0 }, plate[3][10] = { 0 }, num = 0;
 void horizontal()
 {
 	int i, tenflag = 0;
-	cout << "A:";
+	cout << "A: ";
 	for (i = 0; i < top[0]; i++) {
 		if (plate[0][i] == 10)
 			tenflag = 1;
 		cout << plate[0][i] << " ";
 	}
-	cout << setw(2 * (10 - top[0]) + 1 * tenflag + 2);
+	cout << setw(2 * (10 - top[0]) - 1 * tenflag + 2);
 	tenflag = 0;
 
-	cout << "B:";
+	cout << "B: ";
 	for (i = 0; i < top[1]; i++) {
 		if (plate[1][i] == 10)
 			tenflag = 1;
 		cout << plate[1][i] << " ";
 	}
-	cout << setw(2 * (10 - top[1]) + 1 * tenflag + 2);
+	cout << setw(2 * (10 - top[1]) - 1 * tenflag + 2);
 
-	cout << "C:";
+	cout << "C: ";
 	for (i = 0; i < top[2]; i++) {
 		cout << plate[2][i] << " ";
 	}
@@ -40,7 +40,7 @@ void hanoi(int n, char src, char tmp, char dst)
 		plate[src - 'A'][top[src - 'A'] - 1] = 0;
 		top[dst - 'A']++;
 		top[src - 'A']--;
-		cout << "第" << setw(4) << num << " 步" << "(" << setw(2) << "1" << ")" << src << arrow << dst << " ";
+		cout << "第" << setw(4) << num << " 步" << "(" << setw(2) << "1" << "): " << src << arrow << dst << " ";
 		horizontal();
 		return;
 	}
@@ -51,7 +51,7 @@ void hanoi(int n, char src, char tmp, char dst)
 	plate[src - 'A'][top[src - 'A'] - 1] = 0;
 	top[dst - 'A']++;
 	top[src - 'A']--;
-	cout << "第" << setw(4) << num << " 步" << "(" << setw(2) << temp << ")" << src << arrow << dst << " ";
+	cout << "第" << setw(4) << num << " 步" << "(" << setw(2) << temp << "): " << src << arrow << dst << " ";
 	horizontal();
 	hanoi(n - 1, tmp, src, dst);
 	return;
@@ -123,7 +123,6 @@ int main()
 			dst = 'C';
 			break;
 	}
-	cout << "移动步骤为:" << endl;
 	tmp = int(src != 'A') * int(dst != 'A') * 'A' + int(src != 'B') * int(dst != 'B') * 'B' + int(src != 'C') * int(dst != 'C') * 'C';
 	switch (src) {
 		case('A'):
@@ -143,7 +142,7 @@ int main()
 			break;
 	}
 
-	cout << "起始:" << setw(14) << " ";
+	cout << "初始:" << setw(16) << " ";
 	horizontal();
 	hanoi(n, src, tmp, dst);
 

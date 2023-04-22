@@ -9,9 +9,9 @@ void horizontal()
 	for (i = 0; i < Atop; i++) {
 		if (Aplate[i] == 10)
 			tenflag = 1;
-		printf("%d ", Aplate[i]);
+		printf("%2d", Aplate[i]);
 	}
-	for (i = 0; i < 2 * (10 - Atop) + 1 * tenflag + 2; i++)
+	for (i = 0; i < 2 * (10 - Atop)  + 1; i++)
 		printf(" ");
 	tenflag = 0;
 
@@ -19,13 +19,13 @@ void horizontal()
 	for (i = 0; i < Btop; i++) {
 		if (Bplate[i] == 10)
 			tenflag = 1;
-		printf("%d ", Bplate[i]);
+		printf("%2d", Bplate[i]);
 	}
-	for (i = 0; i < 2 * (10 - Btop) + 1 * tenflag + 2; i++)
+	for (i = 0; i < 2 * (10 - Btop)  + 1; i++)
 		printf(" ");
 	printf("C:");
 	for (i = 0; i < Ctop; i++)
-		printf("%d ", Cplate[i]);
+		printf("%2d", Cplate[i]);
 	printf("\n");
 }
 
@@ -80,7 +80,7 @@ void hanoi(int n, char src, char tmp, char dst)
 				}
 				break;
 		}
-		printf("第%4d步( 1)%c-->%c ", num, src, dst);
+		printf("第%4d 步( 1): %c-->%c ", num, src, dst);
 		horizontal();
 		return;
 	}
@@ -138,7 +138,7 @@ void hanoi(int n, char src, char tmp, char dst)
 			}
 			break;
 	}
-	printf("第%4d步(%2d)%c-->%c ", num, temp, src, dst);
+	printf("第%4d 步(%2d): %c-->%c ", num, temp, src, dst);
 	horizontal();
 	hanoi(n - 1, tmp, src, dst);
 	return;
@@ -204,7 +204,6 @@ int main()//TODO:输出为浮点数的且未指定格式的，均要求 double 型，C++为 cout 缺省
 			dst = 'C';
 			break;
 	}
-	printf("移动步骤为:\n");
 	tmp = (int)(src != 'A') * (int)(dst != 'A') * 'A' + (int)(src != 'B') * (int)(dst != 'B') * 'B' + (int)(src != 'C') * (int)(dst != 'C') * 'C';
 	switch (src) {
 		case('A'):
@@ -224,7 +223,7 @@ int main()//TODO:输出为浮点数的且未指定格式的，均要求 double 型，C++为 cout 缺省
 			break;
 	}
 
-	printf("起始:             ");
+	printf("初始:                ");
 	horizontal();
 	hanoi(n, src, tmp, dst);
 	return 0;
