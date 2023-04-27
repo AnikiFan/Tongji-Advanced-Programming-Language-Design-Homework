@@ -21,10 +21,10 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{e1b55f33-15e8-4d0b-920f-8e581836213c}</ProjectGuid>
-    <RootNamespace>汉诺塔_每步详细_横向__1个一维_1个二维</RootNamespace>
+    <ProjectGuid>{4c6b6e0d-5623-4048-b0db-5d3eac2f5006}</ProjectGuid>
+    <RootNamespace>人民币大写_char数组_一句输出_C方式_</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
-    <ProjectName>汉诺塔-每步详细(横向)-3个变量3个一维</ProjectName>
+    <ProjectName>人民币大写(string类,一句输出)</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -128,7 +128,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="5-b6-1.c" />
+    <ClCompile Include="5-b11-2.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -7,26 +7,26 @@ int top[3] = { 0 }, plate[3][10] = { 0 }, num = 0;
 void horizontal()
 {
 	int i, tenflag = 0;
-	cout << "A: ";
+	cout << "A:";
 	for (i = 0; i < top[0]; i++) {
 		if (plate[0][i] == 10)
 			tenflag = 1;
-		cout << plate[0][i] << " ";
+		cout << setw(2)<<plate[0][i] ;
 	}
-	cout << setw(2 * (10 - top[0]) - 1 * tenflag + 2);
+	cout << setw(2 * (10 - top[0])  + 3);
 	tenflag = 0;
 
-	cout << "B: ";
+	cout << "B:";
 	for (i = 0; i < top[1]; i++) {
 		if (plate[1][i] == 10)
 			tenflag = 1;
-		cout << plate[1][i] << " ";
+		cout << setw(2) << plate[1][i];
 	}
-	cout << setw(2 * (10 - top[1]) - 1 * tenflag + 2);
+	cout << setw(2 * (10 - top[1]) + 3);
 
-	cout << "C: ";
+	cout << "C:";
 	for (i = 0; i < top[2]; i++) {
-		cout << plate[2][i] << " ";
+		cout << setw(2) << plate[2][i];
 	}
 	cout << endl;
 }
