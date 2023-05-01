@@ -13,6 +13,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "打印年历", "打印年�
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cpptest1", "cpptest1\cpptest1.vcxproj", "{8143D006-AB3A-4731-B987-7F7837B391FA}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "栈方式的汉诺塔", "栈方式的汉诺塔\栈方式的汉诺塔.vcxproj", "{00E5A0BA-C3F6-40D7-930D-ACDA9B31A17F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -61,6 +63,14 @@ Global
 		{8143D006-AB3A-4731-B987-7F7837B391FA}.Release|x64.Build.0 = Release|x64
 		{8143D006-AB3A-4731-B987-7F7837B391FA}.Release|x86.ActiveCfg = Release|Win32
 		{8143D006-AB3A-4731-B987-7F7837B391FA}.Release|x86.Build.0 = Release|Win32
+		{00E5A0BA-C3F6-40D7-930D-ACDA9B31A17F}.Debug|x64.ActiveCfg = Debug|x64
+		{00E5A0BA-C3F6-40D7-930D-ACDA9B31A17F}.Debug|x64.Build.0 = Debug|x64
+		{00E5A0BA-C3F6-40D7-930D-ACDA9B31A17F}.Debug|x86.ActiveCfg = Debug|Win32
+		{00E5A0BA-C3F6-40D7-930D-ACDA9B31A17F}.Debug|x86.Build.0 = Debug|Win32
+		{00E5A0BA-C3F6-40D7-930D-ACDA9B31A17F}.Release|x64.ActiveCfg = Release|x64
+		{00E5A0BA-C3F6-40D7-930D-ACDA9B31A17F}.Release|x64.Build.0 = Release|x64
+		{00E5A0BA-C3F6-40D7-930D-ACDA9B31A17F}.Release|x86.ActiveCfg = Release|Win32
+		{00E5A0BA-C3F6-40D7-930D-ACDA9B31A17F}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

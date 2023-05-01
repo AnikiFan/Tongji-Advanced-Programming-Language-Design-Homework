@@ -1,7 +1,7 @@
 /* 2254298 信11 范潇 */
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
-int num = 0, Atop, Btop, Ctop, Aplate[10], Bplate[10], Cplate[10], i;
+int num = 0, Atop, Btop, Ctop, Aplate[10], Bplate[10], Cplate[10];
 void horizontal()
 {
 	int i, tenflag = 0;
@@ -11,7 +11,7 @@ void horizontal()
 			tenflag = 1;
 		printf("%2d", Aplate[i]);
 	}
-	for (i = 0; i < 2 * (10 - Atop)  + 1; i++)
+	for (i = 0; i < 2 * (10 - Atop) + 1; i++)
 		printf(" ");
 	tenflag = 0;
 
@@ -21,7 +21,7 @@ void horizontal()
 			tenflag = 1;
 		printf("%2d", Bplate[i]);
 	}
-	for (i = 0; i < 2 * (10 - Btop)  + 1; i++)
+	for (i = 0; i < 2 * (10 - Btop) + 1; i++)
 		printf(" ");
 	printf("C:");
 	for (i = 0; i < Ctop; i++)
@@ -147,7 +147,7 @@ void hanoi(int n, char src, char tmp, char dst)
 int main()//TODO:输出为浮点数的且未指定格式的，均要求 double 型，C++为 cout 缺省输出，C 为%lf 的缺省输出
 {
 
-	int n, ret;
+	int n, ret, i;
 	char src, tmp, dst;
 	printf("请输入汉诺塔的层数(1-10)\n");
 	while (1) {

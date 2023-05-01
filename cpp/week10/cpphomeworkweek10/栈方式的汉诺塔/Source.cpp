@@ -1,23 +1,9 @@
 /* 2254298 信11 范潇 */
-#define Bxcoordinate 20
-#define Bycoordinate 20
-#define Bposition (Bxcoordinate,Bycoordinate)//B盘标识坐标
-#define xcoordinatediff 10//A,B,C的x坐标之间的差
 #include <iostream>
 #include <iomanip>
-#include<Windows.h>
-#include"5-b7.h"
 #define arrow "-->"
 using namespace std;
-int Atop, Btop, Ctop, Astack[10], Bstack[10], Cstack[10], num = 0, speed, display;//Atop,Btop,Ctop是栈顶+1处位置
-void vertical(char src, char dst, int srctop, int dsttop, int moveelement)
-{
-	cct_gotoxy(Bxcoordinate - ('B' - src) * xcoordinatediff, Bycoordinate - 2 - srctop);
-	cout << " ";
-	cct_gotoxy(Bxcoordinate - ('B' - dst) * xcoordinatediff, Bycoordinate - 2 - dsttop);
-	cout << moveelement;
-	return;
-}
+int Atop, Btop, Ctop, Astack[10], Bstack[10], Cstack[10], num = 0;//Atop,Btop,Ctop是栈顶+1处位置
 void horizontal()
 {
 	int i, tenflag = 0;
@@ -44,6 +30,7 @@ void horizontal()
 	}
 	cout << endl;
 }
+
 void hanoi(int n, char src, char tmp, char dst)
 {
 	int temp;
@@ -71,6 +58,7 @@ void hanoi(int n, char src, char tmp, char dst)
 
 		}
 		cout << "第" << setw(4) << num << " 步" << "(" << setw(2) << "1" << "): " << src << arrow << dst << " ";
+		horizontal();
 		return;
 	}
 	hanoi(n - 1, src, dst, tmp);
@@ -97,6 +85,7 @@ void hanoi(int n, char src, char tmp, char dst)
 
 	}
 	cout << "第" << setw(4) << num << " 步" << "(" << setw(2) << temp << "): " << src << arrow << dst << " ";
+	horizontal();
 	hanoi(n - 1, tmp, src, dst);
 	return;
 }
@@ -185,52 +174,10 @@ int main()
 				Cstack[i] = n - i;
 			break;
 	}
-	cout << "请输入移动速度(0-5: 0-按回车单步演示 1-延时最长 5-延时最短)" << endl;
-	while (1) {
-		cin >> speed;
-		if (speed >= 0 && speed <= 5 && !cin.rdstate()) {
-			cin.clear();
-			cin.ignore(10000000, '\n');//删了这个以后会死循环
-			break;
-		}
-		cin.clear();
-		cin.ignore(10000000, '\n');//删了这个以后会死循环
-		cout << "请输入移动速度(0-5: 0-按回车单步演示 1-延时最长 5-延时最短)" << endl;
-	}
-	cout << "请输入是否显示内部数组值(0-不显示 1-显示)" << endl;
-	while (1) {
-		cin >> display;
-		if (display >= 0 && display <= 1 && !cin.rdstate()) {
-			cin.clear();
-			cin.ignore(10000000, '\n');//删了这个以后会死循环
-			break;
-		}
-		cin.clear();
-		cin.ignore(10000000, '\n');//删了这个以后会死循环
-		cout << "请输入是否显示内部数组值(0-不显示 1-显示)" << endl;
-	}
-	cct_cls();
-	cout << "从 " << src << " 移动到 " << dst << "，共 " << n << " 层，延时设置为 " << speed << ", " << (display ? "" : "不") << "显示内部数组值" << endl;
-	cct_gotoxy(Bxcoordinate - xcoordinatediff - 2, Bycoordinate - 1);
-	cout << setfill('=') << setw(6 + 2 * xcoordinatediff) << " ";
-	cct_gotoxy Bposition;
-	cout << "B";
-	cct_gotoxy(Bxcoordinate - xcoordinatediff, Bycoordinate);
-	cout << "A";
-	cct_gotoxy(Bxcoordinate + xcoordinatediff, Bycoordinate);
-	cout << "C";
 
-	cct_gotoxy(Bxcoordinate, Bycoordinate - 6);
 	cout << "初始:" << setw(16) << " ";
 	horizontal();
+	hanoi(n, src, tmp, dst);
 
-	for (i = 1; i < n + 1; i++) {
-		cct_gotoxy(Bxcoordinate - ('B' - src) * xcoordinatediff, Bycoordinate - 1 - i);
-		cout << n + 1 - i;
-	}
-
-
-
-	system("pause");
 	return 0;
 }
