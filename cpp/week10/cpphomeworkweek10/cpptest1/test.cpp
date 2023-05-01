@@ -1,21 +1,17 @@
-#define _CRT_SECURE_NO_WARNINGS  //VS需要
 #include <iostream>
-#include <cstring>
+#include <iomanip>
 using namespace std;
 
 int main()
 {
-    int i;
-    char a[] = "student", b[] = "hello";
-    for (i = 0; i < 100; i++) //20已越界，目的？
-        cout << int(a[i]) << ' ';
-    cout << endl;
+	double d = 123.456789123456;
+	cout.setf(ios::scientific);
+	cout.precision(10);
+	cout << d << '*' << endl;
+	cout.unsetf(ios::scientific); //此处添句话,需用cout.函数名
+	cout.setf(ios::fixed);
+	cout.precision(10);
+	cout << d << '*' << endl;
 
-    strncpy(a, b, 30);
-    cout << a << endl;
-
-    for (i = 0; i < 100; i++) //20已越界，目的？
-        cout << int(a[i]) << ' ';
-    cout << endl;
-    return 0;
+	return 0;
 }
