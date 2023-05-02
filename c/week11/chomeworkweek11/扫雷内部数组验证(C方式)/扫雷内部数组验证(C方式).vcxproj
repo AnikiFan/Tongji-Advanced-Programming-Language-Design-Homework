@@ -24,6 +24,7 @@
     <ProjectGuid>{7fac3e89-a247-40c1-aff0-4da14f0a32aa}</ProjectGuid>
     <RootNamespace>扫雷内部数组验证_C方式_</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>扫雷内部数组验证</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

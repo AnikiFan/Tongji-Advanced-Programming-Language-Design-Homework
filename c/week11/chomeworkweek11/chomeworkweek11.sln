@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "人民币大写(char数组,
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "扫雷内部数组验证(C方式)", "扫雷内部数组验证(C方式)\扫雷内部数组验证(C方式).vcxproj", "{7FAC3E89-A247-40C1-AFF0-4DA14F0A32AA}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ctest1", "ctest1\ctest1.vcxproj", "{B0906D50-2316-4B5A-B591-EB9BC98926C4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -31,6 +33,14 @@ Global
 		{7FAC3E89-A247-40C1-AFF0-4DA14F0A32AA}.Release|x64.Build.0 = Release|x64
 		{7FAC3E89-A247-40C1-AFF0-4DA14F0A32AA}.Release|x86.ActiveCfg = Release|Win32
 		{7FAC3E89-A247-40C1-AFF0-4DA14F0A32AA}.Release|x86.Build.0 = Release|Win32
+		{B0906D50-2316-4B5A-B591-EB9BC98926C4}.Debug|x64.ActiveCfg = Debug|x64
+		{B0906D50-2316-4B5A-B591-EB9BC98926C4}.Debug|x64.Build.0 = Debug|x64
+		{B0906D50-2316-4B5A-B591-EB9BC98926C4}.Debug|x86.ActiveCfg = Debug|Win32
+		{B0906D50-2316-4B5A-B591-EB9BC98926C4}.Debug|x86.Build.0 = Debug|Win32
+		{B0906D50-2316-4B5A-B591-EB9BC98926C4}.Release|x64.ActiveCfg = Release|x64
+		{B0906D50-2316-4B5A-B591-EB9BC98926C4}.Release|x64.Build.0 = Release|x64
+		{B0906D50-2316-4B5A-B591-EB9BC98926C4}.Release|x86.ActiveCfg = Release|Win32
+		{B0906D50-2316-4B5A-B591-EB9BC98926C4}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

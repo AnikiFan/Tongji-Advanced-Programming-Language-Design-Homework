@@ -21,10 +21,9 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{e0d32bfc-4a3e-4789-ab09-11b5cec5a46a}</ProjectGuid>
-    <RootNamespace>人民币大写_char数组_一句输出_C方式_</RootNamespace>
+    <ProjectGuid>{8a55bc69-3baa-45b5-8fc4-6a07b77564d5}</ProjectGuid>
+    <RootNamespace>一组字符串处理函数</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
-    <ProjectName>人民币大写</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -128,7 +127,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="5-b11-1.c" />
+    <ClCompile Include="5-b12-main.cpp" />
+    <ClCompile Include="5-b12-sub.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="5-b12.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
