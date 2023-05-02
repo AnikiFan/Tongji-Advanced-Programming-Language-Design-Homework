@@ -10,36 +10,49 @@ int main()
 
 	for (i = 1; i < MAX_Y + 1; i++)
 		for (j = 1; j < MAX_X + 1; j++) {
-			scanf("%c", &input[i][j]);
-			scanf("%c", &temp);
+			temp = 0;
+			while (temp != '*' && !(temp >= '0' && temp <= '8'))
+				scanf("%c", &temp);
+			input[i][j] = temp;
+
+			//scanf("%c%c", &input[i][j],&temp);
+			//printf("[%d][%d]%c\n",i,j, temp);
 		}
 
 
-	for (i = 1; i < MAX_Y + 1; i++) {
-		for (j = 1; j < MAX_X + 1; j++)
-			printf("%c ", input[i][j]);
-		printf("\n");
-	}
-
+ //for (i = 1; i < MAX_Y + 1; i++) {
+ //	for (j = 1; j < MAX_X + 1; j++)
+ //		printf("%c ", input[i][j]);
+ //	printf("\n");
+ //}
+ //printf("\n");
 
 	for (i = 1; i < MAX_Y + 1; i++)
 		for (j = 1; j < MAX_X + 1; j++) {
-			if (input[i][j] = '*') {
+			if (input[i][j] == '*') {
 				boom[i][j]++;
 				sum++;
 			}
 		}
+
+//	for (i = 1; i < MAX_Y + 1; i++) {
+//		for (j = 1; j < MAX_X + 1; j++)
+//			printf("%d ", boom[i][j]);
+//		printf("\n");
+//	}
+
 	if (sum != 50)
-		printf("%d´íÎó1\n", sum);
+		printf("´íÎó1\n");
 	else {
 		for (i = 1; i < MAX_Y + 1; i++)
 			for (j = 1; j < MAX_X + 1; j++)
 				num[i][j] += (boom[i - 1][j - 1] + boom[i - 1][j] + boom[i][j - 1] + boom[i + 1][j + 1] + boom[i + 1][j] + boom[i][j + 1] + boom[i + 1][j - 1] + boom[i - 1][j + 1]);
 		for (i = 1; i < MAX_Y + 1; i++)
 			for (j = 1; j < MAX_X + 1; j++)
-				if (!boom[i][j] && num[i][j] != input[i][j])
+				if (!boom[i][j] && (num[i][j]+'0') != input[i][j]) {
 					validflag--;
-		if (validflag)
+				}
+		if (validflag==1)
 			printf("ÕýÈ·\n");
 		else
 			printf("´íÎó2\n");
