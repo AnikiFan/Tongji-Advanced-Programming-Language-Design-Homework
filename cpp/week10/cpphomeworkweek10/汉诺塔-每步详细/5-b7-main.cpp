@@ -51,7 +51,7 @@ void horizontal()
 			tenflag = 1;
 		cout << setw(2) << Cstack[i];
 	}
-	cout << setw(2 * (10 - Ctop) + 3)<<" ";
+	cout << setw(2 * (10 - Ctop) + 3) << " ";
 	cout << endl;
 }
 
@@ -127,12 +127,12 @@ void hanoi(int n, char src, char tmp, char dst)
 				break;
 
 		}
-		
-			cct_gotoxy(Bxcoordinate, Bycoordinate + 6);
-			cout << "第" << setw(4) << num << " 步" << "(1#: " << src << arrow << dst << ")  ";
-if (display == 1) 
+
+		cct_gotoxy(Bxcoordinate, Bycoordinate + 6);
+		cout << "第" << setw(4) << num << " 步" << "(1#: " << src << arrow << dst << ")  ";
+		if (display == 1)
 			horizontal();
-		
+
 
 		return;
 	}
@@ -178,12 +178,12 @@ if (display == 1)
 			break;
 
 	}
-	
-		cct_gotoxy(Bxcoordinate, Bycoordinate + 6);
-		cout << "第" << setw(4) << num << " 步" << "("  << temp << "#: " << src << arrow << dst << ")  ";
-if (display == 1) 
+
+	cct_gotoxy(Bxcoordinate, Bycoordinate + 6);
+	cout << "第" << setw(4) << num << " 步" << "(" << temp << "#: " << src << arrow << dst << ")  ";
+	if (display == 1)
 		horizontal();
-	
+
 	hanoi(n - 1, tmp, src, dst);
 	return;
 }

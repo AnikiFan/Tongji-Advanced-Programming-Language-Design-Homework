@@ -44,9 +44,7 @@ int main()
 	for (r = 0; r < 4; r++) {
 
 
-
-		cout << "            " << 1 + r * 3 << "月                             " << 2 + r * 3 << "月                             " << 3 + r * 3 << "月             " << endl;
-
+		cout << "           " << setw(2) << 1 + r * 3 << "月                            " << setw(2) << 2 + r * 3 << "月                            " << setw(2) << 3 + r * 3 << "月" << endl;
 		cout << "Sun Mon Tue Wed Thu Fri Sat     Sun Mon Tue Wed Thu Fri Sat     Sun Mon Tue Wed Thu Fri Sat" << endl;
 
 		for (i = 0; i < height[r]; i++) {
@@ -57,8 +55,9 @@ int main()
 				else
 					cout << calaendarrow[r][j % 7 + j / 7 * height[r] * 7 + i * 7];
 				cout << " ";
-				if ((j + 1) % 7 == 0)
+				if (j == 6 || j == 13)
 					cout << "    ";
+				cout << resetiosflags(ios::left);
 			}
 			cout << endl;
 		}

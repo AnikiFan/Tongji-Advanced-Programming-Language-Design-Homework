@@ -4,7 +4,7 @@
 using namespace std;
 int main()
 {
-	int power[112][130] = { {5} }, i, j, lastdigit = 1, output[130] = { 0 },temp;
+	int power[112][130] = { {5} }, i, j, lastdigit = 1, output[130] = { 0 }, temp;
 	char binary[113000];//防止输入超出数组大小
 
 	for (i = 1; i < 112; i++) {
@@ -36,12 +36,12 @@ int main()
 	cout << endl;
 	cout << "请输入一个二进制纯小数，小数点开头，小数点后不超过112位(例：.101101)" << endl;
 	while (1) {
-	bool input = true;
+		bool input = true;
 		for (i = 0; i < 113000; i++)
 			binary[i] = '0';
 		cin >> binary;
 		for (i = 1; i < 113; i++)
-			if (binary[i] != '0' && binary[i] != '1'&&binary[i]!=0) 
+			if (binary[i] != '0' && binary[i] != '1' && binary[i] != 0)
 				input = false;
 		if (input && binary[0] == '.' && !cin.rdstate())
 			break;
@@ -60,12 +60,12 @@ int main()
 	cout << "-----------------------------------------------------------------------------------------------------------------------------------" << endl;
 	cout << "输入数据 : ";
 	for (i = 1; i < 113; i++) {
-	 temp = 0;
+		temp = 0;
 		cout << binary[i];
 		for (int j = i + 1; j < 113000; j++)
 			if (binary[j] == '1')
 				temp++;
-		if (!temp) 
+		if (!temp)
 			break;
 	}
 	cout << endl;
@@ -77,8 +77,8 @@ int main()
 	for (i = 129; i >= 0; i--) {
 		temp = output[i] / 10;
 		output[i] = output[i] % 10;
-		if(i>=1)
-		output[i - 1] += temp;
+		if (i >= 1)
+			output[i - 1] += temp;
 	}
 	cout << "计算值 : 0.";
 	for (i = 0; i < 112; i++) {
@@ -95,7 +95,7 @@ int main()
 	cout << "-----------123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890" << endl;
 	cout << "----------- 下标尺  1         2         3         4         5         6         7         8         9         A         B         C" << endl;
 	cout << "-----------------------------------------------------------------------------------------------------------------------------------" << endl;
-
+	cout << endl;
 
 	return 0;
 }
