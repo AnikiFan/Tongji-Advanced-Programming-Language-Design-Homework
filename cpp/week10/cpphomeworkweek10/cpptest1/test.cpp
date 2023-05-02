@@ -1,17 +1,20 @@
 #include <iostream>
 #include <iomanip>
 using namespace std;
+int compare(int a, int b, int c)
+{
+	if (a < b)
+		a = b;
+	if (a < c)
+		a = c;
+	return a;
 
+}
 int main()
 {
-	double d = 123.456789123456;
-	cout.setf(ios::scientific);
-	cout.precision(10);
-	cout << d << '*' << endl;
-	cout.unsetf(ios::scientific); //此处添句话,需用cout.函数名
-	cout.setf(ios::fixed);
-	cout.precision(10);
-	cout << d << '*' << endl;
-
+	cout << compare(1, 2, 3) << endl;
+	cout << compare(2, 2, 3) << endl;
+	cout << compare(3, 2, 1) << endl;
+	cout << compare(2, 1, 3) << endl;
 	return 0;
 }
