@@ -8,7 +8,7 @@ void hanoi(int n, char src, char tmp, char dst)
 	}
 	hanoi(n - 1, src, dst, tmp);
 	num++;
-	cout << setw(5) << num << ":" << setw(3) << n << "# " << src << arrow << dst << endl;
+	cout << "µÚ" << setw(4) << num << " ²½( " << setw(2) << n << "#: " << src << "-->" << dst << endl;
 	hanoi(n - 1, tmp, src, dst);
 	return;
 }
