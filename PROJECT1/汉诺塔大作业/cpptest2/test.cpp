@@ -87,11 +87,11 @@ void cct_setfontsize(const char* fontname, const int high, const int width = 0);
 
 int main()
 {
-	int x, y;
-	cct_getcolor(x,y);
-	for(int i=0;i<16;i++)
-	cct_showch(1, i, ' ', i, 0,1);
-	cct_setcolor(x, y);
-	cout << x << y << endl;
+	int i=2;
+	char input[100000];
+	cin >> i;
+	cout << cin.peek();
+
+	cout << i;
 	return 0;
 }
