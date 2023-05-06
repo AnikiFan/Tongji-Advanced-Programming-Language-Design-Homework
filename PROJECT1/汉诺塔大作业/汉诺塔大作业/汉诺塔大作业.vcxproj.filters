@@ -15,24 +15,24 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\..\..\..\OneDrive\高程作业文档中转站\22232-900101-W1102.综合题 - 第01题 - 汉诺塔综合演示\cmd_console_tools.cpp">
+    <ClCompile Include="cmd_console_tools.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\..\..\OneDrive\高程作业文档中转站\22232-900101-W1102.综合题 - 第01题 - 汉诺塔综合演示\hanoi_main.cpp">
+    <ClCompile Include="hanoi_main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\..\..\OneDrive\高程作业文档中转站\22232-900101-W1102.综合题 - 第01题 - 汉诺塔综合演示\hanoi_menu.cpp">
+    <ClCompile Include="hanoi_menu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\..\..\OneDrive\高程作业文档中转站\22232-900101-W1102.综合题 - 第01题 - 汉诺塔综合演示\hanoi_multiple_solutions.cpp">
+    <ClCompile Include="hanoi_multiple_solutions.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\..\..\..\OneDrive\高程作业文档中转站\22232-900101-W1102.综合题 - 第01题 - 汉诺塔综合演示\cmd_console_tools.h">
+    <ClInclude Include="cmd_console_tools.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\..\OneDrive\高程作业文档中转站\22232-900101-W1102.综合题 - 第01题 - 汉诺塔综合演示\hanoi.h">
+    <ClInclude Include="hanoi.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
