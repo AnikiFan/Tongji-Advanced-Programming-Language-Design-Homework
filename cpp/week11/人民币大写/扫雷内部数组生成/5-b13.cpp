@@ -5,6 +5,7 @@
 using namespace std;
 int main()
 {
+	srand((unsigned int)(time(0)));
 	int i, j, boom[MAX_Y + 2][MAX_X + 2] = { 0 }, h, l, num[MAX_Y + 2][MAX_X + 2] = { 0 };//¿©¥Û¡À“ª»¶
 	for (i = 0; i < 50; i++)
 		while (1) {
