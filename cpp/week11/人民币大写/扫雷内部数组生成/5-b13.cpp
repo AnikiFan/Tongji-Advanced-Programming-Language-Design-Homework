@@ -1,5 +1,6 @@
 /* 2254298 –≈11 ∑∂‰Ï */
 #include <iostream>
+#include<time.h>
 #define MAX_X 26
 #define MAX_Y 10
 using namespace std;

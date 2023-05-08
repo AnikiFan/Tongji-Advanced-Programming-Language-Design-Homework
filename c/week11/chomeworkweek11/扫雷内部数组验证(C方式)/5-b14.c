@@ -1,4 +1,5 @@
 /* 2254298 信11 范潇 */
+/* 2250280 刘柔杉 2150892 卢思羽 2251314 李成章 2253720 黄伊晴 2254300 王捷 */
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #define MAX_X 26
