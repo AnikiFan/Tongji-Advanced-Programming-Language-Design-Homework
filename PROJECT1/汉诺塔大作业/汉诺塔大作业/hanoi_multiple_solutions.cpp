@@ -553,8 +553,9 @@ void module8(char src, char dst, char tmp, int level)
 ***************************************************************************/
 void module9(char src, char dst, char tmp, int level)
 {
+	char temp;
 	speed = 4;
-	char  input[4] = { 0 };
+	char  input[2] = { 0 };
 	cct_cls();
 	cout << "从 " << src << " 移动到 " << dst << "，共 " << level << " 层" << endl;
 	horizontal(htxcoo, htycoo + offset, level, src, dst, true);
@@ -565,10 +566,10 @@ void module9(char src, char dst, char tmp, int level)
 	cout << "请输入移动的柱号(命令形式：AC=A顶端的盘子移动到C，Q=退出) ：";
 
 	while (1) {
-		cin.getline(input, 4);
-		cout << input[1];
-		if ((input[0] == 'q' || input[0] == 'Q') && input[1] == 0) {
-			cout << endl << "游戏中止!!!!!" << endl;
+		cin >> input[0];
+		input[1] = cin.peek();
+		if ((input[0] == 'q' || input[0] == 'Q') && input[1] == 10) {
+			cout << endl << "游戏中止!!!!!" << endl;//根据peek是否返回回车来判断是否为最后一个输入字符
 			break;
 		}
 		//if (i == 2) {
@@ -594,7 +595,8 @@ void module9(char src, char dst, char tmp, int level)
 					input[0] = 'C';
 					break;
 			}
-			if ((input[1] == 'a' || input[1] == 'b' || input[1] == 'c' || input[1] == 'A' || input[1] == 'B' || input[1] == 'C') && input[1] != input[0] && input[1] != (input[0] - 'A' + 'a') && input[2]==0) {
+			cin >> temp;//读取之前因peek未读取的字符
+			if ((input[1] == 'a' || input[1] == 'b' || input[1] == 'c' || input[1] == 'A' || input[1] == 'B' || input[1] == 'C') && input[1] != input[0] && input[1] != (input[0] - 'A' + 'a') && cin.peek() == 10) {
 				//cout << "测试用" << cin.peek() << endl;
 				switch (input[1]) {
 					case'a':
@@ -638,10 +640,8 @@ void module9(char src, char dst, char tmp, int level)
 			}
 
 		}
-		//cout<<"&";
 		input[1] = 0;
 		input[0] = 0;
-		input[2] = 0;
 		cct_showch(htxcoo + 60, htycoo + offset + 2, ' ', background, 20);
 		cct_gotoxy(htxcoo + 60, htycoo + offset + 2);
 		cct_setcolor(defaultColor);

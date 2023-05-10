@@ -5,16 +5,6 @@ VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cpptest1", "cpptest1\cpptest1.vcxproj", "{E276C7CC-BE97-4C6A-A778-F38F553B2A58}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "统计各字符数量", "统计各字符数量\统计各字符数量.vcxproj", "{A909D57E-29CB-4542-8394-DB3E61CBD938}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "成绩升序打印不合格名单", "成绩升序打印不合格名单\成绩升序打印不合格名单.vcxproj", "{6A67B8E1-0218-4ECB-8A18-D04477DAA910}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "学号升序打印全部学生", "学号升序打印全部学生\学号升序打印全部学生.vcxproj", "{C69DDB1F-F1DF-4D89-8F27-C97E5B450BF1}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "密码生成", "密码生成\密码生成.vcxproj", "{D2057F33-7C85-4968-8195-0B58DF42C8B4}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "密码验证", "密码验证\密码验证.vcxproj", "{8C9BECAA-FA9C-4BFC-BF0B-84E37091592E}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -31,46 +21,6 @@ Global
 		{E276C7CC-BE97-4C6A-A778-F38F553B2A58}.Release|x64.Build.0 = Release|x64
 		{E276C7CC-BE97-4C6A-A778-F38F553B2A58}.Release|x86.ActiveCfg = Release|Win32
 		{E276C7CC-BE97-4C6A-A778-F38F553B2A58}.Release|x86.Build.0 = Release|Win32
-		{A909D57E-29CB-4542-8394-DB3E61CBD938}.Debug|x64.ActiveCfg = Debug|x64
-		{A909D57E-29CB-4542-8394-DB3E61CBD938}.Debug|x64.Build.0 = Debug|x64
-		{A909D57E-29CB-4542-8394-DB3E61CBD938}.Debug|x86.ActiveCfg = Debug|Win32
-		{A909D57E-29CB-4542-8394-DB3E61CBD938}.Debug|x86.Build.0 = Debug|Win32
-		{A909D57E-29CB-4542-8394-DB3E61CBD938}.Release|x64.ActiveCfg = Release|x64
-		{A909D57E-29CB-4542-8394-DB3E61CBD938}.Release|x64.Build.0 = Release|x64
-		{A909D57E-29CB-4542-8394-DB3E61CBD938}.Release|x86.ActiveCfg = Release|Win32
-		{A909D57E-29CB-4542-8394-DB3E61CBD938}.Release|x86.Build.0 = Release|Win32
-		{6A67B8E1-0218-4ECB-8A18-D04477DAA910}.Debug|x64.ActiveCfg = Debug|x64
-		{6A67B8E1-0218-4ECB-8A18-D04477DAA910}.Debug|x64.Build.0 = Debug|x64
-		{6A67B8E1-0218-4ECB-8A18-D04477DAA910}.Debug|x86.ActiveCfg = Debug|Win32
-		{6A67B8E1-0218-4ECB-8A18-D04477DAA910}.Debug|x86.Build.0 = Debug|Win32
-		{6A67B8E1-0218-4ECB-8A18-D04477DAA910}.Release|x64.ActiveCfg = Release|x64
-		{6A67B8E1-0218-4ECB-8A18-D04477DAA910}.Release|x64.Build.0 = Release|x64
-		{6A67B8E1-0218-4ECB-8A18-D04477DAA910}.Release|x86.ActiveCfg = Release|Win32
-		{6A67B8E1-0218-4ECB-8A18-D04477DAA910}.Release|x86.Build.0 = Release|Win32
-		{C69DDB1F-F1DF-4D89-8F27-C97E5B450BF1}.Debug|x64.ActiveCfg = Debug|x64
-		{C69DDB1F-F1DF-4D89-8F27-C97E5B450BF1}.Debug|x64.Build.0 = Debug|x64
-		{C69DDB1F-F1DF-4D89-8F27-C97E5B450BF1}.Debug|x86.ActiveCfg = Debug|Win32
-		{C69DDB1F-F1DF-4D89-8F27-C97E5B450BF1}.Debug|x86.Build.0 = Debug|Win32
-		{C69DDB1F-F1DF-4D89-8F27-C97E5B450BF1}.Release|x64.ActiveCfg = Release|x64
-		{C69DDB1F-F1DF-4D89-8F27-C97E5B450BF1}.Release|x64.Build.0 = Release|x64
-		{C69DDB1F-F1DF-4D89-8F27-C97E5B450BF1}.Release|x86.ActiveCfg = Release|Win32
-		{C69DDB1F-F1DF-4D89-8F27-C97E5B450BF1}.Release|x86.Build.0 = Release|Win32
-		{D2057F33-7C85-4968-8195-0B58DF42C8B4}.Debug|x64.ActiveCfg = Debug|x64
-		{D2057F33-7C85-4968-8195-0B58DF42C8B4}.Debug|x64.Build.0 = Debug|x64
-		{D2057F33-7C85-4968-8195-0B58DF42C8B4}.Debug|x86.ActiveCfg = Debug|Win32
-		{D2057F33-7C85-4968-8195-0B58DF42C8B4}.Debug|x86.Build.0 = Debug|Win32
-		{D2057F33-7C85-4968-8195-0B58DF42C8B4}.Release|x64.ActiveCfg = Release|x64
-		{D2057F33-7C85-4968-8195-0B58DF42C8B4}.Release|x64.Build.0 = Release|x64
-		{D2057F33-7C85-4968-8195-0B58DF42C8B4}.Release|x86.ActiveCfg = Release|Win32
-		{D2057F33-7C85-4968-8195-0B58DF42C8B4}.Release|x86.Build.0 = Release|Win32
-		{8C9BECAA-FA9C-4BFC-BF0B-84E37091592E}.Debug|x64.ActiveCfg = Debug|x64
-		{8C9BECAA-FA9C-4BFC-BF0B-84E37091592E}.Debug|x64.Build.0 = Debug|x64
-		{8C9BECAA-FA9C-4BFC-BF0B-84E37091592E}.Debug|x86.ActiveCfg = Debug|Win32
-		{8C9BECAA-FA9C-4BFC-BF0B-84E37091592E}.Debug|x86.Build.0 = Debug|Win32
-		{8C9BECAA-FA9C-4BFC-BF0B-84E37091592E}.Release|x64.ActiveCfg = Release|x64
-		{8C9BECAA-FA9C-4BFC-BF0B-84E37091592E}.Release|x64.Build.0 = Release|x64
-		{8C9BECAA-FA9C-4BFC-BF0B-84E37091592E}.Release|x86.ActiveCfg = Release|Win32
-		{8C9BECAA-FA9C-4BFC-BF0B-84E37091592E}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
