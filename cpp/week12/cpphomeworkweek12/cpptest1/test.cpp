@@ -3,15 +3,13 @@
 /* warning, this file is reserved for testing file only*/
 #include<iostream>
 #include<typeinfo>
+#include<iomanip>
 using namespace std;
+
 int main()
 {
-	int  a=0,*p=&a;
-	int b=0, * q = &b;
-
-	cout << p << endl;
-	cout << p + 1 << endl;
-	cout << ((p + 1) - p)==(1*sizeof(int)) ;
-
-	return 0;
+	int i = 10, j = 15,*b=&i,*c=&j;
+	cout << c - b << endl;
+	cout << (int)c - (int)b << endl;
+	cout << (int)(c - b) << endl;
 }

@@ -1,16 +1,16 @@
-/* 2254298 信11 范潇 */
-#define  _CRT_SECURE_NO_WARNINGS
-#include<math.h>//单位为亿,(仟佰拾)万,(仟佰拾)圆,角,分/整
-#include<stdio.h>
-#include<string.h>
-const char chnstr[] = "零壹贰叁肆伍陆柒捌玖"; /* 所有输出大写 "零" ~ "玖" 的地方，只允许从这个数组中取值 */
-char result[256];  /* 除result外，不再允许定义任何形式的全局变量 */
-char temp[10];
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+
 int main()
 {
-	strncat(temp, &chnstr[0], 2);
-	strncat(temp, &chnstr[2], 2);
+    int x, w;
+    printf("请输入[1..99999]间的整数及显示宽度[6..10]\n");
+    scanf("%d %d", &x, &w); //不考虑输入错误
+    printf("01234567890123456789\n"); //标尺
 
-	printf("%s", temp);
-	return 0;
+    char fmt[16];
+    sprintf(fmt, "%%%dd*\n", w);
+    printf(fmt, x);
+
+    return 0;
 }
