@@ -554,8 +554,9 @@ void module8(char src, char dst, char tmp, int level)
 void module9(char src, char dst, char tmp, int level)
 {
 	char temp;
+	int i = 0, x, y;
 	speed = 4;
-	char  input[2] = { 0 };
+	char  input[19] = { 0 };
 	cct_cls();
 	cout << "从 " << src << " 移动到 " << dst << "，共 " << level << " 层" << endl;
 	horizontal(htxcoo, htycoo + offset, level, src, dst, true);
@@ -566,10 +567,17 @@ void module9(char src, char dst, char tmp, int level)
 	cout << "请输入移动的柱号(命令形式：AC=A顶端的盘子移动到C，Q=退出) ：";
 
 	while (1) {
-		cin >> input[0];
-		input[1] = cin.peek();
-		if ((input[0] == 'q' || input[0] == 'Q') && input[1] == 10) {
-			cout << endl << "游戏中止!!!!!" << endl;//根据peek是否返回回车来判断是否为最后一个输入字符
+		temp = _getche();
+		if (temp == 8) {
+			cct_getxy(x, y);
+			cct_gotoxy(x + 1, y);
+		}
+		if ((temp <= 32 || temp >= 127) && temp != 13)
+			continue;
+		input[i] = temp;
+		i++;
+		if ((input[0] == 'q' || input[0] == 'Q') && input[1] == 13) {
+			cout << endl << endl << "游戏中止!!!!!" << endl;//根据peek是否返回回车来判断是否为最后一个输入字符
 			break;
 		}
 		//if (i == 2) {
@@ -583,71 +591,73 @@ void module9(char src, char dst, char tmp, int level)
 			//cout << "测试用" << endl;
 			//测试用
 
-		else if (input[0] == 'a' || input[0] == 'b' || input[0] == 'c' || input[0] == 'A' || input[0] == 'B' || input[0] == 'C') {
-			switch (input[0]) {
-				case'a':
-					input[0] = 'A';
-					break;
-				case'b':
-					input[0] = 'B';
-					break;
-				case'c':
-					input[0] = 'C';
-					break;
-			}
-			cin >> temp;//读取之前因peek未读取的字符
-			if ((input[1] == 'a' || input[1] == 'b' || input[1] == 'c' || input[1] == 'A' || input[1] == 'B' || input[1] == 'C') && input[1] != input[0] && input[1] != (input[0] - 'A' + 'a') && cin.peek() == 10) {
-				//cout << "测试用" << cin.peek() << endl;
-				switch (input[1]) {
+		else if (temp == 13 || i == 19) {
+			if (input[0] == 'a' || input[0] == 'b' || input[0] == 'c' || input[0] == 'A' || input[0] == 'B' || input[0] == 'C') {
+				switch (input[0]) {
 					case'a':
-						input[1] = 'A';
+						input[0] = 'A';
 						break;
 					case'b':
-						input[1] = 'B';
+						input[0] = 'B';
 						break;
 					case'c':
-						input[1] = 'C';
+						input[0] = 'C';
 						break;
 				}
-				if (Top[input[0] - 'A'] == 0) {
-					cout << endl << "源柱为空";
-					Sleep(delay);
-					cct_showch(0, htycoo + offset + 4, ' ', background, 20);
-					cct_setcolor(defaultColor);
-				}
-				else if (Top[input[1] - 'A'] != 0 && Stack[input[1] - 'A'][Top[input[1] - 'A'] - 1] < Stack[input[0] - 'A'][Top[input[0] - 'A'] - 1]) {//短路逻辑确保不会超出数组范围
-					cout << endl << "大盘压小盘,非法移动!";
-					Sleep(delay);
-					cct_showch(0, htycoo + offset + 4, ' ', background, 20);
-					cct_setcolor(defaultColor);
-				}
-				else {
-					//测试用
-					//cout << Top[input[1] - 'A'] - 1 << "@" << Top[input[0] - 'A'] - 1;
-					//测试用
-					totalstep++;
-					Stack[input[1] - 'A'][Top[input[1] - 'A']++] = Stack[input[0] - 'A'][--Top[input[0] - 'A']];
+				if ((input[1] == 'a' || input[1] == 'b' || input[1] == 'c' || input[1] == 'A' || input[1] == 'B' || input[1] == 'C') && input[1] != input[0] && input[1] != (input[0] - 'A' + 'a') && input[2] == 13) {
+					//cout << "测试用" << cin.peek() << endl;
+					switch (input[1]) {
+						case'a':
+							input[1] = 'A';
+							break;
+						case'b':
+							input[1] = 'B';
+							break;
+						case'c':
+							input[1] = 'C';
+							break;
+					}
+					if (Top[input[0] - 'A'] == 0) {
+						cout << endl << endl << "源柱为空";
+						Sleep(delay);
+						cct_showch(0, htycoo + offset + 4, ' ', background, 20);
+						cct_setcolor(defaultColor);
+					}
+					else if (Top[input[1] - 'A'] != 0 && Stack[input[1] - 'A'][Top[input[1] - 'A'] - 1] < Stack[input[0] - 'A'][Top[input[0] - 'A'] - 1]) {//短路逻辑确保不会超出数组范围
+						cout << endl << endl << "大盘压小盘,非法移动!";
+						Sleep(delay);
+						cct_showch(0, htycoo + offset + 4, ' ', background, 20);
+						cct_setcolor(defaultColor);
+					}
+					else {
+						//测试用
+						//cout << Top[input[1] - 'A'] - 1 << "@" << Top[input[0] - 'A'] - 1;
+						//测试用
+						totalstep++;
+						Stack[input[1] - 'A'][Top[input[1] - 'A']++] = Stack[input[0] - 'A'][--Top[input[0] - 'A']];
 
-					horizontal(htxcoo, htycoo + offset, Stack[input[1] - 'A'][Top[input[1] - 'A'] - 1], input[0], input[1], false);
-					vertical(input[0], input[1], Stack[input[1] - 'A'][Top[input[1] - 'A'] - 1], vtBx, vtBy + offset, false);
-					plateMoving(input[0], input[1], Top[input[0] - 'A'] + 1, Top[input[1] - 'A'] - 1, Stack[input[1] - 'A'][Top[input[1] - 'A'] - 1]);
-					if (level == Top[input[1] - 'A']) {
-						cout << endl << "游戏结束!!!";
-						cin.ignore(10000000, '\n');
-						break;
+						horizontal(htxcoo, htycoo + offset, Stack[input[1] - 'A'][Top[input[1] - 'A'] - 1], input[0], input[1], false);
+						vertical(input[0], input[1], Stack[input[1] - 'A'][Top[input[1] - 'A'] - 1], vtBx, vtBy + offset, false);
+						plateMoving(input[0], input[1], Top[input[0] - 'A'] + 1, Top[input[1] - 'A'] - 1, Stack[input[1] - 'A'][Top[input[1] - 'A'] - 1]);
+						if (level == Top[input[1] - 'A']) {
+							cout << "游戏结束!!!";
+							break;
+						}
 					}
 				}
 			}
+			input[0] = 0;
+			input[1] = 0;
+			input[2] = 0;
+			i = 0;
+			cct_showch(htxcoo + 60, htycoo + offset + 2, ' ', background, 20);
+			cct_gotoxy(htxcoo + 60, htycoo + offset + 2);
+			cct_setcolor(defaultColor);
 
 		}
-		input[1] = 0;
-		input[0] = 0;
-		cct_showch(htxcoo + 60, htycoo + offset + 2, ' ', background, 20);
-		cct_gotoxy(htxcoo + 60, htycoo + offset + 2);
-		cct_setcolor(defaultColor);
-		cin.clear();
-		cin.ignore(10000000, '\n');//删了这个以后会死循环
 	}
-
+	//测试指令有
+	//正确指令:ab,aC,Bc,q,Q
+	//无效指令:abc,ABC,QQ,qq,直接回车
 	return;
 }
