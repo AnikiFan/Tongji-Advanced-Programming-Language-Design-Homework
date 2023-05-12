@@ -264,19 +264,19 @@ void vertical(char src, char dst, int level, int xcoordinate, int ycoordinate, b
 		cct_gotoxy(xcoordinate + xcoodif, ycoordinate);
 		cout << "C";
 		for (i = 1; i < level + 1; i++) {
-			cct_gotoxy(xcoordinate - ('B' - src) * xcoodif, ycoordinate - 1 - i);
-			cout << level + 1 - i;
+			cct_gotoxy(xcoordinate - ('B' - src) * xcoodif-1, ycoordinate - 1 - i);
+			cout << setw(2)<<level + 1 - i;
 
 		}
 		return;
 	}
-	cct_gotoxy(xcoordinate - ('B' - src) * xcoodif, ycoordinate - Top[src - 'A'] - 2);
-	cout << " ";
-	cct_gotoxy(xcoordinate - ('B' - dst) * xcoodif, ycoordinate - 1 - Top[dst - 'A']);
+	cct_gotoxy(xcoordinate - ('B' - src) * xcoodif-1, ycoordinate - Top[src - 'A'] - 2);
+	cout << setw(2)<<" ";
+	cct_gotoxy(xcoordinate - ('B' - dst) * xcoodif-1, ycoordinate - 1 - Top[dst - 'A']);
 	//测试用
 	//cout << "$";
 	//测试用
-	cout << Stack[src - 'A'][Top[src - 'A']];
+		cout <<setw(2)<< Stack[src - 'A'][Top[src - 'A']];
 	return;
 
 }
@@ -433,6 +433,8 @@ void hanoiplus(int level, char src, char tmp, char dst, char inputnumber)
 				while (_getch() != 13)
 					;
 			totalstep++;
+			horizontal(htxcoo, htycoo + offset, level, src, dst, false);
+			vertical(src, dst, level, vtBx, vtBy + offset, false);
 			plateMoving(src, dst, Top[src - 'A'] + 1, Top[dst - 'A'] - 1, Stack[dst - 'A'][Top[dst - 'A'] - 1]);
 			break;
 	}
@@ -538,6 +540,8 @@ void module8(char src, char dst, char tmp, int level)
 		speed = 6;
 	cct_cls();
 	cout << "从 " << src << " 移动到 " << dst << "，共 " << level << " 层" << endl;
+	horizontal(htxcoo, htycoo + offset, level, src, dst, true);
+	vertical(src, dst, level, vtBx, vtBy + offset, true);
 	column();
 	plategenerator(mdclxcoo + (src - 'B') * clxcoodif, bmclycoo - 1, level);
 	hanoi(level, src, tmp, dst, '8');

@@ -21,12 +21,12 @@ using namespace std;
 #define arrow "---->"
 
 //速度
-#define speed1 125
-#define speed2 100
-#define speed3 75
-#define speed4 50
-#define speed5 25
-#define speed6 50//需要延时但无需输入speed
+#define speed1 100
+#define speed2 50
+#define speed3 25
+#define speed4 1
+#define speed5 0.01
+#define speed6 25//需要延时但无需输入speed
 #define delay 500
 //游戏模式下提醒的持续时间
 
