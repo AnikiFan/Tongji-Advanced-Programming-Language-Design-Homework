@@ -7,7 +7,7 @@ static const char other[] = "!@#$%^&*-_=+,.?"; //共 15 个英文符号
 int main()
 {
 	srand((unsigned int)(time(0)));
-	int length, uppercaseNum, lowercaseNum, digitNum, otherNum,i,j,uppercaseNumTemp,lowercaseNumTemp,digitNumTemp,otherNumTemp;
+	int length, uppercaseNum, lowercaseNum, digitNum, otherNum, i, j, uppercaseNumTemp, lowercaseNumTemp, digitNumTemp, otherNumTemp;
 	bool errorFlag = false;
 	cout << "请输入密码长度(12-16)， 大写字母个数(≥2)， 小写字母个数(≥2)， 数字个数(≥2)， 其它符号个数(≥2)" << endl;
 	cin >> length;
@@ -64,43 +64,61 @@ int main()
 				digitNumTemp = digitNum;
 				otherNumTemp = otherNum;
 				for (j = 0; j < length; j++) {
-					switch (rand() % 4) {
-						case 0:
-							if (uppercaseNumTemp == 0) {
-								j--;
-								break;
-							}
-							cout << (char)('A' + rand() % 26);
-							uppercaseNumTemp--;
-						case 1:
-							if (lowercaseNumTemp == 0) {
-								j--;
-								break;
-							}
-							cout << (char)('a' + rand() % 26);
-							lowercaseNumTemp--;
-							break;
-						case 2:
-							if (digitNumTemp == 0) {
-								j--;
-								break;
-							}
-							cout << (char)('0' + rand() % 10);
-							digitNumTemp--;
-							break;
-						case 3:
-							if (otherNumTemp == 0) {
-								j--;
-								break;
-							}
-							cout << other[rand() % 15];
-							otherNumTemp--;
-							break;
-						default:
-							break;
-					}
+
 					if (uppercaseNumTemp == 0 && lowercaseNumTemp == 0 && digitNumTemp == 0 && otherNumTemp == 0)
-						break;
+						switch (rand() % 4) {
+							case 0:
+								cout << (char)('A' + rand() % 26);
+								break;
+							case 1:
+								cout << (char)('a' + rand() % 26);
+								break;
+							case 2:
+								cout << (char)('0' + rand() % 10);
+								break;
+							case 3:
+								cout << other[rand() % 15];
+								break;
+							default:
+								break;
+						}
+					else
+						switch (rand() % 4) {
+							case 0:
+								if (uppercaseNumTemp == 0) {
+									j--;
+									break;
+								}
+								cout << (char)('A' + rand() % 26);
+								uppercaseNumTemp--;
+								break;
+							case 1:
+								if (lowercaseNumTemp == 0) {
+									j--;
+									break;
+								}
+								cout << (char)('a' + rand() % 26);
+								lowercaseNumTemp--;
+								break;
+							case 2:
+								if (digitNumTemp == 0) {
+									j--;
+									break;
+								}
+								cout << (char)('0' + rand() % 10);
+								digitNumTemp--;
+								break;
+							case 3:
+								if (otherNumTemp == 0) {
+									j--;
+									break;
+								}
+								cout << other[rand() % 15];
+								otherNumTemp--;
+								break;
+							default:
+								break;
+						}
 				}
 				cout << endl;
 			}

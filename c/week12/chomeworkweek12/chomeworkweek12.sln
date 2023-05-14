@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "学号降序打印及格名
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "成绩降序打印全部学生", "成绩降序打印全部学生\成绩降序打印全部学生.vcxproj", "{ABEB0A90-3782-4FFE-85BB-BFCDB45AE181}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ctest1", "ctest1\ctest1.vcxproj", "{8E8CC0C2-4014-48BA-B3F1-0E8ACE003301}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -31,6 +33,14 @@ Global
 		{ABEB0A90-3782-4FFE-85BB-BFCDB45AE181}.Release|x64.Build.0 = Release|x64
 		{ABEB0A90-3782-4FFE-85BB-BFCDB45AE181}.Release|x86.ActiveCfg = Release|Win32
 		{ABEB0A90-3782-4FFE-85BB-BFCDB45AE181}.Release|x86.Build.0 = Release|Win32
+		{8E8CC0C2-4014-48BA-B3F1-0E8ACE003301}.Debug|x64.ActiveCfg = Debug|x64
+		{8E8CC0C2-4014-48BA-B3F1-0E8ACE003301}.Debug|x64.Build.0 = Debug|x64
+		{8E8CC0C2-4014-48BA-B3F1-0E8ACE003301}.Debug|x86.ActiveCfg = Debug|Win32
+		{8E8CC0C2-4014-48BA-B3F1-0E8ACE003301}.Debug|x86.Build.0 = Debug|Win32
+		{8E8CC0C2-4014-48BA-B3F1-0E8ACE003301}.Release|x64.ActiveCfg = Release|x64
+		{8E8CC0C2-4014-48BA-B3F1-0E8ACE003301}.Release|x64.Build.0 = Release|x64
+		{8E8CC0C2-4014-48BA-B3F1-0E8ACE003301}.Release|x86.ActiveCfg = Release|Win32
+		{8E8CC0C2-4014-48BA-B3F1-0E8ACE003301}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
