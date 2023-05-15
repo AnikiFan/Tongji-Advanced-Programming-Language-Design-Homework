@@ -47,7 +47,7 @@ extern void reload(void)
   返 回 值：dst
   说    明：依据inputnumber来决定给哪些变量赋值并且初始化Top和Stack,输入应该遵循只有在输入类型错误时才清空缓存区的原则
 ***************************************************************************/
-void initializevariable(char input, char& src, char& dst, char& tmp, int& level)
+void initializevariable(char input, char* src, char* dst, char* tmp, int* level)
 {
 	int  i, j;
 	//TODO:测试用
@@ -61,8 +61,8 @@ void initializevariable(char input, char& src, char& dst, char& tmp, int& level)
 			Stack[i][j] = 0;//重置Stack数组
 	cout << "请输入汉诺塔的层数(1-10)" << endl;
 	while (1) {
-		cin >> level;
-		if (level > 0 && level <= 10 && !cin.rdstate()) {
+		cin >> *level;
+		if (*level > 0 && *level <= 10 && !cin.rdstate()) {
 			cin.clear();
 			cin.ignore(10000000, '\n');//删了这个以后会死循环
 			break;
@@ -79,17 +79,17 @@ void initializevariable(char input, char& src, char& dst, char& tmp, int& level)
 	//测试用
 	cout << "请输入起始柱(A-C)" << endl;
 	while (1) {
-		cin >> src;
-		if ((src == 'A' || src == 'B' || src == 'C' || src == 'a' || src == 'b' || src == 'c') && !cin.rdstate()) {
-			switch (src) {
+		cin >> *src;
+		if ((*src == 'A' || *src == 'B' || *src == 'C' || *src == 'a' || *src == 'b' || *src == 'c') && !cin.rdstate()) {
+			switch (*src) {
 				case 'a':
-					src = 'A';
+					*src = 'A';
 					break;
 				case 'b':
-					src = 'B';
+					*src = 'B';
 					break;
 				case 'c':
-					src = 'C';
+					*src = 'C';
 					break;
 				default:
 					break;
@@ -106,8 +106,8 @@ void initializevariable(char input, char& src, char& dst, char& tmp, int& level)
 	}
 	cout << "请输入目标柱(A-C)" << endl;
 	while (1) {
-		cin >> dst;
-		if ((dst == 'A' || dst == 'B' || dst == 'C' || dst == 'a' || dst == 'b' || dst == 'c') && !cin.rdstate()
+		cin >> *dst;
+		if ((*dst == 'A' || *dst == 'B' || *dst == 'C' || *dst == 'a' || *dst == 'b' || *dst == 'c') && !cin.rdstate()
 			&& dst != src && dst != (src + 32)) {
 			cin.clear();
 			cin.ignore(10000000, '\n');//删了这个以后会死循环
@@ -117,29 +117,29 @@ void initializevariable(char input, char& src, char& dst, char& tmp, int& level)
 			cin.clear();
 			cin.ignore(10000000, '\n');//删了这个以后会死循环
 		}
-		if (dst == src || dst == (src + 32))
+		if (*dst == *src || *dst == (*src + 32))
 			cout << "目标柱(" << src << ")不能与起始柱(" << src << ")相同" << endl;
 		cout << "请输入目标柱(A-C)" << endl;
 	}
-	switch (dst) {
+	switch (*dst) {
 		case 'a':
-			dst = 'A';
+			*dst = 'A';
 			break;
 		case 'b':
-			dst = 'B';
+			*dst = 'B';
 			break;
 		case 'c':
-			dst = 'C';
+			*dst = 'C';
 			break;
 	}
-	tmp = 'A' + 'B' + 'C' - src - dst;
+	*tmp = 'A' + 'B' + 'C' - *src - *dst;
 	//TODO:测试用
 	//for (i = 0; i < 3; i++)
 	//	cout << "测试用*" << Top[i];
 	//测试用
-	Top[src - 'A'] = level;
-	for (i = 0; i < level; i++)
-		Stack[src - 'A'][i] = level - i;
+	Top[*src - 'A'] = *level;
+	for (i = 0; i < *level; i++)
+		Stack[*src - 'A'][i] = *level - i;
 	//TODO:测试用
 	//for (i = 0; i < 3; i++)
 	//	cout << "测试用" << Top[i];
@@ -264,19 +264,19 @@ void vertical(char src, char dst, int level, int xcoordinate, int ycoordinate, b
 		cct_gotoxy(xcoordinate + xcoodif, ycoordinate);
 		cout << "C";
 		for (i = 1; i < level + 1; i++) {
-			cct_gotoxy(xcoordinate - ('B' - src) * xcoodif-1, ycoordinate - 1 - i);
-			cout << setw(2)<<level + 1 - i;
+			cct_gotoxy(xcoordinate - ('B' - src) * xcoodif - 1, ycoordinate - 1 - i);
+			cout << setw(2) << level + 1 - i;
 
 		}
 		return;
 	}
-	cct_gotoxy(xcoordinate - ('B' - src) * xcoodif-1, ycoordinate - Top[src - 'A'] - 2);
-	cout << setw(2)<<" ";
-	cct_gotoxy(xcoordinate - ('B' - dst) * xcoodif-1, ycoordinate - 1 - Top[dst - 'A']);
+	cct_gotoxy(xcoordinate - ('B' - src) * xcoodif - 1, ycoordinate - Top[src - 'A'] - 2);
+	cout << setw(2) << " ";
+	cct_gotoxy(xcoordinate - ('B' - dst) * xcoodif - 1, ycoordinate - 1 - Top[dst - 'A']);
 	//测试用
 	//cout << "$";
 	//测试用
-		cout <<setw(2)<< Stack[src - 'A'][Top[src - 'A']];
+	cout << setw(2) << Stack[src - 'A'][Top[src - 'A']];
 	return;
 
 }
@@ -487,7 +487,7 @@ void module4(char src, char dst, char tmp, int level)
 	vertical(src, dst, level, vtBx, vtBy, true);
 	speedcontrol();
 	hanoi(level, src, tmp, dst, '4');
-	cct_gotoxy(endxcoo, endxcoo);
+	cct_gotoxy(endxcoo, endycoo);
 	return;
 }
 

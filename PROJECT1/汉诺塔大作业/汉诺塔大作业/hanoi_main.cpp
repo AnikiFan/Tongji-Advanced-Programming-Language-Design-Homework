@@ -28,7 +28,7 @@
 ***************************************************************************/
 int main()
 {
-	char inputnumber, dst,src,tmp;
+	char inputnumber, dst, src, tmp;
 	int level;
 	/* demo中首先执行此句，将cmd窗口设置为40行x120列（缓冲区宽度120列，行数9000行，即cmd窗口右侧带有垂直滚动杆）*/
 	cct_setconsoleborder(120, 40, 120, 9000);
@@ -37,7 +37,7 @@ int main()
 		if (inputnumber == '0')
 			break;
 		if (inputnumber != '5') {
-			initializevariable(inputnumber,src,dst,tmp,level);
+			initializevariable(inputnumber, &src, &dst, &tmp, &level);
 			switch (inputnumber) {
 				case '1':
 					hanoi(level, src, tmp, dst, '1');
@@ -49,7 +49,7 @@ int main()
 					hanoi(level, src, tmp, dst, '3');
 					break;
 				case '4':
-					module4(src,dst,tmp,level);
+					module4(src, dst, tmp, level);
 					break;
 				case '6':
 					module6(src, dst, tmp, level);
@@ -66,8 +66,8 @@ int main()
 			}
 		}
 		else {
-cct_cls();
-					column();
+			cct_cls();
+			column();
 		}
 		reload();
 	}

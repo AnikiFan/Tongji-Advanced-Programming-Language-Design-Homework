@@ -21,11 +21,11 @@ using namespace std;
 #define arrow "---->"
 
 //速度
-#define speed1 100
-#define speed2 50
-#define speed3 25
-#define speed4 1
-#define speed5 0.01
+#define speed1 20
+#define speed2 15
+#define speed3 10
+#define speed4 5
+#define speed5 0
 #define speed6 25//需要延时但无需输入speed
 #define delay 500
 //游戏模式下提醒的持续时间
@@ -67,7 +67,7 @@ using namespace std;
 void reload(void);
 int Menu(void);
 void reload(void);
-void initializevariable(char input, char& src, char& dst, char& tmp, int& level);
+void initializevariable(char input, char* src, char* dst, char* tmp, int* level);
 void column();
 void hanoi(int level, char src, char tmp, char dst, char inputnumber);
 void module4(char src, char dst, char tmp, int level);
