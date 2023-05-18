@@ -507,7 +507,7 @@ void module6(char src, char dst, char tmp, int level)
 	column();
 	plategenerator(mdclxcoo + (src - 'B') * clxcoodif, bmclycoo - 1, level);
 	return;
-}
+} 
 
 /***************************************************************************
   º¯ÊýÃû³Æ£ºmodule7
