@@ -18,5 +18,13 @@
     <ClCompile Include="6-b4-sub.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="6-b4-main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="6-b4.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

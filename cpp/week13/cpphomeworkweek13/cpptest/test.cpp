@@ -3,9 +3,7 @@
 using namespace std;
 int main()
 {
-	float f = 123.456f;
-	unsigned char* p = (unsigned char*)&f;
-	cout << *p << endl;
-	cout << (int)(*p) << endl;
+	cout << (int)(('1' - '0') * pow(10, (int)log(3) + 1))<<endl;
+	cout << log10(10);
 	return 0;
 }
