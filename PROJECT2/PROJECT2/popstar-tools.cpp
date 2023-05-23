@@ -34,11 +34,36 @@ void searchPlus(void)
 {
 	return;
 }
-void search(int srcRow, int srcCol,int matrix[][10],int rowMax,int colMax)
+void search(int srcRow, int srcCol, int matrix[][10], int rowMax, int colMax)
 {
 	int pivot = matrix[srcRow][srcCol];
 	if (srcRow != 0 && matrix[srcRow - 1][srcCol] == pivot) {
-		search(srcRow-1,srcCol,matrix[])
+		searchPlus();//对当前元素进行额外操作
+		search(srcRow - 1, srcCol, matrix, rowMax, colMax);
+	}
+	if (srcCol != 0 && matrix[srcRow][srcCol - 1] == pivot) {
+		searchPlus();//对当前元素进行额外操作
+		search(srcRow, srcCol - 1, matrix, rowMax, colMax);
+	}
+	if (srcRow != rowMax && matrix[srcRow + 1][srcCol] == pivot) {
+		searchPlus();//对当前元素进行额外操作
+		search(srcRow + 1, srcCol, matrix, rowMax, colMax);
+	}
+	if (srcCol != colMax && matrix[srcRow][srcCol + 1] == pivot) {
+		searchPlus();//对当前元素进行额外操作
+		search(srcRow, srcCol + 1, matrix, rowMax, colMax);
+	}
+	return;
+}
+void matrixGenerator(int matrix[][10], int rowInterval, int colInterval, int rowMax, int colMax, int srcxcoo, int srcycoo)//起始坐标为(1,1)元位置,元素左侧有空格
+{
+	int i, j, k;
+	cct_gotoxy(srcxcoo, srcycoo);
+	for (i = 0; i < rowMax; i++) {
+		for (j = 0; j < colMax; j++)
+			cout << setw(colInterval + 1) << setiosflags(ios::left) << matrix[i][j];
+		for (k = 0; k < rowInterval; k++)
+			cout << endl;
 	}
 	return;
 }
