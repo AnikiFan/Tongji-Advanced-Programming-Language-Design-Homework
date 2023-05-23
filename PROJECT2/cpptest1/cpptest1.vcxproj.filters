@@ -15,28 +15,11 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="popstar-main.cpp">
+    <ClCompile Include="test.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="popstar-base.cpp">
+    <ClCompile Include="四种线型的中文制表符框架.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="popstar-console.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="popstar-tools.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="cmd_console_tools.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="popstar.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="cmd_console_tools.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
 </Project>
