@@ -127,8 +127,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="cmd_console_tools.cpp" />
     <ClCompile Include="test.cpp" />
-    <ClCompile Include="四种线型的中文制表符框架.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="cmd_console_tools.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

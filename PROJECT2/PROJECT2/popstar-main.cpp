@@ -89,7 +89,7 @@ int menu(int* row, int* column)
 int main()
 {
 	char option;
-	int rowMax, colMax, matrix[10][10], i, j, row, col;
+	int rowMax, colMax, matrix[10][10], i, j;
 	while (1) {
 		option = menu(&rowMax, &colMax);
 		for (i = 0; i < 10; i++)
@@ -103,6 +103,7 @@ int main()
 				module1(rowMax, colMax, matrix);
 				break;
 			case 'b':
+				module2(rowMax, colMax, matrix);
 				break;
 			case 'c':
 				break;

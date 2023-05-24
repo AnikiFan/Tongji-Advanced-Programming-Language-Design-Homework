@@ -16,7 +16,7 @@ void reload(void)
 	//cout << "*";
 	//
 	while (1) {
-		cin.getline(input, 99,'\n');
+		cin.getline(input, 99, '\n');
 		if ((input[0] == 'E' || input[0] == 'e') &&
 			(input[1] == 'N' || input[1] == 'n') &&
 			(input[2] == 'D' || input[2] == 'd'))
@@ -36,52 +36,90 @@ void reload(void)
 	cct_cls();
 	return;
 }
-void searchPlus(int srcRow, int srcCol, int matrix[][10], int rowMax, int colMax, int option, int x, int y,int rowInterval,int colInterval,int pivot)
+void searchPlus(int srcRow, int srcCol, int matrix[][10], int rowMax, int colMax, int option, int x, int y, int rowInterval, int colInterval, int pivot)
 {
 	switch (option) {
-		case 1:
-			cct_showch(x + srcCol - 1 + srcCol * colInterval, y + srcRow - 1 + srcRow * rowInterval, pivot,highlight, 1);
+		case 0://无任何操作
+			break;
+		case 1://高亮显示
+			cct_showch(x + srcCol + srcCol * colInterval, y + srcRow + srcRow * rowInterval, pivot+'0', highlight, 1);
 			cct_setcolor(defaultColor);
 			break;
+		case 2://输出搜索结果
+			cct_showch(x + srcCol + srcCol * colInterval, y + srcRow + srcRow * rowInterval, '*', defaultColor, 1);
+			break;
+		case 3://数组内对应元素置零并高亮显示
+			matrix[srcRow][srcCol] = 0;
+			cct_showch(x + srcCol + srcCol * colInterval, y + srcRow + srcRow * rowInterval,  '0', highlight, 1);
+			cct_setcolor(defaultColor);
+			break;
+		case 4://零元移动并高亮显示
+			break;
+
 	}
 	return;
 }
-int search(int srcRow, int srcCol, int matrix[][10], int rowMax, int colMax,int option,int x,int y, int rowInterval, int colInterval)//xy为第一个元素的坐标
+int search(int srcRow, int srcCol, int matrix[][10], int rowMax, int colMax, int option, int x, int y, int rowInterval, int colInterval, int pivotMatrix[][10], int& sum)//xy为第一个元素的坐标
 {
-	int pivot = matrix[srcRow][srcCol],sum=1;
-	if (srcRow != 0 && matrix[srcRow - 1][srcCol] == pivot) {
-		searchPlus(srcRow, srcCol, matrix, rowMax, colMax, option, x, y,rowInterval,colInterval,pivot);//对当前元素进行额外操作
+	int pivot = matrix[srcRow][srcCol];
+	pivotMatrix[srcRow][srcCol] = 1;
+		searchPlus(srcRow, srcCol, matrix, rowMax, colMax, option, x, y, rowInterval, colInterval, pivot);//对当前元素进行额外操作
 		sum++;
-		search(srcRow - 1, srcCol, matrix, rowMax, colMax,option,x,y,rowInterval,colInterval);
-	}
-	if (srcCol != 0 && matrix[srcRow][srcCol - 1] == pivot) {
-		searchPlus(srcRow, srcCol, matrix, rowMax, colMax, option, x, y,rowInterval,colInterval,pivot);//对当前元素进行额外操作
-		sum++;
-		search(srcRow, srcCol - 1, matrix, rowMax, colMax,option,x,y,rowInterval,colInterval);
-	}
-	if (srcRow != rowMax && matrix[srcRow + 1][srcCol] == pivot) {
-		searchPlus(srcRow, srcCol, matrix, rowMax, colMax, option, x, y,rowInterval,colInterval,pivot);//对当前元素进行额外操作
-		sum++;
-		search(srcRow + 1, srcCol, matrix, rowMax, colMax,option,x,y,rowInterval,colInterval);
-	}
-	if (srcCol != colMax && matrix[srcRow][srcCol + 1] == pivot) {
-		searchPlus(srcRow, srcCol, matrix, rowMax, colMax, option, x, y,rowInterval,colInterval,pivot);//对当前元素进行额外操作
-		sum++;
-		search(srcRow, srcCol + 1, matrix, rowMax, colMax,option,x,y,rowInterval,colInterval);
-	}
+	if (srcRow != 0 && matrix[srcRow - 1][srcCol] == pivot && pivotMatrix[srcRow - 1][srcCol] == 0) 
+		search(srcRow - 1, srcCol, matrix, rowMax, colMax, option, x, y, rowInterval, colInterval, pivotMatrix, sum);
+	if (srcCol != 0 && matrix[srcRow][srcCol - 1] == pivot && pivotMatrix[srcRow][srcCol - 1] == 0) 
+		search(srcRow, srcCol - 1, matrix, rowMax, colMax, option, x, y, rowInterval, colInterval, pivotMatrix, sum);
+	if (srcRow != rowMax && matrix[srcRow + 1][srcCol] == pivot && pivotMatrix[srcRow + 1][srcCol] == 0) 
+		search(srcRow + 1, srcCol, matrix, rowMax, colMax, option, x, y, rowInterval, colInterval, pivotMatrix, sum);
+	if (srcCol != colMax && matrix[srcRow][srcCol + 1] == pivot && pivotMatrix[srcRow][srcCol + 1] == 0) 
+		search(srcRow, srcCol + 1, matrix, rowMax, colMax, option, x, y, rowInterval, colInterval, pivotMatrix, sum);
 	return sum;
 }
-void matrixGenerator(int matrix[][10], int rowInterval, int colInterval, int rowMax, int colMax, int srcxcoo, int srcycoo)//起始坐标为(1,1)元位置,元素左侧有空格
+void matrixGenerator(int matrix[][10], int rowInterval, int colInterval, int rowMax, int colMax, int srcxcoo, int srcycoo,bool zeroHighlight)//起始坐标为(1,1)元位置,元素左侧有空格
 {
-	int i, j;
+	int i, j,x,y;
 	cct_gotoxy(srcxcoo, srcycoo);
 	cout << setfill(' ');
 	for (i = 0; i < rowMax; i++) {
 		for (j = 0; j < colMax; j++)
-			cout << setw(colInterval + 1) << setiosflags(ios::left) << matrix[i][j];
-		if(i!=rowMax-1)
-		cct_gotoxy(srcxcoo, srcycoo + i * rowInterval + i + 1);
+			if(!zeroHighlight||(zeroHighlight&&matrix[i][j]!=0))
+			cout << setw(colInterval + 1) << setiosflags(ios::left) << matrix[i][j] ;
+			else {
+				cct_getxy(x, y);
+				cct_showch(x, y, '0', highlight, 1);
+				cct_setcolor(defaultColor);
+				cout << setw(colInterval) << " ";
+			}
+		if (i != rowMax - 1)
+			cct_gotoxy(srcxcoo, srcycoo + i * rowInterval + i + 1);
 	}
 	cout << endl;
+	return;
+}
+void zeroMoving(int matrix[][10],int rowMax,int colMax)
+{
+	int i, j;
+	bool horizontalMoveFinish ;
+	for (j = 0; j < colMax; j++) {
+		for (i = 0; i < rowMax-1; i++) {
+			if (matrix[i+1][j ] == 0) {
+				matrix[i+1][j ] = matrix[i][j];
+				matrix[i][j] = 0;
+			}
+		}
+	}
+	while (1) {
+		horizontalMoveFinish = true;
+		for (j = 0; j < colMax - 1; j++) 
+			if (matrix[rowMax - 1][j] == 0 && matrix[rowMax - 1][j + 1] != 0) {
+				horizontalMoveFinish = false;
+				for (i = 0; i < rowMax; i++) {
+					matrix[i][j] = matrix[i][j + 1];
+					matrix[i][j + 1] = 0;
+				}
+			}
+		if (horizontalMoveFinish)
+			break;
+	}
 	return;
 }
