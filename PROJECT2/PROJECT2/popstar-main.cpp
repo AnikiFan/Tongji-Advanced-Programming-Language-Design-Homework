@@ -7,7 +7,7 @@
   返 回 值：
   说    明：负责处理选项的输入以及行列数的输入
 ***************************************************************************/
-int menu(int *row,int*column)
+int menu(int* row, int* column)
 {
 	char input;
 	srand((unsigned int)(time(0)));
@@ -20,15 +20,16 @@ int menu(int *row,int*column)
 	cout << "F.伪图形界面完成一次消除（分步骤）" << endl;
 	cout << "G.伪图形界面完整版" << endl;
 	cout << "Q.退出" << endl;
-	cout <<"--------------------------------------------" << endl;
+	cout << "--------------------------------------------" << endl;
 	cout << "[请选择:] ";
 	while (1) {
 		input = _getch();
-		if (input =='a'|| input == 'A' || input == 'b' || input == 'B' ||
+		if (input == 'a' || input == 'A' || input == 'b' || input == 'B' ||
 			input == 'c' || input == 'C' || input == 'd' || input == 'D' ||
 			input == 'e' || input == 'E' || input == 'f' || input == 'F' ||
-			input == 'g' || input == 'G' || input == 'q' || input == 'Q' ) {
-			cout << input ;
+			input == 'g' || input == 'G' || input == 'q' || input == 'Q') {
+			cout << input;
+			Sleep(200);
 			break;
 		}
 	}
@@ -64,7 +65,7 @@ int menu(int *row,int*column)
 	cout << "请输入行数(8-10)：" << endl;
 	while (1) {
 		cin >> *row;
-		if (*row >=8 && *row <= 10 && !cin.rdstate()) 
+		if (*row >= 8 && *row <= 10 && !cin.rdstate())
 			break;
 		else if (cin.rdstate()) {
 			cin.clear();
@@ -88,30 +89,32 @@ int menu(int *row,int*column)
 int main()
 {
 	char option;
-	int row, column,matrix[10][10],i, j;;
+	int rowMax, colMax, matrix[10][10], i, j, row, col;
 	while (1) {
-		option = menu(&row,&column);
+		option = menu(&rowMax, &colMax);
 		for (i = 0; i < 10; i++)
 			for (j = 0; j < 10; j++)
 				matrix[i][j] = (rand() % 9) + 1;
 		if (option == 'q')
 			break;
-			switch (option) {
-				case 'a':
-					break;
-				case 'b':
-					break;
-				case 'c':
-					break;
-				case 'd':
-					break;
-				case 'e':
-					break;
-				case 'f':
-					break;
-				case 'g':
-					break;
-			}
+
+		switch (option) {
+			case 'a':
+				module1(rowMax, colMax, matrix);
+				break;
+			case 'b':
+				break;
+			case 'c':
+				break;
+			case 'd':
+				break;
+			case 'e':
+				break;
+			case 'f':
+				break;
+			case 'g':
+				break;
+		}
 		reload();
 	}
 	return 0;
