@@ -106,10 +106,13 @@ int main()
 				module2(rowMax, colMax, matrix);
 				break;
 			case 'c':
+				module3(rowMax, colMax, matrix);
 				break;
 			case 'd':
+				module4(rowMax, colMax, matrix);
 				break;
 			case 'e':
+				module5(rowMax, colMax, matrix);
 				break;
 			case 'f':
 				break;

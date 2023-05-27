@@ -12,6 +12,11 @@ using namespace std;
 #define black 0,0
 #define background black
 #define highlight 14,0
+#define colorBoard  { {1,0},{ 13,0} ,{11,0} ,{8,0} ,{14,0} ,{6,0} ,{2,0} ,{4,0} ,{ 10,0} ,{7,0} }
+#define inverseColor 15,0
+#define blockheight 3
+#define blockwidth 6
+#define delay Sleep(0)
 
 void reload(void);
 
@@ -27,3 +32,5 @@ int search(int srcRow, int srcCol, int matrix[][10], int rowMax, int colMax, int
 void getCoordinate(int& row, int& col, int rowMax, int colMax);
 void matrixInitialize(int rowMax, int colMax, int matrix[][10],bool zeroHighlight);
 void zeroMoving(int matrix[][10], int rowMax, int colMax);
+int victory(int matrix[][10], int rowMax, int colMax,int &total);
+void matrixInitialize(int maxRow, int maxCol, bool frame, int matrix[][10]);
