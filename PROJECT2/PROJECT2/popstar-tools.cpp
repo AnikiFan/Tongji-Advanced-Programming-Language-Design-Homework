@@ -59,8 +59,20 @@ void searchPlus(int srcRow, int srcCol, int matrix[][10], int rowMax, int colMax
 			cct_showch(x + srcCol + srcCol * colInterval, y + srcRow + srcRow * rowInterval, '0', highlight, 1);
 			cct_setcolor(defaultColor);
 			break;
+		case 4://图形化选择
+			delay;
+			selectBlock(x + srcCol + srcCol * colInterval, y + srcRow + srcRow * rowInterval, matrix[srcRow][srcCol]);
+			break;
 		case 5://判断是否胜利
 			break;
+		case 6://图形化取消选择;
+			delay;
+			reverseBlock(x + srcCol + srcCol * colInterval, y + srcRow + srcRow * rowInterval, matrix[srcRow][srcCol]);
+			break;
+		case 7://消除方块并且数组内部对应元素置零
+			delay;
+			matrix[srcRow][srcCol] = 0;
+			cancelBlock(x + srcCol + srcCol * colInterval, y + srcRow + srcRow * rowInterval);
 	}
 	return;
 }

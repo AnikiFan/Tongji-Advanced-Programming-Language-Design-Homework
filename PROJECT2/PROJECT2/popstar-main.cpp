@@ -116,8 +116,10 @@ int main()
 				module5(rowMax, colMax, matrix);
 				break;
 			case 'f':
+				module6(rowMax, colMax, matrix);
 				break;
 			case 'g':
+				module7(rowMax, colMax, matrix);
 				break;
 		}
 		reload();

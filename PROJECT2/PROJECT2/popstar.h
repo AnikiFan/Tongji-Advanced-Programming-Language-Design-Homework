@@ -12,7 +12,7 @@ using namespace std;
 #define black 0,0
 #define background black
 #define highlight 14,0
-#define colorBoard  { {1,0},{ 13,0} ,{11,0} ,{8,0} ,{14,0} ,{6,0} ,{2,0} ,{4,0} ,{ 10,0} ,{7,0} }
+#define colorBoard  { { 10,0},{ 13,0} ,{11,0} ,{8,0} ,{14,0} ,{6,0} ,{2,0} ,{4,0} ,{1,0} ,{5,0} }
 #define inverseColor 15,0
 #define blockheight 3
 #define blockwidth 6
@@ -34,3 +34,7 @@ void matrixInitialize(int rowMax, int colMax, int matrix[][10],bool zeroHighligh
 void zeroMoving(int matrix[][10], int rowMax, int colMax);
 int victory(int matrix[][10], int rowMax, int colMax,int &total);
 void matrixInitialize(int maxRow, int maxCol, bool frame, int matrix[][10]);
+void inverseBlock(int x, int y, int colorCode);
+void reverseBlock(int x, int y, int colorCode);
+void selectBlock(int x, int y, int colorCode);
+void cancelBlock(int x, int y);

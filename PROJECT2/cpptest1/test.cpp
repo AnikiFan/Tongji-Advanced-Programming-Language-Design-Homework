@@ -118,8 +118,10 @@ int main()
 #define colorBoard  { {1,0},{ 13,0} ,{11,0} ,{8,0} ,{14,0} ,{6,0} ,{2,0} ,{4,0} ,{ 10,0} ,{15,0} }
 	int color[10][2] = colorBoard, i, j;
 	cin.ignore(1000,'\n');
-	cct_setcolor(7,0);
+	cct_setcolor(14,0);
 	cout << "бя";
+	for (int i=0; i < 10; i++)
+		cct_showch(10, i, ' ', color[i][0], color[i][1], 10);
 
 	return 0;
 }
