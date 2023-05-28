@@ -90,6 +90,7 @@ int main()
 {
 	char option;
 	int rowMax, colMax, matrix[10][10], i, j;
+	//cct_setconsoleborder(80, 40, 80, 400);
 	while (1) {
 		option = menu(&rowMax, &colMax);
 		for (i = 0; i < 10; i++)

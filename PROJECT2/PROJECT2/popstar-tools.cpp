@@ -11,11 +11,15 @@ void reload(void)
 {
 	char input[100];
 	int xcoo, ycoo;
+	cct_getxy(xcoo, ycoo);
+	cout << " " ;
+	cct_gotoxy(xcoo, ycoo);
 	cout << "本小题结束，请输入End继续...";
 	//
 	//cout << "*";
 	//
-	cin.ignore(10000, '\n');
+	//cin.ignore(10000, '\n');
+	
 	while (1) {
 		cin.getline(input, 99, '\n');
 		if ((input[0] == 'E' || input[0] == 'e') &&
@@ -35,6 +39,7 @@ void reload(void)
 		cct_gotoxy(28, ycoo - 1);
 	}
 	cct_cls();
+	//cct_setconsoleborder(80, 40, 80, 400);
 	return;
 }
 void searchPlus(int srcRow, int srcCol, int matrix[][10], int rowMax, int colMax, int option, int x, int y, int rowInterval, int colInterval, int pivot)
