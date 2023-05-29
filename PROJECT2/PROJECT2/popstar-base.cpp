@@ -11,7 +11,7 @@ void matrixGenerator(int matrix[][10], int rowInterval, int colInterval, int row
 				cout << setw(colInterval + 1) << setiosflags(ios::left) << matrix[i][j];
 			else {
 				cct_getxy(x, y);
-				cct_showch(x, y, '0', highlight, 1);
+				cct_showch(x, y, '0', backgroundhighlight, 1);
 				cct_setcolor(defaultColor);
 				cout << setw(colInterval) << " ";
 			}

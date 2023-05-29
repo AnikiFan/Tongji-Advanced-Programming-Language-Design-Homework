@@ -48,7 +48,7 @@ void searchPlus(int srcRow, int srcCol, int matrix[][10], int rowMax, int colMax
 		case 0://无任何操作
 			break;
 		case 1://高亮显示
-			cct_showch(x + srcCol + srcCol * colInterval, y + srcRow + srcRow * rowInterval, pivot + '0', highlight, 1);
+			cct_showch(x + srcCol + srcCol * colInterval, y + srcRow + srcRow * rowInterval, pivot + '0', backgroundhighlight, 1);
 			cct_setcolor(defaultColor);
 			break;
 		case 2://输出搜索结果
@@ -56,7 +56,7 @@ void searchPlus(int srcRow, int srcCol, int matrix[][10], int rowMax, int colMax
 			break;
 		case 3://数组内对应元素置零并高亮显示
 			matrix[srcRow][srcCol] = 0;
-			cct_showch(x + srcCol + srcCol * colInterval, y + srcRow + srcRow * rowInterval, '0', highlight, 1);
+			cct_showch(x + srcCol + srcCol * colInterval, y + srcRow + srcRow * rowInterval, '0', backgroundhighlight, 1);
 			cct_setcolor(defaultColor);
 			break;
 		case 4://图形化选择
