@@ -39,6 +39,7 @@ void reload(void)
 		cct_gotoxy(28, ycoo - 1);
 	}
 	cct_cls();
+	cct_setconsoleborder(boardwidth, boardheight, boardwidth, boardheight);
 	//cct_setconsoleborder(80, 40, 80, 400);
 	return;
 }

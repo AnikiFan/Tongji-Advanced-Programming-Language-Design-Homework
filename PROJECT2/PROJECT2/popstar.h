@@ -17,7 +17,7 @@ using namespace std;
 #define inverseColor 15,0
 #define blockheight 3
 #define blockwidth 6
-#define delay Sleep(0)
+#define delay Sleep(1)
 #define coverLength 60
 #define boardwidth 85
 #define boardheight 47

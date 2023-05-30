@@ -61,6 +61,8 @@ int menu(int* row, int* column)
 		default:
 			break;
 	}
+	if (input == 'q')
+		return 'q';
 	cct_cls();
 	cout << "请输入行数(8-10)：" << endl;
 	while (1) {
@@ -90,12 +92,14 @@ int main()
 {
 	char option;
 	int rowMax, colMax, matrix[10][10], i, j;
-	//cct_setconsoleborder(80, 40, 80, 400);
+	cct_setconsoleborder(boardwidth, boardheight, boardwidth, boardheight);
+	cct_setfontsize("点阵字体", 15);
 	while (1) {
 		option = menu(&rowMax, &colMax);
 		for (i = 0; i < 10; i++)
 			for (j = 0; j < 10; j++)
-				matrix[i][j] = (rand() % 9) + 1;
+				matrix[i][j] = (rand() % 5) + 1;
+		//matrix[i][j] =  1;
 		//测试用
 		//for (i = 0; i < 10; i++)
 		//	for (j = 0; j < 10; j++)

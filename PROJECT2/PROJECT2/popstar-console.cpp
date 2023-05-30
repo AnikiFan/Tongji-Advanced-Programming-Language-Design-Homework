@@ -1128,7 +1128,7 @@ void module7(int rowMax, int colMax, int matrix[][10])
 									cct_gotoxy(0, 0);
 									for (i = 0; i < 10; i++)
 										for (j = 0; j < 10; j++)
-											matrix[i][j] = (rand() % 9) + 1;
+											matrix[i][j] = (rand() % 5) + 1;
 									x = 6;
 									y = 4;
 								}
@@ -1347,7 +1347,7 @@ void module7(int rowMax, int colMax, int matrix[][10])
 									cct_gotoxy(0, 0);
 									for (i = 0; i < 10; i++)
 										for (j = 0; j < 10; j++)
-											matrix[i][j] = (rand() % 9) + 1;
+											matrix[i][j] = (rand() % 5) + 1;
 									x = 6;
 									y = 4;
 								}
