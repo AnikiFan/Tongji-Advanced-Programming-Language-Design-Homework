@@ -54,9 +54,9 @@ void zeroMoving(int matrix[][10], int rowMax, int colMax)
 	}
 	return;
 }
-void matrixInitialize(int rowMax, int colMax, int matrix[][10],bool zeroHighlight)
+void matrixInitialize(int rowMax, int colMax, int matrix[][10], bool zeroHighlight)
 {
-	int i, x, y;
+	int i, x, y, X, Y;
 	cout << "  |";
 	for (i = 0; i < colMax; i++)
 		cout << setiosflags(ios::right) << setw(3) << i << resetiosflags(ios::right);
@@ -70,7 +70,9 @@ void matrixInitialize(int rowMax, int colMax, int matrix[][10],bool zeroHighligh
 		if (i != rowMax - 1)
 			cout << endl;
 	}
-	matrixGenerator(matrix, 0, 2, rowMax, colMax, x + 5, y,zeroHighlight);
+	cct_getxy(X, Y);
+	//matrixGenerator(matrix, 0, 2, rowMax, colMax, x + 5, y,zeroHighlight);
+	matrixGenerator(matrix, 0, 2, rowMax, colMax, X + 1, Y - rowMax + 1, zeroHighlight);
 }
 void getCoordinate(int& row, int& col, int rowMax, int colMax)
 {
@@ -101,65 +103,11 @@ void getCoordinate(int& row, int& col, int rowMax, int colMax)
 
 void module1(int rowMax, int colMax, int matrix[][10])
 {
-	int row, col, x, y, sum = 0, pivotMatrix[10][10] = { 0 },  i, j;
-	cout << endl;
-	cout << "当前数组:" << endl;
-	cct_getxy(x, y);
-	matrixInitialize(rowMax, colMax, matrix,false);
-	while (1) {
-		for (i = 0; i < 10; i++)
-			for (j = 0; j < 10; j++)
-				pivotMatrix[i][j] = 0;
-		cout << endl;
-		getCoordinate(row, col, rowMax, colMax);
-		cout << "输入为" << (char)(row + 'A') << "行" << col << "列" << endl;
-		sum = search(row, col, matrix, rowMax, colMax, 0, x + 5, y + 2, 0, 2, pivotMatrix, sum);
-		if (sum == 1) {
-			sum = 0;
-			cout << "输入的矩阵坐标位置处无连续相同值，请重新输入" << endl;
-		}
-		else {
-			cout<<endl << "查找结果数组:" << endl;
-			cct_getxy(x, y);
-			//
-			//Sleep(1000);
-			//cct_gotoxy(x, y + rowMax + 1);
-			//Sleep(1000);
-			//cct_gotoxy(x, y);
-			////
-			matrixInitialize(rowMax, colMax, pivotMatrix,false);
-			for (i = 0; i < 10; i++)
-				for (j = 0; j < 10; j++)
-					pivotMatrix[i][j] = 0;
-			search(row, col, matrix, rowMax, colMax, 2, x + 5, y + 2, 0, 2, pivotMatrix, sum);
-			cct_gotoxy(x, y + rowMax+1);
-			cout << endl << endl<<endl << "当前数组(不同色标识)"<<endl;
-			for (i = 0; i < 10; i++)
-				for (j = 0; j < 10; j++)
-					pivotMatrix[i][j] = 0;
-			cct_getxy(x, y);
-			////
-			//for (int k = 0; k < rowMax + 3; k++)
-			//	cout << endl;
-			//cct_gotoxy(x, y - rowMax - 3);
-			////
-			matrixInitialize(rowMax, colMax, matrix,false);
-			search(row, col, matrix, rowMax, colMax, 1, x + 5, y + 2, 0, 2, pivotMatrix, sum);
-			cct_gotoxy(x , y+rowMax+3);
-			break;
-		}
-	}
-	//	cout << sum;
-	return;
-}
-void module2(int rowMax, int colMax,int matrix[][10])
-{
 	int row, col, x, y, sum = 0, pivotMatrix[10][10] = { 0 }, i, j;
-	char input;
 	cout << endl;
 	cout << "当前数组:" << endl;
 	cct_getxy(x, y);
-	matrixInitialize(rowMax, colMax, matrix,false);
+	matrixInitialize(rowMax, colMax, matrix, false);
 	while (1) {
 		for (i = 0; i < 10; i++)
 			for (j = 0; j < 10; j++)
@@ -175,36 +123,97 @@ void module2(int rowMax, int colMax,int matrix[][10])
 		else {
 			cout << endl << "查找结果数组:" << endl;
 			cct_getxy(x, y);
-			matrixInitialize(rowMax, colMax, pivotMatrix,false);
+			//
+			//Sleep(1000);
+			//cct_gotoxy(x, y + rowMax + 1);
+			//Sleep(1000);
+			//cct_gotoxy(x, y);
+			////
+			matrixInitialize(rowMax, colMax, pivotMatrix, false);
 			for (i = 0; i < 10; i++)
 				for (j = 0; j < 10; j++)
 					pivotMatrix[i][j] = 0;
 			search(row, col, matrix, rowMax, colMax, 2, x + 5, y + 2, 0, 2, pivotMatrix, sum);
-			cct_gotoxy(x, y + rowMax+1);
+			cct_gotoxy(x, y + rowMax + 1);
 			cout << endl << endl << endl << "当前数组(不同色标识)" << endl;
 			for (i = 0; i < 10; i++)
 				for (j = 0; j < 10; j++)
 					pivotMatrix[i][j] = 0;
 			cct_getxy(x, y);
-			matrixInitialize(rowMax, colMax, matrix,false);
+			////
+			//for (int k = 0; k < rowMax + 3; k++)
+			//	cout << endl;
+			//cct_gotoxy(x, y - rowMax - 3);
+			////
+			matrixInitialize(rowMax, colMax, matrix, false);
 			search(row, col, matrix, rowMax, colMax, 1, x + 5, y + 2, 0, 2, pivotMatrix, sum);
-			cct_gotoxy(x, y + rowMax+3);
+			cct_gotoxy(0, boardheight - 2);
+			cout << endl;
+			//cct_gotoxy(x, y + rowMax + 3);
+			break;
+		}
+	}
+	//	cout << sum;
+	return;
+}
+void module2(int rowMax, int colMax, int matrix[][10])
+{
+	int row, col, x, y, sum = 0, pivotMatrix[10][10] = { 0 }, i, j, X, Y;
+	char input;
+	cout << endl;
+	cout << "当前数组:" << endl;
+	cct_getxy(x, y);
+	matrixInitialize(rowMax, colMax, matrix, false);
+	while (1) {
+		for (i = 0; i < 10; i++)
+			for (j = 0; j < 10; j++)
+				pivotMatrix[i][j] = 0;
+		cout << endl;
+		getCoordinate(row, col, rowMax, colMax);
+		cout << "输入为" << (char)(row + 'A') << "行" << col << "列" << endl;
+		sum = search(row, col, matrix, rowMax, colMax, 0, x + 5, y + 2, 0, 2, pivotMatrix, sum);
+		if (sum == 1) {
+			sum = 0;
+			cout << "输入的矩阵坐标位置处无连续相同值，请重新输入" << endl;
+		}
+		else {
+			cout << endl << "查找结果数组:" << endl;
+			cct_getxy(x, y);
+			matrixInitialize(rowMax, colMax, pivotMatrix, false);
+			for (i = 0; i < 10; i++)
+				for (j = 0; j < 10; j++)
+					pivotMatrix[i][j] = 0;
+			search(row, col, matrix, rowMax, colMax, 2, x + 5, y + 2, 0, 2, pivotMatrix, sum);
+			cct_gotoxy(x, y + rowMax + 1);
+			cout << endl << endl << endl << "当前数组(不同色标识)" << endl;
+			for (i = 0; i < 10; i++)
+				for (j = 0; j < 10; j++)
+					pivotMatrix[i][j] = 0;
+			cct_getxy(x, y);
+			matrixInitialize(rowMax, colMax, matrix, false);
+			cct_getxy(X, Y);
+			//
+			//cout << "*";
+			search(row, col, matrix, rowMax, colMax, 1, 5, Y - rowMax, 0, 2, pivotMatrix, sum);
+			//cct_gotoxy(x, y + rowMax + 3);
+			cct_gotoxy(0, boardheight - 2);
+			cout << endl;
 			//之前部分与module1相同
 			cout << "请确认是否把" << (char)(row + 'A') << col << "及周围的相同值消除(Y/N/Q)：";
 			cct_getxy(x, y);
 			while (1) {
 				input = _getch();
 				cout << input;
-				if (input == 'y' || input == 'n' || input == 'q' || input == 'Y' ||input == 'N' || input == 'Q')
-						break;
+				if (input == 'y' || input == 'n' || input == 'q' || input == 'Y' || input == 'N' || input == 'Q')
+					break;
 				cct_gotoxy(x, y);
-				}
+			}
 			switch (input) {
 				default:
 					break;
 				case'y':
 					input = 'Y';
-						break;
+					break;
 				case'n':
 					input = 'N';
 					break;
@@ -219,23 +228,31 @@ void module2(int rowMax, int colMax,int matrix[][10])
 				for (i = 0; i < 10; i++)
 					for (j = 0; j < 10; j++)
 						pivotMatrix[i][j] = 0;
-				matrixInitialize(rowMax, colMax, matrix,false);
+				matrixInitialize(rowMax, colMax, matrix, false);
+				//
+				//cout << "*";
 				sum = 0;
-				search(row, col, matrix, rowMax, colMax, 3, x + 5, y + 2, 0, 2, pivotMatrix, sum);
-				cct_gotoxy(x, y + rowMax+3);
+				cct_getxy(X, Y);
+				//search(row, col, matrix, rowMax, colMax, 3, x + 5, y + 2, 0, 2, pivotMatrix, sum);
+				search(row, col, matrix, rowMax, colMax, 3, 5, Y - rowMax, 0, 2, pivotMatrix, sum);
+				//cct_gotoxy(x, y + rowMax + 3);
+				cct_gotoxy(0, boardheight - 2);
+				cout << endl;
 				cout << "本次得分: " << sum * sum * 5 << " 总得分: " << sum * sum * 5 << endl;
-				cout << endl << "按回车键进行数组下落操作..." ;
-				while (_getch()!=13)
+				cout << endl << "按回车键进行数组下落操作...";
+				while (_getch() != 13)
 					;
 				cout << endl;
 				cout << "下落后的数组:" << endl;
 				zeroMoving(matrix, rowMax, colMax);
-				cct_getxy(x, y);
+				//cct_getxy(x, y);
 				matrixInitialize(rowMax, colMax, matrix, true);
-				cct_gotoxy(x, y + rowMax+4);
+				//cct_gotoxy(x, y + rowMax + 4);
+				cct_gotoxy(0, boardheight - 1);
+				cout << endl;
 			}
 			else
-				cout << endl; 
+				cout << endl;
 			break;
 		}
 	}
@@ -243,7 +260,7 @@ void module2(int rowMax, int colMax,int matrix[][10])
 }
 void module3(int rowMax, int colMax, int matrix[][10])
 {
-	int row, col, x, y, sum = 0, pivotMatrix[10][10] = { 0 }, i, j,score=0,remainder=0;
+	int row, col, x, y, sum = 0, pivotMatrix[10][10] = { 0 }, i, j, score = 0, remainder = 0, X, Y;
 	char input;
 	cout << endl;
 	while (1) {
@@ -258,35 +275,46 @@ void module3(int rowMax, int colMax, int matrix[][10])
 				for (j = 0; j < 10; j++)
 					pivotMatrix[i][j] = 0;
 			sum = 0;
+			//
+			//cout << "*";
 			sum = search(row, col, matrix, rowMax, colMax, 5, x + 5, y + 2, 0, 2, pivotMatrix, sum);
+			//sum = search(row, col, matrix, rowMax, colMax, 5, 0, 0, 0, 2, pivotMatrix, sum);
 			if (sum == 1) {
 				sum = 0;
 				cout << "输入的矩阵坐标位置处无连续相同值，请重新输入" << endl;
 			}
 			else if (sum == -1) {
 				sum = 0;
-				cout << "输入的矩阵坐标位置为0（非法位置），请重新输入" ;
+				cout << "输入的矩阵坐标位置为0（非法位置），请重新输入";
 			}
 			else {
 				for (i = 0; i < 10; i++)
 					for (j = 0; j < 10; j++)
 						pivotMatrix[i][j] = 0;
 				cout << endl << "查找结果数组:" << endl;
-				cct_getxy(x, y);
+				//cct_getxy(x, y);
 				matrixInitialize(rowMax, colMax, pivotMatrix, false);
 				for (i = 0; i < 10; i++)
 					for (j = 0; j < 10; j++)
 						pivotMatrix[i][j] = 0;
-				search(row, col, matrix, rowMax, colMax, 2, x + 5, y + 2, 0, 2, pivotMatrix, sum);
-				cct_gotoxy(x, y + rowMax+1);
-				cout << endl << endl << endl << "当前数组(不同色标识)" << endl;
+				//
+				//cout << "*";
+				//search(row, col, matrix, rowMax, colMax, 2, x + 5, y + 2, 0, 2, pivotMatrix, sum);
+				cct_getxy(X, Y);
+				search(row, col, matrix, rowMax, colMax, 2, 5, Y - rowMax, 0, 2, pivotMatrix, sum);
+				cct_gotoxy(X, Y);
+				cout << endl << endl << "当前数组(不同色标识)" << endl;
 				for (i = 0; i < 10; i++)
 					for (j = 0; j < 10; j++)
 						pivotMatrix[i][j] = 0;
 				cct_getxy(x, y);
 				matrixInitialize(rowMax, colMax, matrix, false);
-				search(row, col, matrix, rowMax, colMax, 1, x + 5, y + 2, 0, 2, pivotMatrix, sum);
-				cct_gotoxy(x, y + rowMax+3);
+				//
+				cct_getxy(X, Y);
+				//cout << "*";
+				search(row, col, matrix, rowMax, colMax, 1, 5, Y - rowMax, 0, 2, pivotMatrix, sum);
+				cct_gotoxy(X, Y);
+				cout << endl;
 				cout << "请确认是否把" << (char)(row + 'A') << col << "及周围的相同值消除(Y/N/Q)：";
 				cct_getxy(x, y);
 				while (1) {
@@ -318,10 +346,14 @@ void module3(int rowMax, int colMax, int matrix[][10])
 							pivotMatrix[i][j] = 0;
 					matrixInitialize(rowMax, colMax, matrix, false);
 					sum = 0;
-					search(row, col, matrix, rowMax, colMax, 3, x + 5, y + 2, 0, 2, pivotMatrix, sum);
-					cct_gotoxy(x, y + rowMax+3);
+					//
+					//cout << "*";
+					cct_getxy(X, Y);
+					search(row, col, matrix, rowMax, colMax, 3, 5, Y - rowMax, 0, 2, pivotMatrix, sum);
+					cct_gotoxy(X, Y);
 					score += sum * sum * 5;
-					cout << "本次得分: " << sum * sum * 5 << " 总得分: " <<score << endl;
+					cout << endl;
+					cout << "本次得分: " << sum * sum * 5 << " 总得分: " << score << endl;
 					cout << endl << "按回车键进行数组下落操作...";
 					while (_getch() != 13)
 						;
@@ -330,8 +362,8 @@ void module3(int rowMax, int colMax, int matrix[][10])
 					zeroMoving(matrix, rowMax, colMax);
 					cct_getxy(x, y);
 					matrixInitialize(rowMax, colMax, matrix, true);
-					cct_gotoxy(x, y + rowMax+2);
-					cout << endl << "本次消除结束，按回车键继续新一次的消除..."<<endl;
+					//cout << "*";
+					cout << endl << "本次消除结束，按回车键继续新一次的消除..." << endl;
 					while (_getch() != 13)
 						;
 					cout << endl;
@@ -343,9 +375,10 @@ void module3(int rowMax, int colMax, int matrix[][10])
 					for (i = 0; i < 10; i++)
 						for (j = 0; j < 10; j++)
 							pivotMatrix[i][j] = 0;
-					cct_getxy(x, y);
+					//cct_getxy(x, y);
 					matrixInitialize(rowMax, colMax, matrix, true);
-					cct_gotoxy(x, y + rowMax+2);
+					//cout << "*";
+					//cct_gotoxy(x, y + rowMax + 2);
 				}
 				else
 					break;

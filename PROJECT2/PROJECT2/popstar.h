@@ -19,6 +19,8 @@ using namespace std;
 #define blockwidth 6
 #define delay Sleep(0)
 #define coverLength 60
+#define boardwidth 85
+#define boardheight 47
 void reload(void);
 
 void module1(int rowMax, int colMax, int matrix[][10]);

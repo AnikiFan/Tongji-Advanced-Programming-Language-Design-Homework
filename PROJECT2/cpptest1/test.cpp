@@ -115,13 +115,16 @@ int main()
 		cct_disable_mouse();	//禁用鼠标
 		cct_setcursor(CURSOR_VISIBLE_NORMAL);	//打开光标
 	}
-#define colorBoard  { {1,0},{ 13,0} ,{11,0} ,{8,0} ,{14,0} ,{6,0} ,{2,0} ,{4,0} ,{ 10,0} ,{15,0} }
-	int color[10][2] = colorBoard, i, j;
-	cin.ignore(1000,'\n');
-	cct_setcolor(14,0);
-	cout << "★";
-	for (int i=0; i < 10; i++)
-		cct_showch(10, i, ' ', color[i][0], color[i][1], 10);
+	cct_setconsoleborder(20, 20, 20, 20);
+	cct_gotoxy(0, 0);
+	cout << "00000";
+	cct_gotoxy(0, 2);
+	cout << "222222";
+	cct_gotoxy(0, 1);
+	cout << "&&&";
+	cct_gotoxy(50, 50);
+	cout << "**************";
+	cout << endl << "@@";
 
 	return 0;
 }

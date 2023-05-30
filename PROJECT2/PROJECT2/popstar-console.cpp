@@ -313,7 +313,7 @@ void module4(int rowMax, int colMax, int matrix[][10])
 		while (loop) {
 			/* 读鼠标/键盘，返回值为下述操作中的某一种, 当前鼠标位置在<X,Y>处 */
 			ret = cct_read_keyboard_and_mouse(X, Y, maction, keycode1, keycode2);
-
+			cct_setcursor(CURSOR_INVISIBLE);
 			if (ret == CCT_MOUSE_EVENT) {
 				/* 转到第7行进行打印 */
 				if (prompt) {
@@ -322,7 +322,7 @@ void module4(int rowMax, int colMax, int matrix[][10])
 					cct_setcolor(defaultColor);
 				}
 				if (Y > 2 && Y < 4 + (rowMax - 1) * (3 + frame) + 2 && X>2 && X < 6 + (colMax - 1) * (6 + 2 * frame) + 4) {
-
+					reverseBlock(x, y, matrix[((y - 3) / (blockheight + frame))][(x - 4) / (blockwidth + 2 * frame)]);
 					inverseBlock(6 + ((X - 4) / blockwidth) * (6 + 2 * frame), 4 + ((Y - 3) / blockheight) * (3 + frame), matrix[((Y - 3) / blockheight)][(X - 4) / blockwidth]);
 					if ((x != 6 + ((X - 4) / blockwidth) * (6 + 2 * frame) || y != 4 + ((Y - 3) / blockheight) * (3 + frame)) && !first)
 						reverseBlock(x, y, matrix[((y - 3) / blockheight)][(x - 4) / blockwidth]);
@@ -350,7 +350,7 @@ void module4(int rowMax, int colMax, int matrix[][10])
 					}
 				}
 				else {
-
+					reverseBlock(x, y, matrix[((y - 3) / (blockheight + frame))][(x - 4) / (blockwidth + 2 * frame)]);
 					if (!first) {
 						reverseBlock(x, y, matrix[((y - 3) / blockheight)][(x - 4) / blockwidth]);
 						first = true;
@@ -364,16 +364,16 @@ void module4(int rowMax, int colMax, int matrix[][10])
 
 			} //end of if (CCT_MOUSE_EVENT)
 			else if (ret == CCT_KEYBOARD_EVENT) {
-				if (prompt) {
+				if (prompt && ((keycode1 == 224 && (keycode2 == KB_ARROW_UP || KB_ARROW_DOWN || KB_ARROW_LEFT || KB_ARROW_RIGHT)) || keycode1 == 13 || keycode1 == 'q' || keycode1 == 'Q')) {
 					prompt = false;
 					cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, coverLength);
 					cct_setcolor(defaultColor);
 				}
-				cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, coverLength);
-				cct_setcolor(defaultColor);
+				if ((keycode1 == 224 && (keycode2 == KB_ARROW_UP || KB_ARROW_DOWN || KB_ARROW_LEFT || KB_ARROW_RIGHT)) || keycode1 == 13 || keycode1 == 'q' || keycode1 == 'Q') {
+					cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, coverLength);
+					cct_setcolor(defaultColor);
+				}
 				cct_gotoxy(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4);
-				cout << "[当前键盘] ";
-
 				switch (keycode1) {
 					case 224:
 						reverseBlock(x, y, matrix[((y - 3) / blockheight)][(x - 4) / blockwidth]);
@@ -409,7 +409,7 @@ void module4(int rowMax, int colMax, int matrix[][10])
 						}
 						inverseBlock(x, y, matrix[((y - 3) / blockheight)][(x - 4) / blockwidth]);
 						cct_gotoxy(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4);
-						cout << "选中了" << (char)('A' + (y - 3) / blockheight) << "行" << (x - 4) / blockwidth << "列";
+						cout << "[当前键盘] " << (char)('A' + (y - 3) / blockheight) << "行" << (x - 4) / blockwidth << "列";
 						break;
 					case 13:	//ENTER键
 						cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, coverLength);
@@ -466,12 +466,13 @@ void module5(int rowMax, int colMax, int matrix[][10])
 		//		cout << "[当前鼠标位置] X:0  Y:0"; //打印初始鼠标位置
 
 		while (loop) {
+			cct_setcursor(CURSOR_INVISIBLE);
 			/* 读鼠标/键盘，返回值为下述操作中的某一种, 当前鼠标位置在<X,Y>处 */
 			ret = cct_read_keyboard_and_mouse(X, Y, maction, keycode1, keycode2);
 
 			if (ret == CCT_MOUSE_EVENT) {
 				/* 转到第7行进行打印 */
-				if (prompt) {
+				if (prompt && ((keycode1 == 224 && (keycode2 == KB_ARROW_UP || KB_ARROW_DOWN || KB_ARROW_LEFT || KB_ARROW_RIGHT)) || keycode1 == 13 || keycode1 == 'q' || keycode1 == 'Q')) {
 					prompt = false;
 					cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, coverLength);
 					cct_setcolor(defaultColor);
@@ -488,6 +489,7 @@ void module5(int rowMax, int colMax, int matrix[][10])
 				else
 					valid = false;
 				if (valid) {
+					reverseBlock(x, y, matrix[((y - 3) / (blockheight + frame))][(x - 4) / (blockwidth + 2 * frame)]);
 					inverseBlock(6 + ((X - 4) / (blockwidth + 2 * frame)) * (6 + 2 * frame), 4 + ((Y - 3) / (blockheight + frame)) * (3 + frame), matrix[((Y - 3) / (blockheight + frame))][(X - 4) / (blockwidth + 2 * frame)]);
 					if ((x != 6 + ((X - 4) / (blockwidth + 2 * frame)) * (6 + 2 * frame) || y != 4 + ((Y - 3) / (blockheight + frame)) * (3 + frame)) && !first)
 
@@ -517,6 +519,7 @@ void module5(int rowMax, int colMax, int matrix[][10])
 					}
 				}
 				else {
+					reverseBlock(x, y, matrix[((y - 3) / (blockheight + frame))][(x - 4) / (blockwidth + 2 * frame)]);
 					if (!first) {
 						reverseBlock(x, y, matrix[((y - 3) / (blockheight + frame))][(x - 4) / (blockwidth + 2 * frame)]);
 						first = true;
@@ -531,16 +534,16 @@ void module5(int rowMax, int colMax, int matrix[][10])
 
 			} //end of if (CCT_MOUSE_EVENT)
 			else if (ret == CCT_KEYBOARD_EVENT) {
-				if (prompt) {
+				if (prompt && ((keycode1 == 224 && (keycode2 == KB_ARROW_UP || KB_ARROW_DOWN || KB_ARROW_LEFT || KB_ARROW_RIGHT)) || keycode1 == 13 || keycode1 == 'q' || keycode1 == 'Q')) {
 					prompt = false;
 					cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, coverLength);
 					cct_setcolor(defaultColor);
 				}
-				cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, coverLength);
-				cct_setcolor(defaultColor);
+				if ((keycode1 == 224 && (keycode2 == KB_ARROW_UP || KB_ARROW_DOWN || KB_ARROW_LEFT || KB_ARROW_RIGHT)) || keycode1 == 13 || keycode1 == 'q' || keycode1 == 'Q') {
+					cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, coverLength);
+					cct_setcolor(defaultColor);
+				}
 				cct_gotoxy(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4);
-				cout << "[当前键盘] ";
-
 				switch (keycode1) {
 					case 224:
 						reverseBlock(x, y, matrix[((y - 3) / (blockheight + frame))][(x - 4) / (blockwidth + 2 * frame)]);
@@ -576,7 +579,7 @@ void module5(int rowMax, int colMax, int matrix[][10])
 						}
 						inverseBlock(x, y, matrix[((y - 3) / (blockheight + frame))][(x - 4) / (blockwidth + 2 * frame)]);
 						cct_gotoxy(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4);
-						cout << "选中了" << (char)('A' + (y - 3) / (blockheight + frame)) << "行" << (x - 4) / (blockwidth + 2 * frame) << "列";
+						cout << "[当前键盘] " << (char)('A' + (y - 3) / (blockheight + frame)) << "行" << (x - 4) / (blockwidth + 2 * frame) << "列";
 						break;
 					case 13:	//ENTER键
 						cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, coverLength);
@@ -636,7 +639,7 @@ void module6(int rowMax, int colMax, int matrix[][10])
 		while (loop) {
 			/* 读鼠标/键盘，返回值为下述操作中的某一种, 当前鼠标位置在<X,Y>处 */
 			ret = cct_read_keyboard_and_mouse(X, Y, maction, keycode1, keycode2);
-
+			cct_setcursor(CURSOR_INVISIBLE);
 			if (ret == CCT_MOUSE_EVENT) {
 				/* 转到第7行进行打印 */
 				if (prompt) {
@@ -645,13 +648,15 @@ void module6(int rowMax, int colMax, int matrix[][10])
 					cct_setcolor(defaultColor);
 				}
 				if (Y > 2 && Y < 4 + (rowMax - 1) * (3 + frame) + 2 && X>2 && X < 6 + (colMax - 1) * (6 + 2 * frame) + 4) {
-
+					reverseBlock(x, y, matrix[((y - 3) / blockheight)][(x - 4) / blockwidth]);
 					inverseBlock(6 + ((X - 4) / blockwidth) * (6 + 2 * frame), 4 + ((Y - 3) / blockheight) * (3 + frame), matrix[((Y - 3) / blockheight)][(X - 4) / blockwidth]);
 					if ((x != 6 + ((X - 4) / blockwidth) * (6 + 2 * frame) || y != 4 + ((Y - 3) / blockheight) * (3 + frame)) && !first)
 						reverseBlock(x, y, matrix[((y - 3) / blockheight)][(x - 4) / blockwidth]);
 					if (first)
 						first = false;
 					if (warning && (x != 6 + ((X - 4) / blockwidth) * (6 + 2 * frame) || y != 4 + ((Y - 3) / blockheight) * (3 + frame))) {
+
+
 						cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, coverLength);
 						cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 3, ' ', background, coverLength);
 						cct_setcolor(defaultColor);
@@ -756,7 +761,7 @@ void module6(int rowMax, int colMax, int matrix[][10])
 					}
 				}
 				else {
-
+					reverseBlock(x, y, matrix[((y - 3) / blockheight)][(x - 4) / blockwidth]);
 					if (!first) {
 						reverseBlock(x, y, matrix[((y - 3) / blockheight)][(x - 4) / blockwidth]);
 						first = true;
@@ -786,14 +791,15 @@ void module6(int rowMax, int colMax, int matrix[][10])
 
 			} //end of if (CCT_MOUSE_EVENT)
 			else if (ret == CCT_KEYBOARD_EVENT) {
-				if (prompt) {
+				if (prompt && ((keycode1 == 224 && (keycode2 == KB_ARROW_UP || KB_ARROW_DOWN || KB_ARROW_LEFT || KB_ARROW_RIGHT)) || keycode1 == 13 || keycode1 == 'q' || keycode1 == 'Q')) {
 					prompt = false;
 					cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, coverLength);
 					cct_setcolor(defaultColor);
 				}
-
-				cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, coverLength);
-				cct_setcolor(defaultColor);
+				if ((keycode1 == 224 && (keycode2 == KB_ARROW_UP || KB_ARROW_DOWN || KB_ARROW_LEFT || KB_ARROW_RIGHT)) || keycode1 == 13 || keycode1 == 'q' || keycode1 == 'Q') {
+					cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, coverLength);
+					cct_setcolor(defaultColor);
+				}
 				cct_gotoxy(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4);
 				for (i = 0; i < 10; i++)
 					for (j = 0; j < 10; j++)
@@ -1012,6 +1018,8 @@ void module7(int rowMax, int colMax, int matrix[][10])
 						if (first)
 							first = false;
 						if (warning && ((x != 6 + ((X - 4) / (blockwidth + frame * 2)) * (6 + 2 * frame) || y != 4 + ((Y - 3) / (blockheight + frame)) * (3 + frame)))) {
+							reverseBlock(x, y, matrix[((y - 3) / (blockheight + frame))][(x - 4) / (blockwidth + 2 * frame)]);
+
 							//system("pause");
 							cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, coverLength);
 							cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 3, ' ', background, coverLength);
@@ -1125,11 +1133,22 @@ void module7(int rowMax, int colMax, int matrix[][10])
 									y = 4;
 								}
 								else {
-									cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, coverLength);
-									cct_setcolor(defaultColor);
-									cct_gotoxy(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4);
-									cout << "[当前鼠标] " << (char)('A' + (y - 3) / (blockheight + frame)) << "行" << (x - 4) / (blockwidth + 2 * frame) << "列";
-
+									if (matrix[((y - 3) / (blockheight + 1))][(x - 4) / (blockwidth + 2 * frame)] != 0) {
+										cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, coverLength);
+										cct_setcolor(defaultColor);
+										cct_gotoxy(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4);
+										cout << "[当前鼠标] " << (char)('A' + (y - 3) / (blockheight + frame)) << "行" << (x - 4) / (blockwidth + 2 * frame) << "列";
+									}
+									else {
+										x = 6;
+										y = 4;
+										while (matrix[(y - 3) / (blockheight + frame)][(j - 4) / (blockwidth + 2 * frame)] == 0) {
+											if (y == 4 + (rowMax - 1) * (3 + frame))
+												y = 4;
+											else
+												y += (blockheight + 1);
+										}
+									}
 								}
 							}
 						}
@@ -1142,6 +1161,7 @@ void module7(int rowMax, int colMax, int matrix[][10])
 						}
 					}
 					else {
+						reverseBlock(x, y, matrix[((y - 3) / (blockheight + frame))][(x - 4) / (blockwidth + 2 * frame)]);
 						if (!first) {
 							reverseBlock(x, y, matrix[((y - 3) / (blockheight + frame))][(x - 4) / (blockwidth + 2 * frame)]);
 							first = true;
@@ -1169,7 +1189,7 @@ void module7(int rowMax, int colMax, int matrix[][10])
 
 				} //end of if (CCT_MOUSE_EVENT)
 				else if (ret == CCT_KEYBOARD_EVENT) {
-					if (prompt) {
+					if (prompt && ((keycode1 == 224 && (keycode2 == KB_ARROW_UP || KB_ARROW_DOWN || KB_ARROW_LEFT || KB_ARROW_RIGHT)) || keycode1 == 13 || keycode1 == 'q' || keycode1 == 'Q')) {
 						prompt = false;
 						cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, coverLength);
 						cct_setcolor(defaultColor);
@@ -1340,7 +1360,6 @@ void module7(int rowMax, int colMax, int matrix[][10])
 									cout << "箭头键/鼠标移动,回车键/单击左键选择,Q/单击右键结束";
 									x = 6;
 									y = 4;
-									inverseBlock(6, 4, matrix[0][0]);
 									while (matrix[(y - 3) / (blockheight + frame)][(j - 4) / (blockwidth + 2 * frame)] == 0) {
 										if (y == 4 + (rowMax - 1) * (3 + frame))
 											y = 4;
@@ -1356,6 +1375,7 @@ void module7(int rowMax, int colMax, int matrix[][10])
 							cct_gotoxy(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4);
 							loop = 0;
 							end = true;
+							cin.ignore(10000, '\n');
 							break;
 						case'Q':
 							cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, coverLength);
@@ -1363,6 +1383,7 @@ void module7(int rowMax, int colMax, int matrix[][10])
 							cct_gotoxy(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4);
 							loop = 0;
 							end = true;
+							cin.ignore(10000, '\n');
 							break;
 							}//end of swicth(keycode1)
 					}//end of else if(ret == CCT_KEYBOARD_EVENT）
