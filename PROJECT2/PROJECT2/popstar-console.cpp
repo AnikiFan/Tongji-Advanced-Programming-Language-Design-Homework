@@ -145,21 +145,28 @@ void zeroMoving(int matrix[][10], int rowMax, int colMax, bool frame)
 			if (matrix[rowMax - 1][j] == 0 && matrix[rowMax - 1][j + 1] != 0) {
 				horizontalMoveFinish = false;
 				for (i = 0; i < rowMax; i++) {
-					for (k = 6 + (j + 1) * (blockwidth + 2 * frame); 6 + j * (blockwidth + 2 * frame); k--) {
-						cancelBlock(k, 4 + i * (blockheight + frame));
+
+					for (k = 6 + (j + 1) * (blockwidth + 2 * frame) - 1; k > 6 + j * (blockwidth + 2 * frame) - 1; k--) {
+						if (matrix[i][j + 1] == 0)
+							break;
+						cancelBlock(k + 1, 4 + i * (blockheight + frame));
 						//system("pause");
 						delay;
-						blockGenrator(k + 1, 4 + i * (blockheight + frame), matrix[i][j + 1]);
+
+						blockGenrator(k, 4 + i * (blockheight + frame), matrix[i][j + 1]);
 						//system("pause");
 						delay;
 					}
 					matrix[i][j] = matrix[i][j + 1];
 					matrix[i][j + 1] = 0;
-					if (frame)
+					if (frame) {
+						cct_setcolor(inverseColor);
 						for (t = 4 + i * (blockheight + frame) - 1; t <= 4 + i * (blockheight + frame) + 1; t++) {
 							cct_gotoxy(6 + (j + 1) * (blockwidth + 2 * frame) - 4, t);
 							cout << "║";
 						}
+						cct_setcolor(defaultColor);
+					}
 				}
 
 			}
@@ -311,7 +318,7 @@ void module4(int rowMax, int colMax, int matrix[][10])
 				/* 转到第7行进行打印 */
 				if (prompt) {
 					prompt = false;
-					cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, 50);
+					cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, coverLength);
 					cct_setcolor(defaultColor);
 				}
 				if (Y > 2 && Y < 4 + (rowMax - 1) * (3 + frame) + 2 && X>2 && X < 6 + (colMax - 1) * (6 + 2 * frame) + 4) {
@@ -323,19 +330,19 @@ void module4(int rowMax, int colMax, int matrix[][10])
 						first = false;
 					x = 6 + ((X - 4) / blockwidth) * (6 + 2 * frame);
 					y = 4 + ((Y - 3) / blockheight) * (3 + frame);
-					cct_showch(11, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, 20);
+					cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, coverLength);
 					cct_setcolor(defaultColor);
 					cct_gotoxy(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4);
 					cout << "[当前鼠标] " << (char)('A' + (Y - 3) / blockheight) << "行" << (X - 4) / blockwidth << "列";
 					if (maction == MOUSE_LEFT_BUTTON_CLICK || maction == MOUSE_LEFT_BUTTON_DOUBLE_CLICK) {
-						cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, 20);
+						cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, coverLength);
 						cct_setcolor(defaultColor);
 						cct_gotoxy(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4);
 						cout << "选中了" << (char)('A' + (y - 3) / blockheight) << "行" << (x - 4) / blockwidth << "列";
 						loop = 0;
 					}
 					if (maction == MOUSE_RIGHT_BUTTON_CLICK || maction == MOUSE_RIGHT_BUTTON_DOUBLE_CLICK || maction == MOUSE_LEFTRIGHT_BUTTON_CLICK) {
-						cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, 50);
+						cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, coverLength);
 						cct_setcolor(defaultColor);
 						cct_gotoxy(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4);
 						loop = 0;
@@ -348,7 +355,7 @@ void module4(int rowMax, int colMax, int matrix[][10])
 						reverseBlock(x, y, matrix[((y - 3) / blockheight)][(x - 4) / blockwidth]);
 						first = true;
 					}
-					cct_showch(11, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, 20);
+					cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, coverLength);
 					cct_setcolor(defaultColor);
 					cct_gotoxy(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4);
 					cout << "[当前鼠标] 位置非法";
@@ -359,10 +366,10 @@ void module4(int rowMax, int colMax, int matrix[][10])
 			else if (ret == CCT_KEYBOARD_EVENT) {
 				if (prompt) {
 					prompt = false;
-					cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, 50);
+					cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, coverLength);
 					cct_setcolor(defaultColor);
 				}
-				cct_showch(11, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, 20);
+				cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, coverLength);
 				cct_setcolor(defaultColor);
 				cct_gotoxy(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4);
 				cout << "[当前键盘] ";
@@ -401,24 +408,24 @@ void module4(int rowMax, int colMax, int matrix[][10])
 								break;
 						}
 						inverseBlock(x, y, matrix[((y - 3) / blockheight)][(x - 4) / blockwidth]);
-						cct_gotoxy(11, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4);
-						cout << (char)('A' + (y - 3) / blockheight) << "行" << (x - 4) / blockwidth << "列";
+						cct_gotoxy(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4);
+						cout << "选中了" << (char)('A' + (y - 3) / blockheight) << "行" << (x - 4) / blockwidth << "列";
 						break;
 					case 13:	//ENTER键
-						cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, 20);
+						cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, coverLength);
 						cct_setcolor(defaultColor);
 						cct_gotoxy(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4);
 						cout << "选中了" << (char)('A' + (y - 3) / blockheight) << "行" << (x - 4) / blockwidth << "列";
 						loop = 0;
 						break;
 					case 'q':
-						cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, 50);
+						cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, coverLength);
 						cct_setcolor(defaultColor);
 						cct_gotoxy(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4);
 						loop = 0;
 						break;
 					case'Q':
-						cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, 50);
+						cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, coverLength);
 						cct_setcolor(defaultColor);
 						cct_gotoxy(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4);
 						loop = 0;
@@ -466,7 +473,7 @@ void module5(int rowMax, int colMax, int matrix[][10])
 				/* 转到第7行进行打印 */
 				if (prompt) {
 					prompt = false;
-					cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, 50);
+					cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, coverLength);
 					cct_setcolor(defaultColor);
 				}
 				valid = true;
@@ -489,20 +496,20 @@ void module5(int rowMax, int colMax, int matrix[][10])
 						first = false;
 					x = 6 + ((X - 4) / (blockwidth + 2 * frame)) * (6 + 2 * frame);
 					y = 4 + ((Y - 3) / (blockheight + frame)) * (3 + frame);
-					cct_showch(11, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, 20);
+					cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, coverLength);
 					cct_setcolor(defaultColor);
 					cct_gotoxy(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4);
 					cout << "[当前鼠标] " << (char)('A' + (Y - 3) / (blockheight + frame)) << "行" << (X - 4) / (blockwidth + 2 * frame) << "列";
 					if (maction == MOUSE_LEFT_BUTTON_CLICK || maction == MOUSE_LEFT_BUTTON_DOUBLE_CLICK) {
 
-						cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, 20);
+						cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, coverLength);
 						cct_setcolor(defaultColor);
 						cct_gotoxy(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4);
 						cout << "选中了" << (char)('A' + (y - 3) / (blockheight + frame)) << "行" << (x - 4) / (blockwidth + 2 * frame) << "列";
 						loop = 0;
 					}
 					if (maction == MOUSE_RIGHT_BUTTON_CLICK || maction == MOUSE_RIGHT_BUTTON_DOUBLE_CLICK || maction == MOUSE_LEFTRIGHT_BUTTON_CLICK) {
-						cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, 50);
+						cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, coverLength);
 						cct_setcolor(defaultColor);
 						cct_gotoxy(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4);
 						loop = 0;
@@ -514,7 +521,7 @@ void module5(int rowMax, int colMax, int matrix[][10])
 						reverseBlock(x, y, matrix[((y - 3) / (blockheight + frame))][(x - 4) / (blockwidth + 2 * frame)]);
 						first = true;
 					}
-					cct_showch(11, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, 20);
+					cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, coverLength);
 					cct_setcolor(defaultColor);
 					cct_gotoxy(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4);
 					cout << "[当前鼠标] 位置非法";
@@ -526,10 +533,10 @@ void module5(int rowMax, int colMax, int matrix[][10])
 			else if (ret == CCT_KEYBOARD_EVENT) {
 				if (prompt) {
 					prompt = false;
-					cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, 50);
+					cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, coverLength);
 					cct_setcolor(defaultColor);
 				}
-				cct_showch(11, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, 20);
+				cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, coverLength);
 				cct_setcolor(defaultColor);
 				cct_gotoxy(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4);
 				cout << "[当前键盘] ";
@@ -568,24 +575,24 @@ void module5(int rowMax, int colMax, int matrix[][10])
 								break;
 						}
 						inverseBlock(x, y, matrix[((y - 3) / (blockheight + frame))][(x - 4) / (blockwidth + 2 * frame)]);
-						cct_gotoxy(11, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4);
-						cout << (char)('A' + (y - 3) / (blockheight + frame)) << "行" << (x - 4) / (blockwidth + 2 * frame) << "列";
+						cct_gotoxy(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4);
+						cout << "选中了" << (char)('A' + (y - 3) / (blockheight + frame)) << "行" << (x - 4) / (blockwidth + 2 * frame) << "列";
 						break;
 					case 13:	//ENTER键
-						cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, 20);
+						cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, coverLength);
 						cct_setcolor(defaultColor);
 						cct_gotoxy(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4);
 						cout << "选中了" << (char)('A' + (y - 3) / (blockheight + frame)) << "行" << (x - 4) / (blockwidth + 2 * frame) << "列";
 						loop = 0;
 						break;
 					case 'q':
-						cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, 50);
+						cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, coverLength);
 						cct_setcolor(defaultColor);
 						cct_gotoxy(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4);
 						loop = 0;
 						break;
 					case'Q':
-						cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, 50);
+						cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, coverLength);
 						cct_setcolor(defaultColor);
 						cct_gotoxy(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4);
 						loop = 0;
@@ -634,7 +641,7 @@ void module6(int rowMax, int colMax, int matrix[][10])
 				/* 转到第7行进行打印 */
 				if (prompt) {
 					prompt = false;
-					cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, 50);
+					cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, coverLength);
 					cct_setcolor(defaultColor);
 				}
 				if (Y > 2 && Y < 4 + (rowMax - 1) * (3 + frame) + 2 && X>2 && X < 6 + (colMax - 1) * (6 + 2 * frame) + 4) {
@@ -645,13 +652,13 @@ void module6(int rowMax, int colMax, int matrix[][10])
 					if (first)
 						first = false;
 					if (warning && (x != 6 + ((X - 4) / blockwidth) * (6 + 2 * frame) || y != 4 + ((Y - 3) / blockheight) * (3 + frame))) {
-						cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, 50);
-						cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 3, ' ', background, 50);
+						cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, coverLength);
+						cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 3, ' ', background, coverLength);
 						cct_setcolor(defaultColor);
 						warning = false;
 					}
 					if (selected && (x != 6 + ((X - 4) / blockwidth) * (6 + 2 * frame) || y != 4 + ((Y - 3) / blockheight) * (3 + frame))) {
-						cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, 50);
+						cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, coverLength);
 						cct_setcolor(defaultColor);
 						search((y - 3) / blockheight, (x - 4) / blockwidth, matrix, rowMax, colMax, 6, 6, 4, blockheight - 1, blockwidth - 1, pivotMatrix, sum);
 						selected = false;
@@ -660,7 +667,7 @@ void module6(int rowMax, int colMax, int matrix[][10])
 					y = 4 + ((Y - 3) / blockheight) * (3 + frame);
 
 					if (!warning && !selected) {
-						cct_showch(11, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, 20);
+						cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, coverLength);
 						cct_setcolor(defaultColor);
 						cct_gotoxy(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4);
 						cout << "[当前鼠标] " << (char)('A' + (Y - 3) / blockheight) << "行" << (X - 4) / blockwidth << "列";
@@ -670,7 +677,7 @@ void module6(int rowMax, int colMax, int matrix[][10])
 							pivotMatrix[i][j] = 0;
 					sum = 0;
 					if (maction == MOUSE_LEFT_BUTTON_CLICK || maction == MOUSE_LEFT_BUTTON_DOUBLE_CLICK) {
-						cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, 20);
+						cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, coverLength);
 						cct_setcolor(defaultColor);
 						cct_gotoxy(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4);
 						sum = search((y - 3) / blockheight, (x - 4) / blockwidth, matrix, rowMax, colMax, 0, 0, 0, 0, 0, pivotMatrix, sum);
@@ -704,7 +711,7 @@ void module6(int rowMax, int colMax, int matrix[][10])
 
 						}
 						else if (selected && !warning) {
-							cct_showch(0, 0, ' ', background, 40);
+							cct_showch(0, 0, ' ', background, coverLength);
 							cct_setcolor(defaultColor);
 							cct_gotoxy(0, 0);
 							score += sum * sum * 5;
@@ -724,7 +731,7 @@ void module6(int rowMax, int colMax, int matrix[][10])
 									break;
 							}
 							zeroMoving(matrix, rowMax, colMax, false);
-							cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, 60);
+							cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, coverLength);
 
 							cct_gotoxy(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4);
 							cct_setcolor(texthighlight);
@@ -742,7 +749,7 @@ void module6(int rowMax, int colMax, int matrix[][10])
 						}
 					}
 					else if (maction == MOUSE_RIGHT_BUTTON_CLICK || maction == MOUSE_RIGHT_BUTTON_DOUBLE_CLICK || maction == MOUSE_LEFTRIGHT_BUTTON_CLICK) {
-						cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, 20);
+						cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, coverLength);
 						cct_setcolor(defaultColor);
 						cct_gotoxy(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 3);
 						loop = 0;
@@ -754,18 +761,18 @@ void module6(int rowMax, int colMax, int matrix[][10])
 						reverseBlock(x, y, matrix[((y - 3) / blockheight)][(x - 4) / blockwidth]);
 						first = true;
 					}
-					cct_showch(11, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, 60);
+					cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, coverLength);
 					cct_setcolor(defaultColor);
 
 					if (warning) {
-						cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, 50);
-						cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 3, ' ', background, 50);
+						cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, coverLength);
+						cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 3, ' ', background, coverLength);
 						cct_setcolor(defaultColor);
 						warning = false;
 						first = true;
 					}
 					if (selected) {
-						cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, 50);
+						cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, coverLength);
 						cct_setcolor(defaultColor);
 						search((y - 3) / (blockheight + frame), (x - 4) / (blockwidth + 2 * frame), matrix, rowMax, colMax, 6, 6, 4, blockheight - 1, blockwidth - 1, pivotMatrix, sum);
 						selected = false;
@@ -781,11 +788,11 @@ void module6(int rowMax, int colMax, int matrix[][10])
 			else if (ret == CCT_KEYBOARD_EVENT) {
 				if (prompt) {
 					prompt = false;
-					cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, 50);
+					cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, coverLength);
 					cct_setcolor(defaultColor);
 				}
 
-				cct_showch(11, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, 20);
+				cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, coverLength);
 				cct_setcolor(defaultColor);
 				cct_gotoxy(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4);
 				for (i = 0; i < 10; i++)
@@ -797,13 +804,13 @@ void module6(int rowMax, int colMax, int matrix[][10])
 						reverseBlock(x, y, matrix[((y - 3) / blockheight)][(x - 4) / blockwidth]);
 						if (keycode2 == KB_ARROW_UP || keycode2 == KB_ARROW_DOWN || keycode2 == KB_ARROW_LEFT || keycode2 == KB_ARROW_RIGHT) {
 							if (warning) {
-								cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, 50);
-								cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 3, ' ', background, 50);
+								cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, coverLength);
+								cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 3, ' ', background, coverLength);
 								cct_setcolor(defaultColor);
 								warning = false;
 							}
 							if (selected) {
-								cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, 50);
+								cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, coverLength);
 								cct_setcolor(defaultColor);
 								search((y - 3) / blockheight, (x - 4) / blockwidth, matrix, rowMax, colMax, 6, 6, 4, blockheight - 1, blockwidth - 1, pivotMatrix, sum);
 								selected = false;
@@ -847,13 +854,13 @@ void module6(int rowMax, int colMax, int matrix[][10])
 								break;
 						}
 						inverseBlock(x, y, matrix[((y - 3) / blockheight)][(x - 4) / blockwidth]);
-						cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, 30);
+						cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, coverLength);
 						cct_setcolor(defaultColor);
 						cct_gotoxy(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4);
 						cout << "[当前键盘] " << (char)('A' + (y - 3) / blockheight) << "行" << (x - 4) / blockwidth << "列";
 						break;
 					case 13:	//ENTER键
-						cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, 60);
+						cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, coverLength);
 						cct_setcolor(defaultColor);
 						cct_gotoxy(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4);
 						sum = search((y - 3) / blockheight, (x - 4) / blockwidth, matrix, rowMax, colMax, 0, 0, 0, 0, 0, pivotMatrix, sum);
@@ -886,7 +893,7 @@ void module6(int rowMax, int colMax, int matrix[][10])
 
 						}
 						else if (selected && !warning) {
-							cct_showch(0, 0, ' ', background, 40);
+							cct_showch(0, 0, ' ', background, coverLength);
 							cct_setcolor(defaultColor);
 							cct_gotoxy(0, 0);
 							score += sum * sum * 5;
@@ -906,7 +913,7 @@ void module6(int rowMax, int colMax, int matrix[][10])
 									break;
 							}
 							zeroMoving(matrix, rowMax, colMax, false);
-							cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, 60);
+							cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, coverLength);
 							cct_gotoxy(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4);
 							cct_setcolor(texthighlight);
 
@@ -924,13 +931,13 @@ void module6(int rowMax, int colMax, int matrix[][10])
 						}
 						break;
 					case 'q':
-						cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, 50);
+						cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, coverLength);
 						cct_setcolor(defaultColor);
 						cct_gotoxy(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4);
 						loop = 0;
 						break;
 					case'Q':
-						cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, 50);
+						cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, coverLength);
 						cct_setcolor(defaultColor);
 						cct_gotoxy(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4);
 						loop = 0;
@@ -981,7 +988,7 @@ void module7(int rowMax, int colMax, int matrix[][10])
 					/* 转到第7行进行打印 */
 					if (prompt) {
 						prompt = false;
-						cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, 50);
+						cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, coverLength);
 						cct_setcolor(defaultColor);
 					}
 					valid = true;
@@ -1004,14 +1011,14 @@ void module7(int rowMax, int colMax, int matrix[][10])
 							first = false;
 						if (warning && ((x != 6 + ((X - 4) / (blockwidth + frame * 2)) * (6 + 2 * frame) || y != 4 + ((Y - 3) / (blockheight + frame)) * (3 + frame)))) {
 							//system("pause");
-							cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, 50);
-							cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 3, ' ', background, 50);
+							cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, coverLength);
+							cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 3, ' ', background, coverLength);
 							cct_setcolor(defaultColor);
 							warning = false;
 						}
 						if (selected && ((x != 6 + ((X - 4) / (blockwidth + frame * 2)) * (6 + 2 * frame) || y != 4 + ((Y - 3) / (blockheight + frame)) * (3 + frame)))) {
 							//system("pause");
-							cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, 50);
+							cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, coverLength);
 							cct_setcolor(defaultColor);
 							search((y - 3) / (blockheight + frame), (x - 4) / (blockwidth + 2 * frame), matrix, rowMax, colMax, 6, 6, 4, blockheight, blockwidth + 1, pivotMatrix, sum);
 							selected = false;
@@ -1023,13 +1030,13 @@ void module7(int rowMax, int colMax, int matrix[][10])
 						x = 6 + ((X - 4) / (blockwidth + 2 * frame)) * (6 + 2 * frame);
 						y = 4 + ((Y - 3) / (blockheight + frame)) * (3 + frame);
 						if (!warning && !selected) {
-							cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, 50);
+							cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, coverLength);
 							cct_setcolor(defaultColor);
 							cct_gotoxy(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4);
 							cout << "[当前鼠标] " << (char)('A' + (Y - 3) / (blockheight + frame)) << "行" << (X - 4) / (blockwidth + 2 * frame) << "列";
 						}
 						if (maction == MOUSE_LEFT_BUTTON_CLICK || maction == MOUSE_LEFT_BUTTON_DOUBLE_CLICK) {
-							cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, 20);
+							cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, coverLength);
 							cct_setcolor(defaultColor);
 							cct_gotoxy(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4);
 							sum = search((y - 3) / (blockheight + frame), (x - 4) / (blockwidth + 2 * frame), matrix, rowMax, colMax, 0, 0, 0, 0, 0, pivotMatrix, sum);
@@ -1065,13 +1072,13 @@ void module7(int rowMax, int colMax, int matrix[][10])
 
 
 								if (matrix[((y - 3) / (blockheight + 1))][(x - 4) / (blockwidth + 2 * frame)] != 0) {
-									cct_showch(0, 0, ' ', background, 40);
+									cct_showch(0, 0, ' ', background, coverLength);
 									cct_setcolor(defaultColor);
 									cct_gotoxy(0, 0);
 									score += sum * sum * 5;
 									cout << "本次得分" << sum * sum * 5 << " 总分:" << score;
 								}
-								cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, 50);
+								cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, coverLength);
 								cct_setcolor(defaultColor);
 								cct_gotoxy(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4);
 								cout << "合成完成,回车键/单击左键下落";
@@ -1094,7 +1101,7 @@ void module7(int rowMax, int colMax, int matrix[][10])
 									cout << "剩余" << remainder << "个星星, 无可消除项,本关结束!";
 									cct_setcolor(defaultColor);
 									cout << "回车继续下一关";
-									cct_showch(0, 0, ' ', background, 50);
+									cct_showch(0, 0, ' ', background, coverLength);
 									cct_setcolor(defaultColor);
 									cct_gotoxy(0, 0);
 									cout << "奖励得分";
@@ -1112,17 +1119,20 @@ void module7(int rowMax, int colMax, int matrix[][10])
 									for (i = 0; i < 10; i++)
 										for (j = 0; j < 10; j++)
 											matrix[i][j] = (rand() % 9) + 1;
+									x = 6;
+									y = 4;
 								}
 								else {
-									cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, 50);
+									cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, coverLength);
 									cct_setcolor(defaultColor);
 									cct_gotoxy(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4);
 									cout << "[当前鼠标] " << (char)('A' + (y - 3) / (blockheight + frame)) << "行" << (x - 4) / (blockwidth + 2 * frame) << "列";
+
 								}
 							}
 						}
 						else if (maction == MOUSE_RIGHT_BUTTON_CLICK || maction == MOUSE_RIGHT_BUTTON_DOUBLE_CLICK || maction == MOUSE_LEFTRIGHT_BUTTON_CLICK) {
-							cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, 50);
+							cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, coverLength);
 							cct_setcolor(defaultColor);
 							cct_gotoxy(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 3);
 							loop = 0;
@@ -1134,17 +1144,17 @@ void module7(int rowMax, int colMax, int matrix[][10])
 							reverseBlock(x, y, matrix[((y - 3) / (blockheight + frame))][(x - 4) / (blockwidth + 2 * frame)]);
 							first = true;
 						}
-						cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, 60);
+						cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, coverLength);
 						cct_setcolor(defaultColor);
 
 						if (warning) {
-							cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, 50);
-							cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 3, ' ', background, 50);
+							cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, coverLength);
+							cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 3, ' ', background, coverLength);
 							cct_setcolor(defaultColor);
 							warning = false;
 						}
 						if (selected) {
-							cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, 50);
+							cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, coverLength);
 							cct_setcolor(defaultColor);
 							search((y - 3) / (blockheight + frame), (x - 4) / (blockwidth + 2 * frame), matrix, rowMax, colMax, 6, 6, 4, blockheight, blockwidth + 1, pivotMatrix, sum);
 							selected = false;
@@ -1159,10 +1169,10 @@ void module7(int rowMax, int colMax, int matrix[][10])
 				else if (ret == CCT_KEYBOARD_EVENT) {
 					if (prompt) {
 						prompt = false;
-						cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, 50);
+						cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, coverLength);
 						cct_setcolor(defaultColor);
 					}
-					cct_showch(11, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, 20);
+					cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, coverLength);
 					cct_setcolor(defaultColor);
 					cct_gotoxy(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4);
 					for (i = 0; i < 10; i++)
@@ -1174,13 +1184,13 @@ void module7(int rowMax, int colMax, int matrix[][10])
 							reverseBlock(x, y, matrix[((y - 3) / (blockheight + frame))][(x - 4) / (blockwidth + 2 * frame)]);
 							if (keycode2 == KB_ARROW_UP || keycode2 == KB_ARROW_DOWN || keycode2 == KB_ARROW_LEFT || keycode2 == KB_ARROW_RIGHT) {
 								if (warning) {
-									cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, 50);
-									cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 3, ' ', background, 50);
+									cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, coverLength);
+									cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 3, ' ', background, coverLength);
 									cct_setcolor(defaultColor);
 									warning = false;
 								}
 								if (selected) {
-									cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, 50);
+									cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, coverLength);
 									cct_setcolor(defaultColor);
 									search((y - 3) / (blockheight + frame), (x - 4) / (blockwidth + 2 * frame), matrix, rowMax, colMax, 6, 6, 4, blockheight, blockwidth + 1, pivotMatrix, sum);
 									selected = false;
@@ -1265,7 +1275,7 @@ void module7(int rowMax, int colMax, int matrix[][10])
 									score += sum * sum * 5;
 									cout << "本次得分" << sum * sum * 5 << " 总分:" << score;
 								}
-								cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, 50);
+								cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, coverLength);
 								cct_setcolor(defaultColor);
 								cct_gotoxy(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4);
 								cout << "合成完成,回车键/单击左键下落";
@@ -1305,23 +1315,26 @@ void module7(int rowMax, int colMax, int matrix[][10])
 									for (i = 0; i < 10; i++)
 										for (j = 0; j < 10; j++)
 											matrix[i][j] = (rand() % 9) + 1;
+									x = 6;
+									y = 4;
 								}
 								else {
-									cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, 50);
+									cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, coverLength);
 									cct_setcolor(defaultColor);
 									cct_gotoxy(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4);
 									cout << "[当前键盘] " << (char)('A' + (y - 3) / (blockheight + frame)) << "行" << (x - 4) / (blockwidth + 2 * frame) << "列";
+
 								}
 								break;
 						case 'q':
-							cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, 50);
+							cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, coverLength);
 							cct_setcolor(defaultColor);
 							cct_gotoxy(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4);
 							loop = 0;
 							end = true;
 							break;
 						case'Q':
-							cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, 50);
+							cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, coverLength);
 							cct_setcolor(defaultColor);
 							cct_gotoxy(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4);
 							loop = 0;
@@ -1336,7 +1349,7 @@ void module7(int rowMax, int colMax, int matrix[][10])
 			}
 
 			cct_gotoxy(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 3);
-			cin.ignore(10000, '\n');
+			//cin.ignore(10000, '\n');
 		}
 	}
 	return;

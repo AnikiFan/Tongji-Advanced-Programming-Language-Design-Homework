@@ -13,27 +13,27 @@ using namespace std;
 #define background black
 #define backgroundhighlight 14,0
 #define texthighlight 0,14
-#define colorBoard  { { 14,0},{ 13,0} ,{11,0} ,{8,0} ,{14,0} ,{6,0} ,{2,0} ,{4,0} ,{1,0} ,{5,0} }
+#define colorBoard  { { 15,0},{ 13,0} ,{11,0} ,{8,0} ,{14,0} ,{6,0} ,{2,0} ,{4,0} ,{1,0} ,{5,0} }
 #define inverseColor 15,0
 #define blockheight 3
 #define blockwidth 6
 #define delay Sleep(0)
-
+#define coverLength 60
 void reload(void);
 
 void module1(int rowMax, int colMax, int matrix[][10]);
-void module2(int rowMax, int colMax,int matrix[][10]);
-void module3(int rowMax, int colMax,int matrix[][10]);
-void module4(int rowMax, int colMax,int matrix[][10]);
-void module5(int rowMax, int colMax,int matrix[][10]);
-void module6(int rowMax, int colMax,int matrix[][10]);
-void module7(int rowMax, int colMax,int matrix[][10]);
-void matrixGenerator(int matrix[][10], int rowInterval, int colInterval, int rowMax, int colMax, int srcxcoo, int srcycoo,bool zeroHighlight);
-int search(int srcRow, int srcCol, int matrix[][10], int rowMax, int colMax, int option, int x, int y, int rowInterval, int colInterval,int pivotMatrix[][10],int &sum);//xy为第一个元素的坐标
+void module2(int rowMax, int colMax, int matrix[][10]);
+void module3(int rowMax, int colMax, int matrix[][10]);
+void module4(int rowMax, int colMax, int matrix[][10]);
+void module5(int rowMax, int colMax, int matrix[][10]);
+void module6(int rowMax, int colMax, int matrix[][10]);
+void module7(int rowMax, int colMax, int matrix[][10]);
+void matrixGenerator(int matrix[][10], int rowInterval, int colInterval, int rowMax, int colMax, int srcxcoo, int srcycoo, bool zeroHighlight);
+int search(int srcRow, int srcCol, int matrix[][10], int rowMax, int colMax, int option, int x, int y, int rowInterval, int colInterval, int pivotMatrix[][10], int& sum);//xy为第一个元素的坐标
 void getCoordinate(int& row, int& col, int rowMax, int colMax);
-void matrixInitialize(int rowMax, int colMax, int matrix[][10],bool zeroHighlight);
+void matrixInitialize(int rowMax, int colMax, int matrix[][10], bool zeroHighlight);
 void zeroMoving(int matrix[][10], int rowMax, int colMax);
-int victory(int matrix[][10], int rowMax, int colMax,int &total);
+int victory(int matrix[][10], int rowMax, int colMax, int& total);
 void matrixInitialize(int maxRow, int maxCol, bool frame, int matrix[][10]);
 void inverseBlock(int x, int y, int colorCode);
 void reverseBlock(int x, int y, int colorCode);
