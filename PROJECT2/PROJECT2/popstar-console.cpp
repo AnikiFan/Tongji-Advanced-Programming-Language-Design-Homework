@@ -992,6 +992,8 @@ void module7(int rowMax, int colMax, int matrix[][10])
 						cct_setcolor(defaultColor);
 					}
 					valid = true;
+					if (matrix[((Y - 3) / (blockheight + frame))][(X - 4) / (blockwidth + 2 * frame)] == 0)
+						valid = false;
 					if (Y > 2 && Y < 4 + (rowMax - 1) * (3 + frame) + 2 && X>2 && X < 6 + (colMax - 1) * (6 + 2 * frame) + 4) {
 						for (i = 0; i < colMax - 1; i++)
 							if (X == 6 + i * (6 + 2 * frame) + 4 || X == 6 + i * (6 + 2 * frame) + 5)
@@ -1172,8 +1174,10 @@ void module7(int rowMax, int colMax, int matrix[][10])
 						cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, coverLength);
 						cct_setcolor(defaultColor);
 					}
-					cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, coverLength);
-					cct_setcolor(defaultColor);
+					if ((keycode1 == 224 && (keycode2 == KB_ARROW_UP || KB_ARROW_DOWN || KB_ARROW_LEFT || KB_ARROW_RIGHT)) || keycode1 == 13 || keycode1 == 'q' || keycode1 == 'Q') {
+						cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, coverLength);
+						cct_setcolor(defaultColor);
+					}
 					cct_gotoxy(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4);
 					for (i = 0; i < 10; i++)
 						for (j = 0; j < 10; j++)
@@ -1196,10 +1200,31 @@ void module7(int rowMax, int colMax, int matrix[][10])
 									selected = false;
 								}
 							}
+							if (x == 6)
+								i = 6 + (colMax - 1) * (6 + 2 * frame);
+							else
+								i = x - (blockwidth + 2);
+							while (matrix[(y - 3) / (blockheight + frame)][(i - 4) / (blockwidth + 2 * frame)] == 0 && i != x) {
+								if (i == 6)
+									i = 6 + (colMax - 1) * (6 + 2 * frame);
+								else
+									i -= (blockwidth + 2);
+							}
+							if (x == 6 + (colMax - 1) * (6 + 2 * frame))
+								j = 6;
+							else
+								j = x + (blockwidth + 2);
+							while (matrix[(y - 3) / (blockheight + frame)][(j - 4) / (blockwidth + 2 * frame)] == 0 && j != x) {
+								if (j == 6 + (colMax - 1) * (6 + 2 * frame))
+									j = 6;
+								else
+									j += (blockwidth + 2);
+
+							}
 							switch (keycode2) {
 								case KB_ARROW_UP:
 
-									if (y == 4)
+									if (y == 4 || matrix[(y - 3) / (blockheight + frame) - 1][(x - 4) / (blockwidth + 2 * frame)] == 0)
 										y = 4 + (rowMax - 1) * (3 + frame);
 									else
 										y -= (blockheight + 1);
@@ -1214,22 +1239,10 @@ void module7(int rowMax, int colMax, int matrix[][10])
 										y += (blockheight + 1);
 									break;
 								case KB_ARROW_LEFT:
-
-
-									if (x == 6)
-										x = 6 + (colMax - 1) * (6 + 2 * frame);
-									else
-										x -= (blockwidth + 2);
-
+									x = i;
 									break;
 								case KB_ARROW_RIGHT:
-
-
-									if (x == 6 + (colMax - 1) * (6 + 2 * frame))
-										x = 6;
-									else
-										x += (blockwidth + 2);
-
+									x = j;
 									break;
 							}
 							inverseBlock(x, y, matrix[((y - 3) / (blockheight + frame))][(x - 4) / (blockwidth + 2 * frame)]);
@@ -1319,11 +1332,22 @@ void module7(int rowMax, int colMax, int matrix[][10])
 									y = 4;
 								}
 								else {
-									cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, coverLength);
-									cct_setcolor(defaultColor);
+									if ((keycode1 == 224 && (keycode2 == KB_ARROW_UP || KB_ARROW_DOWN || KB_ARROW_LEFT || KB_ARROW_RIGHT)) || keycode1 == 13 || keycode1 == 'q' || keycode1 == 'Q') {
+										cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, coverLength);
+										cct_setcolor(defaultColor);
+									}
 									cct_gotoxy(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4);
-									cout << "[当前键盘] " << (char)('A' + (y - 3) / (blockheight + frame)) << "行" << (x - 4) / (blockwidth + 2 * frame) << "列";
-
+									cout << "箭头键/鼠标移动,回车键/单击左键选择,Q/单击右键结束";
+									x = 6;
+									y = 4;
+									inverseBlock(6, 4, matrix[0][0]);
+									while (matrix[(y - 3) / (blockheight + frame)][(j - 4) / (blockwidth + 2 * frame)] == 0) {
+										if (y == 4 + (rowMax - 1) * (3 + frame))
+											y = 4;
+										else
+											y += (blockheight + 1);
+									}
+									inverseBlock(x, y, matrix[(y - 3) / (blockheight + frame)][(j - 4) / (blockwidth + 2 * frame)]);
 								}
 								break;
 						case 'q':
