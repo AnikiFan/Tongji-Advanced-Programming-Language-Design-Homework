@@ -2,6 +2,7 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include<iostream>
 #include<iomanip>
+#include<conio.h>
 using namespace std;
 #define codeLength 3
 #define seperateLength 3
@@ -14,16 +15,43 @@ using namespace std;
 #define maxNum 26
 #define itemNum 20
 #define discountNum 7
-#define screenWidth 3*columnWidth
-#define screenHeight (itemNum/2+discountNum+12)
+#define screenWidth boardWidth
+#define screenHeight (itemNum/2+discountNum+30)
 #define showcaseNum 2
 #define maxOrderNum 1000000
 int main()
 {
-	struct {
+	struct ITEM {
 		char name[infoLength];
-		int price;
-	} item[maxNum] = {
+		double price;
+		int count = 0;
+	};
+	struct DISCOUNT {
+		int totalNum;//优惠涉及单品种类数量
+		int eachNum[maxNum];//各个单品涉及的数量
+		int eachCode[maxNum];//各个单品对应的代码
+		double discount;//单个组合总金额
+		char name[infoLength];
+		int eachcount[maxNum] = { 0 };//各个单品满足的最大优惠个数
+	};
+	struct {
+		int totalNum;//涉及单品种类数量
+		int eachCode[maxNum];//各个单品总数
+		int eachNum[maxNum];
+		int showcase[50];
+	}showcase[showcaseNum] = {
+		{3,{7,8,9},{1,1,1},{8,9,7}},
+		{2,{3,4},{3,4},{3,4,3,4,3,4,4}}
+	};
+	int i, j, k;
+	double sum;
+	bool valid;
+	char command[100];
+	sprintf(command, "mode con cols=%d lines=%d", screenWidth, screenHeight);
+	system(command);
+	system("cls");
+	while (1) {
+		ITEM item[maxNum] = {
 		{"四喜烤麸",6},
 		{"花椰菜",5},
 		{"红糖馒头",4},
@@ -36,55 +64,36 @@ int main()
 		{"牡蛎",5},
 		{"红茶",1},
 		{"布丁",4},
-		{"迎宾酒",1919810},
+		{"迎宾酒",1919.810},
 		//7
-		{"双吉芝士汉堡",10},
+		{"双吉芝士汉堡",10.5},
 		{"柠檬红茶",6},
 		//2
 		{"培根双层安格斯厚牛堡",45},
-		{"特浓抹茶雪冰",23},
+		{"特浓抹茶雪冰",23.5},
 		//2
 		{"肉肉烤蘑菇披萨",33},
 		{"日落梅梅茶",15},
-		{"奶香菌菇脆塔",22},
+		{"奶香菌菇脆塔",22.5},
 		{"可口可乐",15}
 		//4
-	};
-	struct {
-		int totalNum;//优惠涉及单品数量
-		int eachNum[maxNum];//各个单品涉及的数量
-		int eachCode[maxNum];//各个单品对应的代码
-		double discount;//单个组合优惠金额
-		char name[infoLength];
-	}discount[maxNum] = {
+		};
+		DISCOUNT discount[maxNum] = {
 		{5,{1,1,1,1,1},{0,1,2,3,4},1,"隔离餐"},
-		{7,{1,1,1,1,1,1,1},{5,6,7,8,9,10,11},114514,"会员制套餐"},
+		{5,{1,1,1,1,1},{5,6,9,10,11},114.514,"会员制套餐"},
 		{1,{2},{7},5,"鸭蛋莫鸭蛋"},
 		{1,{2},{8},6,"牡蛎莫牡蛎"},
 		{2,{1,1},{12,13},13.9,"穷鬼套餐"},
 		{2,{1,1},{14,15},50,"富哥套餐"},
 		{4,{1,1,1,1},{16,17,18,19},66,"Genshin联动套餐"}
-	};
-	struct {
-		int totalNum;//涉及单品种类数量
-		int eachCode[maxNum];//各个单品总数
-		int eachNum[maxNum];
-		int showcase[50];
-	}showcase[showcaseNum] = {
-		{3,{7,8,9},{1,1,1},{8,9,7}},
-		{2,{3,4},{3,4},{3,4,3,4,3,4,4}}
-	};
-	int i, j, sum;
-	char command[100];
-	sprintf(command, "mode con cols=%d lines=%d", screenWidth, screenHeight);
-	system(command);
-	while (1) {
-		char order[maxOrderNum];
-		cout << setw(boardWidth) << setfill('=') << " " << setfill(' ') << endl;
+		};
+		char order[maxOrderNum] = { 0 }, * p = order;
+		cout << setw(boardWidth) << setfill('=') << " " << setfill(' ');
 		cout << setw(columnWidth + titleLength / 2 + 2) << boardTitle << endl;
-		cout << setw(boardWidth) << setfill('=') << " " << setfill(' ') << endl;
+		cout << setw(boardWidth) << setfill('=') << " " << setfill(' ');
 		for (i = 0; i < itemNum; i++) {
-			cout << setw(codeLength - 1) << (char)('A' + i) << " " << setw(infoLength) << setiosflags(ios::left) << item[i].name << resetiosflags(ios::left) << setw(priceLength) << item[i].price;
+			cout << setw(codeLength - 1) << (char)('A' + i) << " " << setw(infoLength) << setiosflags(ios::left) << item[i].name << resetiosflags(ios::left)
+				<< setw(priceLength) << setiosflags(ios::left) << item[i].price << resetiosflags(ios::left);
 			if (i % 2 == 0)
 				cout << setw(seperateLength - 1) << "|";
 			if (i % 2 == 1)
@@ -103,6 +112,7 @@ int main()
 			}
 			cout << "=" << discount[i].discount << endl;
 		}
+		cout << endl;
 		cout << "[输入规则说明] : " << endl;
 		for (i = 0; i < showcaseNum; i++) {
 			sum = 0;
@@ -133,7 +143,62 @@ int main()
 		}
 		cout << endl;
 		cout << "字母不分大小写,不限顺序,单独输入0则退出程序" << endl << endl << "请点单:";
-		cin.getline(order, maxOrderNum, );
+		cin.getline(order, maxOrderNum);
+		if (order[0] == '0' && order[1] == '\0') {
+			cout << endl;
+			return 0;
+		}
+		valid = true;
+		while (*p != '\0') {
+			if (*p > 'a' + itemNum - 1 || (*p < 'a' && *p>'A' + itemNum - 1) || *p < 'A') {
+				cout << "输入错误,按任意键继续" << endl;
+				_getch();
+				valid = false;
+				break;
+			}
+			if (*p >= 'A' && *p <= 'A' + itemNum - 1) {
+				*p -= 'A' - 'a';//全部转换为小写
+				item[*p - 'a'].count++;
+				p++;
+			}
+			else {
+				item[*p - 'a'].count++;
+				p++;
+			}
+
+		}
+		if (valid) {
+			sum = 0;
+			cout << "您的点单=";
+			for (i = 0; i < itemNum; i++) {
+				if (item[i].count == 1)
+					cout << item[i].name << "+";
+				else if (item[i].count > 1)
+					cout << item[i].name << "*" << item[i].count << "+";
+				if (item[i].count != 0)
+					sum += item[i].count * item[i].price;
+				for (j = 0; j < discountNum; j++) {
+					int temp = 0;
+					double tempdiscount = 0;
+					for (k = 0; k < discount[j].totalNum; k++)
+						if (discount[j].eachCode[k] == i)
+							discount[j].eachcount[k] = item[i].count / discount[j].eachNum[k];
+					for (k = 0; k < discount[j].totalNum; k++)
+						if (discount[j].eachcount[k] > temp)
+							temp = discount[j].eachcount[k];
+					for (k = 0; k < discount[j].totalNum; k++)
+						tempdiscount += discount[j].eachNum[k] * item[discount[j].eachCode[k]].price;
+					tempdiscount = tempdiscount - discount->discount;//单次优惠金额
+					sum -= tempdiscount * temp;
+				}
+
+			}
+			cout << '\b' << " ";
+			cout << endl;
+			cout << "共计: " << sum << "元" << endl;
+			cout << "点单完成,按任意键继续" << endl;
+			_getch();
+		}
 		system("cls");
 	}
 	return 0;
