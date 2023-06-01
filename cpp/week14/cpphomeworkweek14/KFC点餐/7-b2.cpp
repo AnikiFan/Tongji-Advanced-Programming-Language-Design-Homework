@@ -80,7 +80,7 @@ int main()
 		};
 		DISCOUNT discount[maxNum] = {
 		{5,{1,1,1,1,1},{0,1,2,3,4},1,"隔离餐"},
-		{5,{1,1,1,1,1},{5,6,9,10,11},114.514,"会员制套餐"},
+		{5,{1,1,1,1,1},{5,6,9,10,11},1145.14,"会员制套餐"},
 		{1,{2},{7},5,"鸭蛋莫鸭蛋"},
 		{1,{2},{8},6,"牡蛎莫牡蛎"},
 		{2,{1,1},{12,13},13.9,"穷鬼套餐"},
@@ -88,6 +88,8 @@ int main()
 		{4,{1,1,1,1},{16,17,18,19},66,"Genshin联动套餐"}
 		};
 		char order[maxOrderNum] = { 0 }, * p = order;
+		int temp = 0;
+		double tempdiscount = 0;
 		cout << setw(boardWidth) << setfill('=') << " " << setfill(' ');
 		cout << setw(columnWidth + titleLength / 2 + 2) << boardTitle << endl;
 		cout << setw(boardWidth) << setfill('=') << " " << setfill(' ');
@@ -177,21 +179,21 @@ int main()
 					cout << item[i].name << "*" << item[i].count << "+";
 				if (item[i].count != 0)
 					sum += item[i].count * item[i].price;
-				for (j = 0; j < discountNum; j++) {
-					int temp = 0;
-					double tempdiscount = 0;
-					for (k = 0; k < discount[j].totalNum; k++)
-						if (discount[j].eachCode[k] == i)
-							discount[j].eachcount[k] = item[i].count / discount[j].eachNum[k];
-					for (k = 0; k < discount[j].totalNum; k++)
-						if (discount[j].eachcount[k] > temp)
-							temp = discount[j].eachcount[k];
-					for (k = 0; k < discount[j].totalNum; k++)
-						tempdiscount += discount[j].eachNum[k] * item[discount[j].eachCode[k]].price;
-					tempdiscount = tempdiscount - discount->discount;//单次优惠金额
-					sum -= tempdiscount * temp;
+			}
+			for (j = 0; j < discountNum; j++) {
+				temp = 0;
+				tempdiscount = 0;
+				for (k = 0; k < discount[j].totalNum; k++)
+					discount[j].eachcount[k] = item[discount[j].eachCode[k]].count / discount[j].eachNum[k];
+				for (k = 0; k < discount[j].totalNum; k++) {
+					temp = discount[j].eachcount[0];
+					if (discount[j].eachcount[k] < temp)
+						temp = discount[j].eachcount[k];
 				}
-
+				for (k = 0; k < discount[j].totalNum; k++)
+					tempdiscount += discount[j].eachNum[k] * item[discount[j].eachCode[k]].price;
+				tempdiscount = tempdiscount - discount[j].discount;//单次优惠金额
+				sum -= tempdiscount * temp;
 			}
 			cout << '\b' << " ";
 			cout << endl;
