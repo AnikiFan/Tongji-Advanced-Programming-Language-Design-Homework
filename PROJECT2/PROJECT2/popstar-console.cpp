@@ -152,7 +152,7 @@ void zeroMoving(int matrix[][10], int rowMax, int colMax, bool frame)
 						if (matrix[i][j + 1] == 0)
 							break;
 						int r;
-						
+
 						//cancelBlock(k + 1, 4 + i * (blockheight + frame));
 						////system("pause");
 						//delay;
@@ -160,10 +160,10 @@ void zeroMoving(int matrix[][10], int rowMax, int colMax, bool frame)
 						blockGenrator(k, 4 + i * (blockheight + frame), matrix[i][j + 1]);
 						//system("pause");
 						delay;
-for (r = 4 + i * (blockheight + frame); r < 4 + i * (blockheight + frame) + blockheight; r++) 
+						for (r = 4 + i * (blockheight + frame); r < 4 + i * (blockheight + frame) + blockheight; r++)
 
-							cct_showch(k+4, r-1, ' ', 15, 15, 1);
-delay;
+							cct_showch(k + 4, r - 1, ' ', 15, 15, 1);
+						delay;
 					}
 					matrix[i][j] = matrix[i][j + 1];
 					matrix[i][j + 1] = 0;
@@ -182,6 +182,25 @@ delay;
 			break;
 	}
 	return;
+}
+int whetherMove(int matrix[][10], int rowMax, int colMax)
+{
+	int i, j;
+	for (j = 0; j < colMax; j++)
+		for (i = rowMax - 1; i > 0; i--)
+			if (matrix[i - 1][j] != 0 && matrix[i][j] == 0)
+				return 1;
+	int temp = 0;
+	for (j = 0; j < colMax - 1; j++)
+		if (matrix[rowMax - 1][j] == 0 && matrix[rowMax - 1][j + 1] != 0) {
+			temp = 0;
+			for (i = 0; i < rowMax; i++)
+				if (matrix[i][j] != 0)
+					temp = 1;
+			if (!temp)
+				return 1;
+		}
+	return 0;
 }
 void matrixInitialize(int maxRow, int maxCol, bool frame, int matrix[][10])
 {
@@ -1098,21 +1117,24 @@ void module7(int rowMax, int colMax, int matrix[][10])
 								}
 								cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, coverLength);
 								cct_setcolor(defaultColor);
-								cct_gotoxy(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4);
-								cout << "合成完成,回车键/单击左键下落";
 								for (i = 0; i < 10; i++)
 									for (j = 0; j < 10; j++)
 										pivotMatrix[i][j] = 0;
 								search((y - 3) / (blockheight + frame), (x - 4) / (blockwidth + 2 * frame), matrix, rowMax, colMax, 7, 6, 4, blockheight, blockwidth + 1, pivotMatrix, sum);
-								while (1) {
-									ret = cct_read_keyboard_and_mouse(X, Y, maction, keycode1, keycode2);
+								if (whetherMove(matrix, rowMax, colMax)) {
+									cct_gotoxy(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4);
+									cout << "合成完成,回车键/单击左键下落";
 
-									if (ret == CCT_MOUSE_EVENT && (maction == MOUSE_LEFT_BUTTON_CLICK || maction == MOUSE_LEFT_BUTTON_DOUBLE_CLICK || maction == MOUSE_LEFTRIGHT_BUTTON_CLICK || maction == MOUSE_LEFTRIGHT_BUTTON_CLICK))
-										break;
-									else if (ret == CCT_KEYBOARD_EVENT && keycode1 == 13)
-										break;
+									while (1) {
+										ret = cct_read_keyboard_and_mouse(X, Y, maction, keycode1, keycode2);
+
+										if (ret == CCT_MOUSE_EVENT && (maction == MOUSE_LEFT_BUTTON_CLICK || maction == MOUSE_LEFT_BUTTON_DOUBLE_CLICK || maction == MOUSE_LEFTRIGHT_BUTTON_CLICK || maction == MOUSE_LEFTRIGHT_BUTTON_CLICK))
+											break;
+										else if (ret == CCT_KEYBOARD_EVENT && keycode1 == 13)
+											break;
+									}
+									zeroMoving(matrix, rowMax, colMax, true);
 								}
-								zeroMoving(matrix, rowMax, colMax, true);
 								if (victory(matrix, rowMax, colMax, remainder)) {
 									cct_gotoxy(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4);
 									cct_setcolor(texthighlight);
@@ -1318,22 +1340,24 @@ void module7(int rowMax, int colMax, int matrix[][10])
 								}
 								cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, coverLength);
 								cct_setcolor(defaultColor);
-								cct_gotoxy(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4);
-								cout << "合成完成,回车键/单击左键下落";
 								for (i = 0; i < 10; i++)
 									for (j = 0; j < 10; j++)
 										pivotMatrix[i][j] = 0;
 								search((y - 3) / (blockheight + frame), (x - 4) / (blockwidth + 2 * frame), matrix, rowMax, colMax, 7, 6, 4, blockheight, blockwidth + 1, pivotMatrix, sum);
-								while (1) {
-									ret = cct_read_keyboard_and_mouse(X, Y, maction, keycode1, keycode2);
+								if (whetherMove(matrix, rowMax, colMax)) {
+									cct_gotoxy(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4);
+									cout << "合成完成,回车键/单击左键下落";
 
-									if (ret == CCT_MOUSE_EVENT && (maction == MOUSE_LEFT_BUTTON_CLICK || maction == MOUSE_LEFT_BUTTON_DOUBLE_CLICK || maction == MOUSE_LEFTRIGHT_BUTTON_CLICK || maction == MOUSE_LEFTRIGHT_BUTTON_CLICK))
-										break;
-									else if (ret == CCT_KEYBOARD_EVENT && keycode1 == 13)
-										break;
+									while (1) {
+										ret = cct_read_keyboard_and_mouse(X, Y, maction, keycode1, keycode2);
+
+										if (ret == CCT_MOUSE_EVENT && (maction == MOUSE_LEFT_BUTTON_CLICK || maction == MOUSE_LEFT_BUTTON_DOUBLE_CLICK || maction == MOUSE_LEFTRIGHT_BUTTON_CLICK || maction == MOUSE_LEFTRIGHT_BUTTON_CLICK))
+											break;
+										else if (ret == CCT_KEYBOARD_EVENT && keycode1 == 13)
+											break;
+									}
+									zeroMoving(matrix, rowMax, colMax, true);
 								}
-								zeroMoving(matrix, rowMax, colMax, true);
-
 								if (victory(matrix, rowMax, colMax, remainder)) {
 									cct_gotoxy(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4);
 									cct_setcolor(texthighlight);
