@@ -1293,8 +1293,15 @@ void module7(int rowMax, int colMax, int matrix[][10])
 								case KB_ARROW_DOWN:
 
 
-									if (y == 4 + (rowMax - 1) * (3 + frame))
+									if (y == 4 + (rowMax - 1) * (3 + frame)) {
 										y = 4;
+										while (1)
+											if (matrix[(y - 3) / (blockheight + frame) ][(x - 4) / (blockwidth + 2 * frame)] == 0)
+												y += (blockheight + 1);
+											else
+												break;
+
+									}
 									else
 										y += (blockheight + 1);
 									break;
