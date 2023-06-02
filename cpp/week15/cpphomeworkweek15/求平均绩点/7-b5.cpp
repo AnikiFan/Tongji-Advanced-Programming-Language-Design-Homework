@@ -48,7 +48,7 @@ void input(struct student* stu, int num)
 		 如果不用，允许删除，但不得增加或替换为其它形式的变量
 		包括for(int k=0; )形式的新变量定义同样禁止 */
 	int i, j;
-	for (i = 0; i < N; i++) {
+	for (i = 0; i < num; i++) {
 		cout << "请输入第" << setw(2) << i << "个学生的信息 : ";
 		cin >> stu->no;
 		cin >> stu->name;

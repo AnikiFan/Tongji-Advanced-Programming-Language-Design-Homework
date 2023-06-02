@@ -114,11 +114,13 @@ void zeroMoving(int matrix[][10], int rowMax, int colMax, bool frame)
 			for (i = rowMax - 1; i > 0; i--) {
 				if (matrix[i - 1][j] != 0 && matrix[i][j] == 0) {
 					for (k = 4 + (i - 1) * (blockheight + frame); k < 4 + i * (blockheight + frame); k++) {
-						cancelBlock(6 + j * (blockwidth + 2 * frame), k);
-						//system("pause");
-						delay;
+						//cancelBlock(6 + j * (blockwidth + 2 * frame), k);
+						////system("pause");
+						//delay;
 						blockGenrator(6 + j * (blockwidth + 2 * frame), k + 1, matrix[i - 1][j]);
 						//system("pause");
+						delay;
+						cct_showch(6 + j * (blockwidth + 2 * frame) - 2, k - 1, ' ', 15, 15, blockwidth);
 						delay;
 					}
 					if (frame) {
@@ -149,13 +151,19 @@ void zeroMoving(int matrix[][10], int rowMax, int colMax, bool frame)
 					for (k = 6 + (j + 1) * (blockwidth + 2 * frame) - 1; k > 6 + j * (blockwidth + 2 * frame) - 1; k--) {
 						if (matrix[i][j + 1] == 0)
 							break;
-						cancelBlock(k + 1, 4 + i * (blockheight + frame));
-						//system("pause");
-						delay;
+						int r;
+						
+						//cancelBlock(k + 1, 4 + i * (blockheight + frame));
+						////system("pause");
+						//delay;
 
 						blockGenrator(k, 4 + i * (blockheight + frame), matrix[i][j + 1]);
 						//system("pause");
 						delay;
+for (r = 4 + i * (blockheight + frame); r < 4 + i * (blockheight + frame) + blockheight; r++) 
+
+							cct_showch(k+4, r-1, ' ', 15, 15, 1);
+delay;
 					}
 					matrix[i][j] = matrix[i][j + 1];
 					matrix[i][j + 1] = 0;
