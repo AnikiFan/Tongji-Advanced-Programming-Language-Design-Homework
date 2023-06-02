@@ -74,6 +74,7 @@ void searchPlus(int srcRow, int srcCol, int matrix[][10], int rowMax, int colMax
 			delay;
 			matrix[srcRow][srcCol] = 0;
 			cancelBlock(x + srcCol + srcCol * colInterval, y + srcRow + srcRow * rowInterval);
+			break;
 	}
 	return;
 }

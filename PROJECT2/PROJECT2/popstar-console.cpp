@@ -228,6 +228,7 @@ void matrixInitialize(int maxRow, int maxCol, bool frame, int matrix[][10])
 	}
 	for (i = 0; i < maxRow; i++)
 		for (j = 0; j < maxCol; j++) {
+			delay;
 			blockGenrator(6 + j * (6 + 2 * frame), 4 + i * (3 + frame), matrix[i][j]);
 			//测试用
 			//cout << matrix[i][j];
@@ -391,12 +392,12 @@ void module4(int rowMax, int colMax, int matrix[][10])
 
 			} //end of if (CCT_MOUSE_EVENT)
 			else if (ret == CCT_KEYBOARD_EVENT) {
-				if (prompt && ((keycode1 == 224 && (keycode2 == KB_ARROW_UP || KB_ARROW_DOWN || KB_ARROW_LEFT || KB_ARROW_RIGHT)) || keycode1 == 13 || keycode1 == 'q' || keycode1 == 'Q')) {
+				if (prompt && ((keycode1 == 224 && (keycode2 == KB_ARROW_UP || keycode2 == KB_ARROW_DOWN || keycode2 == KB_ARROW_LEFT || keycode2 == KB_ARROW_RIGHT)) || keycode1 == 13 || keycode1 == 'q' || keycode1 == 'Q')) {
 					prompt = false;
 					cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, coverLength);
 					cct_setcolor(defaultColor);
 				}
-				if ((keycode1 == 224 && (keycode2 == KB_ARROW_UP || KB_ARROW_DOWN || KB_ARROW_LEFT || KB_ARROW_RIGHT)) || keycode1 == 13 || keycode1 == 'q' || keycode1 == 'Q') {
+				if ((keycode1 == 224 && (keycode2 == KB_ARROW_UP || keycode2 == KB_ARROW_DOWN || keycode2 == KB_ARROW_LEFT || keycode2 == KB_ARROW_RIGHT)) || keycode1 == 13 || keycode1 == 'q' || keycode1 == 'Q') {
 					cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, coverLength);
 					cct_setcolor(defaultColor);
 				}
@@ -499,7 +500,7 @@ void module5(int rowMax, int colMax, int matrix[][10])
 
 			if (ret == CCT_MOUSE_EVENT) {
 				/* 转到第7行进行打印 */
-				if (prompt && ((keycode1 == 224 && (keycode2 == KB_ARROW_UP || KB_ARROW_DOWN || KB_ARROW_LEFT || KB_ARROW_RIGHT)) || keycode1 == 13 || keycode1 == 'q' || keycode1 == 'Q')) {
+				if (prompt && ((keycode1 == 224 && (keycode2 == KB_ARROW_UP || keycode2 == KB_ARROW_DOWN || keycode2 == KB_ARROW_LEFT || keycode2 == KB_ARROW_RIGHT)) || keycode1 == 13 || keycode1 == 'q' || keycode1 == 'Q')) {
 					prompt = false;
 					cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, coverLength);
 					cct_setcolor(defaultColor);
@@ -561,12 +562,12 @@ void module5(int rowMax, int colMax, int matrix[][10])
 
 			} //end of if (CCT_MOUSE_EVENT)
 			else if (ret == CCT_KEYBOARD_EVENT) {
-				if (prompt && ((keycode1 == 224 && (keycode2 == KB_ARROW_UP || KB_ARROW_DOWN || KB_ARROW_LEFT || KB_ARROW_RIGHT)) || keycode1 == 13 || keycode1 == 'q' || keycode1 == 'Q')) {
+				if (prompt && ((keycode1 == 224 && (keycode2 == KB_ARROW_UP || keycode2 == KB_ARROW_DOWN || keycode2 == KB_ARROW_LEFT || keycode2 == KB_ARROW_RIGHT)) || keycode1 == 13 || keycode1 == 'q' || keycode1 == 'Q')) {
 					prompt = false;
 					cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, coverLength);
 					cct_setcolor(defaultColor);
 				}
-				if ((keycode1 == 224 && (keycode2 == KB_ARROW_UP || KB_ARROW_DOWN || KB_ARROW_LEFT || KB_ARROW_RIGHT)) || keycode1 == 13 || keycode1 == 'q' || keycode1 == 'Q') {
+				if ((keycode1 == 224 && (keycode2 == KB_ARROW_UP || keycode2 == KB_ARROW_DOWN || keycode2 == KB_ARROW_LEFT || keycode2 == KB_ARROW_RIGHT)) || keycode1 == 13 || keycode1 == 'q' || keycode1 == 'Q') {
 					cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, coverLength);
 					cct_setcolor(defaultColor);
 				}
@@ -757,7 +758,7 @@ void module6(int rowMax, int colMax, int matrix[][10])
 							while (1) {
 								ret = cct_read_keyboard_and_mouse(X, Y, maction, keycode1, keycode2);
 
-								if (ret == CCT_MOUSE_EVENT && (maction == MOUSE_LEFT_BUTTON_CLICK || maction == MOUSE_LEFT_BUTTON_DOUBLE_CLICK || maction == MOUSE_LEFTRIGHT_BUTTON_CLICK || maction == MOUSE_LEFTRIGHT_BUTTON_CLICK))
+								if (ret == CCT_MOUSE_EVENT && (maction == MOUSE_LEFT_BUTTON_CLICK || maction == MOUSE_LEFT_BUTTON_DOUBLE_CLICK || maction == MOUSE_LEFTRIGHT_BUTTON_CLICK || maction == FROM_LEFT_2ND_BUTTON_PRESSED))
 									break;
 								else if (ret == CCT_KEYBOARD_EVENT && keycode1 == 13)
 									break;
@@ -818,12 +819,12 @@ void module6(int rowMax, int colMax, int matrix[][10])
 
 			} //end of if (CCT_MOUSE_EVENT)
 			else if (ret == CCT_KEYBOARD_EVENT) {
-				if (prompt && ((keycode1 == 224 && (keycode2 == KB_ARROW_UP || KB_ARROW_DOWN || KB_ARROW_LEFT || KB_ARROW_RIGHT)) || keycode1 == 13 || keycode1 == 'q' || keycode1 == 'Q')) {
+				if (prompt && ((keycode1 == 224 && (keycode2 == KB_ARROW_UP || keycode2 == KB_ARROW_DOWN || keycode2 == KB_ARROW_LEFT || keycode2 == KB_ARROW_RIGHT)) || keycode1 == 13 || keycode1 == 'q' || keycode1 == 'Q')) {
 					prompt = false;
 					cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, coverLength);
 					cct_setcolor(defaultColor);
 				}
-				if ((keycode1 == 224 && (keycode2 == KB_ARROW_UP || KB_ARROW_DOWN || KB_ARROW_LEFT || KB_ARROW_RIGHT)) || keycode1 == 13 || keycode1 == 'q' || keycode1 == 'Q') {
+				if ((keycode1 == 224 && (keycode2 == KB_ARROW_UP || keycode2 == KB_ARROW_DOWN || keycode2 == KB_ARROW_LEFT || keycode2 == KB_ARROW_RIGHT)) || keycode1 == 13 || keycode1 == 'q' || keycode1 == 'Q') {
 					cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, coverLength);
 					cct_setcolor(defaultColor);
 				}
@@ -940,7 +941,7 @@ void module6(int rowMax, int colMax, int matrix[][10])
 							while (1) {
 								ret = cct_read_keyboard_and_mouse(X, Y, maction, keycode1, keycode2);
 
-								if (ret == CCT_MOUSE_EVENT && (maction == MOUSE_LEFT_BUTTON_CLICK || maction == MOUSE_LEFT_BUTTON_DOUBLE_CLICK || maction == MOUSE_LEFTRIGHT_BUTTON_CLICK || maction == MOUSE_LEFTRIGHT_BUTTON_CLICK))
+								if (ret == CCT_MOUSE_EVENT && (maction == MOUSE_LEFT_BUTTON_CLICK || maction == MOUSE_LEFT_BUTTON_DOUBLE_CLICK || maction == MOUSE_LEFTRIGHT_BUTTON_CLICK || maction == FROM_LEFT_2ND_BUTTON_PRESSED))
 									break;
 								else if (ret == CCT_KEYBOARD_EVENT && keycode1 == 13)
 									break;
@@ -1015,6 +1016,7 @@ void module7(int rowMax, int colMax, int matrix[][10])
 				cct_setcursor(CURSOR_INVISIBLE);
 				cct_enable_mouse();
 				/* 读鼠标/键盘，返回值为下述操作中的某一种, 当前鼠标位置在<X,Y>处 */
+				//maction == 0;
 				ret = cct_read_keyboard_and_mouse(X, Y, maction, keycode1, keycode2);
 
 				if (ret == CCT_MOUSE_EVENT) {
@@ -1106,8 +1108,9 @@ void module7(int rowMax, int colMax, int matrix[][10])
 
 							}
 							else if (selected && !warning) {
+								//								system("pause");
 
-
+								cct_enable_mouse();
 								if (matrix[((y - 3) / (blockheight + 1))][(x - 4) / (blockwidth + 2 * frame)] != 0) {
 									cct_showch(0, 0, ' ', background, coverLength);
 									cct_setcolor(defaultColor);
@@ -1128,12 +1131,17 @@ void module7(int rowMax, int colMax, int matrix[][10])
 									while (1) {
 										ret = cct_read_keyboard_and_mouse(X, Y, maction, keycode1, keycode2);
 
-										if (ret == CCT_MOUSE_EVENT && (maction == MOUSE_LEFT_BUTTON_CLICK || maction == MOUSE_LEFT_BUTTON_DOUBLE_CLICK || maction == MOUSE_LEFTRIGHT_BUTTON_CLICK || maction == MOUSE_LEFTRIGHT_BUTTON_CLICK))
+										if (ret == CCT_MOUSE_EVENT && (maction == MOUSE_LEFT_BUTTON_CLICK || maction == MOUSE_LEFT_BUTTON_DOUBLE_CLICK || maction == MOUSE_LEFTRIGHT_BUTTON_CLICK || maction == FROM_LEFT_2ND_BUTTON_PRESSED))
 											break;
 										else if (ret == CCT_KEYBOARD_EVENT && keycode1 == 13)
 											break;
 									}
 									zeroMoving(matrix, rowMax, colMax, true);
+								}
+								else {
+									cct_gotoxy(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4);
+									cout << "[当前鼠标] 位置非法";
+									warning = true;
 								}
 								if (victory(matrix, rowMax, colMax, remainder)) {
 									cct_gotoxy(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4);
@@ -1178,7 +1186,9 @@ void module7(int rowMax, int colMax, int matrix[][10])
 											else
 												y += (blockheight + 1);
 										}
+
 									}
+									selected = false;
 								}
 							}
 						}
@@ -1219,12 +1229,12 @@ void module7(int rowMax, int colMax, int matrix[][10])
 
 				} //end of if (CCT_MOUSE_EVENT)
 				else if (ret == CCT_KEYBOARD_EVENT) {
-					if (prompt && ((keycode1 == 224 && (keycode2 == KB_ARROW_UP || KB_ARROW_DOWN || KB_ARROW_LEFT || KB_ARROW_RIGHT)) || keycode1 == 13 || keycode1 == 'q' || keycode1 == 'Q')) {
+					if (prompt && ((keycode1 == 224 && (keycode2 == KB_ARROW_UP || keycode2 == KB_ARROW_DOWN || keycode2 == KB_ARROW_LEFT || keycode2 == KB_ARROW_RIGHT)) || keycode1 == 13 || keycode1 == 'q' || keycode1 == 'Q')) {
 						prompt = false;
 						cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, coverLength);
 						cct_setcolor(defaultColor);
 					}
-					if ((keycode1 == 224 && (keycode2 == KB_ARROW_UP || KB_ARROW_DOWN || KB_ARROW_LEFT || KB_ARROW_RIGHT)) || keycode1 == 13 || keycode1 == 'q' || keycode1 == 'Q') {
+					if ((keycode1 == 224 && (keycode2 == KB_ARROW_UP || keycode2 == KB_ARROW_DOWN || keycode2 == KB_ARROW_LEFT || keycode2 == KB_ARROW_RIGHT)) || keycode1 == 13 || keycode1 == 'q' || keycode1 == 'Q') {
 						cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, coverLength);
 						cct_setcolor(defaultColor);
 					}
@@ -1351,7 +1361,7 @@ void module7(int rowMax, int colMax, int matrix[][10])
 									while (1) {
 										ret = cct_read_keyboard_and_mouse(X, Y, maction, keycode1, keycode2);
 
-										if (ret == CCT_MOUSE_EVENT && (maction == MOUSE_LEFT_BUTTON_CLICK || maction == MOUSE_LEFT_BUTTON_DOUBLE_CLICK || maction == MOUSE_LEFTRIGHT_BUTTON_CLICK || maction == MOUSE_LEFTRIGHT_BUTTON_CLICK))
+										if (ret == CCT_MOUSE_EVENT && (maction == MOUSE_LEFT_BUTTON_CLICK || maction == MOUSE_LEFT_BUTTON_DOUBLE_CLICK || maction == MOUSE_LEFTRIGHT_BUTTON_CLICK || maction == FROM_LEFT_2ND_BUTTON_PRESSED))
 											break;
 										else if (ret == CCT_KEYBOARD_EVENT && keycode1 == 13)
 											break;
@@ -1384,7 +1394,7 @@ void module7(int rowMax, int colMax, int matrix[][10])
 									y = 4;
 								}
 								else {
-									if ((keycode1 == 224 && (keycode2 == KB_ARROW_UP || KB_ARROW_DOWN || KB_ARROW_LEFT || KB_ARROW_RIGHT)) || keycode1 == 13 || keycode1 == 'q' || keycode1 == 'Q') {
+									if ((keycode1 == 224 && (keycode2 == KB_ARROW_UP || keycode2 == KB_ARROW_DOWN || keycode2 == KB_ARROW_LEFT || keycode2 == KB_ARROW_RIGHT)) || keycode1 == 13 || keycode1 == 'q' || keycode1 == 'Q') {
 										cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, coverLength);
 										cct_setcolor(defaultColor);
 									}
