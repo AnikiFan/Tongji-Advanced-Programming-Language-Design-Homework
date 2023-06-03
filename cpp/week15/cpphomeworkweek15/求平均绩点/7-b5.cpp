@@ -9,7 +9,14 @@ using namespace std;
    3、最多允许添加一个函数，且需要满足要求
    ---------------------------------------------------------------------
 */
-
+#define noLength 5
+#define codeLength 8
+#define nameLength 9
+#define GPALength 6
+#define weightLength 6
+#define averageGPALength 8
+#define averageGPAPrecision 3
+#define lessonNum 3
 #define N	10
 
 struct course {
@@ -22,7 +29,7 @@ struct student {
 	int   no;               //学号（虽然用int不够合理，此处不考虑）
 	char  name[9];          //假设姓名最长4个汉字
 	struct course score[3]; //数组放三门课的成绩（未使用宏定义，函数实现时，直接写3即可）
-	int averageGPA;                     //可增加其它你认为需要增加的结构体成员（限一个），不要则删除本行
+	double averageGPA;                     //可增加其它你认为需要增加的结构体成员（限一个），不要则删除本行
 };
 
 /***************************************************************************
@@ -49,26 +56,28 @@ void input(struct student* stu, int num)
 		包括for(int k=0; )形式的新变量定义同样禁止 */
 	int i, j;
 	for (i = 0; i < num; i++) {
-		cout << "请输入第" << setw(2) << i << "个学生的信息 : ";
+		cout << "请输入第" << setw(2) << i + 1 << "个学生的信息 : ";
 		cin >> stu->no;
 		cin >> stu->name;
 		for (j = 0; j < 3; j++) {
-			cin >> stu->score[j].value;
-			cin >> stu->score[j].weight;
-			if (stu->score[j].value >= 0 && stu->score[j].value < 60)
-				stu->score[j].gpa = 0;
-			else if (stu->score[j].value >= 60 && stu->score[j].value < 70)
-				stu->score[j].gpa = 2;
-			else if (stu->score[j].value >= 70 && stu->score[j].value < 80)
-				stu->score[j].gpa = 3;
-			else if (stu->score[j].value >= 80 && stu->score[j].value < 90)
-				stu->score[j].gpa = 4;
-			else if (stu->score[j].value >= 90 && stu->score[j].value <= 100)
-				stu->score[j].gpa = 5;
+			cin >> (stu->score + j)->value;
+			cin >> (stu->score + j)->weight;
+			if ((stu->score + j)->value >= 0 && (stu->score + j)->value < 60)
+				(stu->score + j)->gpa = 0;
+			else if ((stu->score + j)->value >= 60 && (stu->score + j)->value < 70)
+				(stu->score + j)->gpa = 2;
+			else if ((stu->score + j)->value >= 70 && (stu->score + j)->value < 80)
+				(stu->score + j)->gpa = 3;
+			else if ((stu->score + j)->value >= 80 && (stu->score + j)->value < 90)
+				(stu->score + j)->gpa = 4;
+			else if ((stu->score + j)->value >= 90 && (stu->score + j)->value <= 100)
+				(stu->score + j)->gpa = 5;
 		}
-		stu->averageGPA = (stu->score[0].gpa * stu->score[0].weight * stu->score[1].gpa * stu->score[1].weight * stu->score[2].gpa * stu->score[2].weight) / (stu->score[0].weight + stu->score[1].weight + stu->score[2].weight);
+		stu->averageGPA = (stu->score->gpa * stu->score->weight + (stu->score + 1)->gpa * (stu->score + 1)->weight + (stu->score + 2)->gpa * (stu->score + 2)->weight) / (stu->score->weight + (stu->score + 1)->weight + (stu->score + 2)->weight);
 		stu++;
 	}
+	cout << endl;
+	return;
 	/* 函数的实现部分 */
 }
 
@@ -86,7 +95,26 @@ void output_base(struct student* stu, int num)
 		包括for(int i=0; )形式的新变量定义同样禁止 */
 	struct student* ps;
 	struct course* pc;
-
+	cout << num << "个学生的成绩" << endl;
+	cout << setiosflags(ios::left) << setw(noLength) << "序号" << setw(codeLength) << "学号" << setw(nameLength) << "姓名"
+		<< setw(GPALength) << "绩点1" << setw(weightLength) << "权重1"
+		<< setw(GPALength) << "绩点2" << setw(weightLength) << "权重2"
+		<< setw(GPALength) << "绩点3" << setw(weightLength) << "权重3"
+		<< setw(averageGPALength) << "平均绩点" << endl;
+	cout << setw(noLength + codeLength + nameLength + lessonNum * (GPALength + weightLength) + averageGPALength) << setfill('=') << "=" << setfill(' ') << endl;
+	ps = stu;
+	while (ps != stu + num) {
+		cout << setw(noLength) << ps - stu + 1 << setw(codeLength) << ps->no << setw(nameLength) << ps->name;
+		pc = ps->score;
+		while (pc != ps->score + lessonNum) {
+			cout << setw(GPALength) << pc->gpa << setw(weightLength) << pc->weight;
+			pc++;
+		}
+		cout << setiosflags(ios::fixed) << setprecision(averageGPAPrecision) << ps->averageGPA << resetiosflags(ios::fixed) << endl;
+		ps++;
+	}
+	cout << endl;
+	return;
 	/* 函数的实现部分，不允许任何形式的[]出现 */
 }
 
@@ -100,6 +128,39 @@ void output_base(struct student* stu, int num)
 void output_max(struct student* stu, int num)
 {
 	/* 本函数中允许定义各种类型的简单变量，但不允许定义数组 */
+	cout << "绩点最高的学生为" << endl;
+	cout << setiosflags(ios::left) << setw(noLength) << "序号" << setw(codeLength) << "学号" << setw(nameLength) << "姓名"
+		<< setw(GPALength) << "绩点1" << setw(weightLength) << "权重1"
+		<< setw(GPALength) << "绩点2" << setw(weightLength) << "权重2"
+		<< setw(GPALength) << "绩点3" << setw(weightLength) << "权重3"
+		<< setw(averageGPALength) << "平均绩点" << endl;
+	cout << setw(noLength + codeLength + nameLength + lessonNum * (GPALength + weightLength) + averageGPALength) << setfill('=') << "=" << setfill(' ') << endl;
+	int i;
+	double maxGPA;
+	bool max = true;
+	student* ps = stu;
+	struct course* pc;
+	maxGPA = ps->averageGPA;
+	for (i = 0; i < num; i++) {
+		if (ps->averageGPA > maxGPA)
+			maxGPA = ps->averageGPA;
+		ps++;
+	}
+	ps = stu;
+	for (i = 0; i < num; i++) {
+		if (ps->averageGPA == maxGPA) {
+			cout << setw(noLength) << ps - stu + 1 << setw(codeLength) << ps->no << setw(nameLength) << ps->name;
+			pc = ps->score;
+			while (pc != ps->score + lessonNum) {
+				cout << setw(GPALength) << pc->gpa << setw(weightLength) << pc->weight;
+				pc++;
+			}
+			cout << setiosflags(ios::fixed) << setprecision(averageGPAPrecision) << ps->averageGPA << resetiosflags(ios::fixed) << endl;
+			ps++;
+		}
+		ps++;
+	}
+	return;
 }
 
 /***************************************************************************
