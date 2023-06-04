@@ -678,8 +678,13 @@ void module6(int rowMax, int colMax, int matrix[][10])
 				if (Y > 2 && Y < 4 + (rowMax - 1) * (3 + frame) + 2 && X>2 && X < 6 + (colMax - 1) * (6 + 2 * frame) + 4) {
 					reverseBlock(x, y, matrix[((y - 3) / blockheight)][(x - 4) / blockwidth]);
 					inverseBlock(6 + ((X - 4) / blockwidth) * (6 + 2 * frame), 4 + ((Y - 3) / blockheight) * (3 + frame), matrix[((Y - 3) / blockheight)][(X - 4) / blockwidth]);
-					if ((x != 6 + ((X - 4) / blockwidth) * (6 + 2 * frame) || y != 4 + ((Y - 3) / blockheight) * (3 + frame)) && !first)
-						reverseBlock(x, y, matrix[((y - 3) / blockheight)][(x - 4) / blockwidth]);
+					if ((x != 6 + ((X - 4) / blockwidth) * (6 + 2 * frame) || y != 4 + ((Y - 3) / blockheight) * (3 + frame)) && !first) {
+						for (i = 0; i < 10; i++)
+							for (j = 0; j < 10; j++)
+								pivotMatrix[i][j] = 0;
+						search((y - 3) / (blockheight + frame), (x - 4) / (blockwidth + 2 * frame), matrix, rowMax, colMax, 6, 6, 4, blockheight - 1, blockwidth - 1, pivotMatrix, sum);
+					}
+						//reverseBlock(x, y, matrix[((y - 3) / blockheight)][(x - 4) / blockwidth]);
 					if (first)
 						first = false;
 					if (warning && (x != 6 + ((X - 4) / blockwidth) * (6 + 2 * frame) || y != 4 + ((Y - 3) / blockheight) * (3 + frame))) {
@@ -789,7 +794,11 @@ void module6(int rowMax, int colMax, int matrix[][10])
 					}
 				}
 				else {
-					reverseBlock(x, y, matrix[((y - 3) / blockheight)][(x - 4) / blockwidth]);
+					//reverseBlock(x, y, matrix[((y - 3) / blockheight)][(x - 4) / blockwidth]);
+					for (i = 0; i < 10; i++)
+						for (j = 0; j < 10; j++)
+							pivotMatrix[i][j] = 0;
+					search((y - 3) / (blockheight + frame), (x - 4) / (blockwidth + 2 * frame), matrix, rowMax, colMax, 6, 6, 4, blockheight-1, blockwidth - 1, pivotMatrix, sum);
 					if (!first) {
 						reverseBlock(x, y, matrix[((y - 3) / blockheight)][(x - 4) / blockwidth]);
 						first = true;
@@ -1041,9 +1050,13 @@ void module7(int rowMax, int colMax, int matrix[][10])
 						valid = false;
 					if (valid) {
 						inverseBlock(6 + ((X - 4) / (blockwidth + 2 * frame)) * (6 + 2 * frame), 4 + ((Y - 3) / (blockheight + frame)) * (3 + frame), matrix[((Y - 3) / (blockheight + frame))][(X - 4) / (blockwidth + 2 * frame)]);
-						if ((x != 6 + ((X - 4) / (blockwidth + 2 * frame)) * (6 + 2 * frame) || y != 4 + ((Y - 3) / (blockheight + frame)) * (3 + frame)) && !first)
-
-							reverseBlock(x, y, matrix[((y - 3) / (blockheight + frame))][(x - 4) / (blockwidth + 2 * frame)]);
+						if ((x != 6 + ((X - 4) / (blockwidth + 2 * frame)) * (6 + 2 * frame) || y != 4 + ((Y - 3) / (blockheight + frame)) * (3 + frame)) && !first) {
+							//reverseBlock(x, y, matrix[((y - 3) / (blockheight + frame))][(x - 4) / (blockwidth + 2 * frame)]);
+							for (i = 0; i < 10; i++)
+								for (j = 0; j < 10; j++)
+									pivotMatrix[i][j] = 0;
+							search((y - 3) / (blockheight + frame), (x - 4) / (blockwidth + 2 * frame), matrix, rowMax, colMax, 6, 6, 4, blockheight, blockwidth + 1, pivotMatrix, sum);
+						}
 						if (first)
 							first = false;
 						if (warning && ((x != 6 + ((X - 4) / (blockwidth + frame * 2)) * (6 + 2 * frame) || y != 4 + ((Y - 3) / (blockheight + frame)) * (3 + frame)))) {
@@ -1201,7 +1214,11 @@ void module7(int rowMax, int colMax, int matrix[][10])
 						}
 					}
 					else {
-						reverseBlock(x, y, matrix[((y - 3) / (blockheight + frame))][(x - 4) / (blockwidth + 2 * frame)]);
+						for (i = 0; i < 10; i++)
+							for (j = 0; j < 10; j++)
+								pivotMatrix[i][j] = 0;
+						search((y - 3) / (blockheight + frame), (x - 4) / (blockwidth + 2 * frame), matrix, rowMax, colMax, 6, 6, 4, blockheight, blockwidth + 1, pivotMatrix, sum);
+						//reverseBlock(x, y, matrix[((y - 3) / (blockheight + frame))][(x - 4) / (blockwidth + 2 * frame)]);
 						if (!first) {
 							reverseBlock(x, y, matrix[((y - 3) / (blockheight + frame))][(x - 4) / (blockwidth + 2 * frame)]);
 							first = true;

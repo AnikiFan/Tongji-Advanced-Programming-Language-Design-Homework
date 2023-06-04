@@ -14,6 +14,9 @@ void reload(void)
 	cct_getxy(xcoo, ycoo);
 	cout << " " ;
 	cct_gotoxy(xcoo, ycoo);
+	cct_showch(xcoo, ycoo, ' ', background, coverLength);
+	cct_setcolor(defaultColor);
+	cct_gotoxy(xcoo, ycoo);
 	cout << "本小题结束，请输入End继续...";
 	//
 	//cout << "*";
