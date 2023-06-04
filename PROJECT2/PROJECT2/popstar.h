@@ -21,6 +21,7 @@ using namespace std;
 #define coverLength 60
 #define boardwidth 85
 #define boardheight 47
+#define covering "                                   "
 void reload(void);
 
 void module1(int rowMax, int colMax, int matrix[][10]);
