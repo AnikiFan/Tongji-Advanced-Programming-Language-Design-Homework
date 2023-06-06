@@ -94,6 +94,10 @@ int main()
 	int rowMax, colMax, matrix[10][10], i, j;
 	cct_setconsoleborder(boardwidth, boardheight, boardwidth, boardheight);
 	cct_setfontsize("µ„’Û◊÷ÃÂ", 15);
+
+
+				
+	
 	while (1) {
 		option = menu(&rowMax, &colMax);
 		for (i = 0; i < 10; i++)

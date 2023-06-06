@@ -21,9 +21,17 @@ using namespace std;
 #define coverLength 60
 #define boardwidth 85
 #define boardheight 47
-#define covering "                                   "
-void reload(void);
+#define covering "                              "
+#define beat 100
+#define do Beep(523,beat);
+#define re Beep(578,beat);
+#define mi Beep(659,beat);
+#define fa Beep(698,beat);
+#define so Beep(784,beat);
+#define la Beep(880,beat);
+#define si Beep(988,beat);
 
+void reload(void);
 void module1(int rowMax, int colMax, int matrix[][10]);
 void module2(int rowMax, int colMax, int matrix[][10]);
 void module3(int rowMax, int colMax, int matrix[][10]);
