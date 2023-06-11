@@ -129,6 +129,12 @@
   <ItemGroup>
     <ClCompile Include="7-b9.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <Library Include="lib_read_stulist.lib" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="read_stulist.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
