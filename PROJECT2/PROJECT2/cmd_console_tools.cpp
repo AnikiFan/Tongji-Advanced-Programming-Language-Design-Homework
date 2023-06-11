@@ -1,6 +1,6 @@
 /* -----------------------------------------
 
-     本文件不需要提交、不允许改动
+	 本文件不需要提交、不允许改动
 
    ----------------------------------------- */
 #define _CRT_SECURE_NO_WARNINGS
@@ -17,7 +17,7 @@ using namespace std;
 /*   注：为防止同名，静态全局一般建议加__做为变量名开始                                    */
 /* --------------------------------------------------------------------------------------- */
 static const HANDLE __hout = GetStdHandle(STD_OUTPUT_HANDLE);		//取标准输出设备对应的句柄
-static const HANDLE __hin  = GetStdHandle(STD_INPUT_HANDLE);		//取标准输入设备对应的句柄
+static const HANDLE __hin = GetStdHandle(STD_INPUT_HANDLE);		//取标准输入设备对应的句柄
 
 /***************************************************************************
   函数名称：
@@ -35,7 +35,7 @@ void cct_cls(void)
 	/* 取当前缓冲区信息 */
 	GetConsoleScreenBufferInfo(__hout, &binfo);
 	/* 填充字符 */
-	FillConsoleOutputCharacter(__hout, (TCHAR) ' ', binfo.dwSize.X * binfo.dwSize.Y, coord, &num);
+	FillConsoleOutputCharacter(__hout, (TCHAR)' ', binfo.dwSize.X * binfo.dwSize.Y, coord, &num);
 	/* 填充属性 */
 	FillConsoleOutputAttribute(__hout, binfo.wAttributes, binfo.dwSize.X * binfo.dwSize.Y, coord, &num);
 
@@ -70,7 +70,7 @@ void cct_setcolor(const int bg_color, const int fg_color)
   返 回 值：
   说    明：形参中的&表示引用，第六章会讲到，引用形参的值可以返回给实参
 ***************************************************************************/
-void cct_getcolor(int &bg_color, int &fg_color)
+void cct_getcolor(int& bg_color, int& fg_color)
 {
 	CONSOLE_SCREEN_BUFFER_INFO binfo;
 	GetConsoleScreenBufferInfo(__hout, &binfo);
@@ -105,7 +105,7 @@ void cct_gotoxy(const int X, const int Y)
   返 回 值：
   说    明：形参中的&表示引用，第六章会讲到，引用形参的值可以返回给实参
 ***************************************************************************/
-void cct_getxy(int &x, int &y)
+void cct_getxy(int& x, int& y)
 {
 	CONSOLE_SCREEN_BUFFER_INFO binfo;
 	GetConsoleScreenBufferInfo(__hout, &binfo);
@@ -177,25 +177,25 @@ void cct_showch(const int X, const int Y, const char ch, const int bg_color, con
   函数名称：
   功    能：在指定位置，用指定颜色，显示一个字符串
   输入参数：const int X       ：X轴坐标（列）
-		    const int Y       ：Y轴坐标（行）
-		    const char *str   ：要输出的字符串
-		    const int bg_color：背景色（缺省为COLOR_BLACK）
-		    const int fg_color：背景色（缺省为COLOR_WHITE）
+			const int Y       ：Y轴坐标（行）
+			const char *str   ：要输出的字符串
+			const int bg_color：背景色（缺省为COLOR_BLACK）
+			const int fg_color：背景色（缺省为COLOR_WHITE）
 			const int rpt     ：重复次数（缺省为1）
 			const int max_len ：-1（表示不限制长度，按strlen(str)*rpt的实际打印）
   返 回 值：
   说    明：如果读不懂，暂时放着，等指针学习完成后再阅读
 ***************************************************************************/
-void cct_showstr(const int X, const int Y, const char *str, const int bg_color, const int fg_color, int rpt, int maxlen)
+void cct_showstr(const int X, const int Y, const char* str, const int bg_color, const int fg_color, int rpt, int maxlen)
 {
-	const char *p;
+	const char* p;
 	int i, rpt_count = 0;
 
 	cct_gotoxy(X, Y);
 	cct_setcolor(bg_color, fg_color);
 
 	/* 首先考虑str==NULL / str="" 的情况
-	   1、如果maxlen是-1/0，则直接返回，什么都不打印 
+	   1、如果maxlen是-1/0，则直接返回，什么都不打印
 	   2、如果maxlen>0，则用maxlen个空格填充 */
 	if (str == NULL || str[0] == 0) {
 		for (i = 0; i < maxlen; i++) //如果maxlen是-1、0，循环不执行，直接返回
@@ -214,7 +214,7 @@ void cct_showstr(const int X, const int Y, const char *str, const int bg_color, 
 		if (*p == 0) {
 			p = str; //如果p已经到\0，则回到头（此处已保证strlen(str)>0，即一定有内容）
 			rpt_count++;
-			}
+		}
 		putchar(rpt_count < rpt ? *p : ' '); //如果超过了rpt次数则用空格填充
 	}
 }
@@ -334,7 +334,7 @@ void cct_setconsoleborder(int set_cols, int set_lines, int set_buffer_cols, int 
   返 回 值：
   说    明：
 ***************************************************************************/
-void cct_getconsoleborder(int &cols, int &lines, int &buffer_cols, int &buffer_lines)
+void cct_getconsoleborder(int& cols, int& lines, int& buffer_cols, int& buffer_lines)
 {
 	CONSOLE_SCREEN_BUFFER_INFO binfo;
 	GetConsoleScreenBufferInfo(__hout, &binfo);
@@ -352,7 +352,7 @@ void cct_getconsoleborder(int &cols, int &lines, int &buffer_cols, int &buffer_l
   返 回 值：
   说    明：
 ***************************************************************************/
-void cct_getconsoletitle(char *title, int maxbuflen)
+void cct_getconsoletitle(char* title, int maxbuflen)
 {
 	GetConsoleTitleA(title, maxbuflen); //不检查是否越界、是否有空间
 }
@@ -364,7 +364,7 @@ void cct_getconsoletitle(char *title, int maxbuflen)
   返 回 值：
   说    明：
 ***************************************************************************/
-void cct_setconsoletitle(const char *title)
+void cct_setconsoletitle(const char* title)
 {
 	SetConsoleTitleA(title);
 }
@@ -396,7 +396,7 @@ void cct_disable_mouse(void)
 	DWORD Mode;
 
 	GetConsoleMode(__hin, &Mode);	/* 取得控制台原来的模式 */
-	SetConsoleMode(__hin, Mode&(~ENABLE_MOUSE_INPUT));	//去除鼠标支持（如果原先已不支持鼠标，再设也没错）
+	SetConsoleMode(__hin, Mode & (~ENABLE_MOUSE_INPUT));	//去除鼠标支持（如果原先已不支持鼠标，再设也没错）
 }
 
 /***************************************************************************
@@ -441,7 +441,7 @@ void cct_disable_mouse(void)
 			34.MOUSE_WHEELED           垂直鼠标滚轮移动
 			35.0                       当鼠标有键被按下或者释放
 ***************************************************************************/
-int cct_read_keyboard_and_mouse(int &MX, int &MY, int &MAction, int &keycode1, int &keycode2)
+int cct_read_keyboard_and_mouse(int& MX, int& MY, int& MAction, int& keycode1, int& keycode2)
 {
 	static int MX_old = -1, MY_old = -1, MAction_old = MOUSE_ONLY_MOVED;
 	INPUT_RECORD InputRec;
@@ -503,7 +503,7 @@ int cct_read_keyboard_and_mouse(int &MX, int &MY, int &MAction, int &keycode1, i
 					continue;
 
 				/* 位置变化则记录下来 */
-				MX_old = MX;	
+				MX_old = MX;
 				MY_old = MY;
 				MAction = MOUSE_ONLY_MOVED;
 				MAction_old = MAction;
@@ -512,10 +512,10 @@ int cct_read_keyboard_and_mouse(int &MX, int &MY, int &MAction, int &keycode1, i
 			MAction_old = MOUSE_NO_ACTION; //置非MOUSE_ONLY_MOVED值即可
 
 			if (InputRec.Event.MouseEvent.dwEventFlags == MOUSE_WHEELED) { //滚轮移动 
-			/* https://docs.microsoft.com/en-us/windows/console/mouse-event-record-str
-				The vertical mouse wheel was moved.
-				If the high word of the dwButtonState member contains a positive value, the wheel was rotated forward, away from the user.
-				Otherwise, the wheel was rotated backward, toward the user. */
+				/* https://docs.microsoft.com/en-us/windows/console/mouse-event-record-str
+					The vertical mouse wheel was moved.
+					If the high word of the dwButtonState member contains a positive value, the wheel was rotated forward, away from the user.
+					Otherwise, the wheel was rotated backward, toward the user. */
 				if (InputRec.Event.MouseEvent.dwButtonState & 0x80000000) //高位为1，负数
 					MAction = MOUSE_WHEEL_MOVED_DOWN;
 				else
@@ -553,13 +553,13 @@ int cct_read_keyboard_and_mouse(int &MX, int &MY, int &MAction, int &keycode1, i
 	return CCT_MOUSE_EVENT; //此句应该执行不到，为避免某些编译器报不完全分支错误，加
 }
 
-typedef BOOL(WINAPI *PROCSETCONSOLEFONT)(HANDLE, DWORD);
-typedef BOOL(WINAPI *PROCGETCONSOLEFONTINFO)(HANDLE, BOOL, DWORD, PCONSOLE_FONT_INFO);
-typedef COORD(WINAPI *PROCGETCONSOLEFONTSIZE)(HANDLE, DWORD);
-typedef DWORD(WINAPI *PROCGETNUMBEROFCONSOLEFONTS)();
-typedef BOOL(WINAPI *PROCGETCURRENTCONSOLEFONT)(HANDLE, BOOL, PCONSOLE_FONT_INFO);
-typedef BOOL(WINAPI *PROCSetBufferSize)(HANDLE hConsoleOutput, COORD dwSize);
-typedef HWND(WINAPI *PROCGETCONSOLEWINDOW)();
+typedef BOOL(WINAPI* PROCSETCONSOLEFONT)(HANDLE, DWORD);
+typedef BOOL(WINAPI* PROCGETCONSOLEFONTINFO)(HANDLE, BOOL, DWORD, PCONSOLE_FONT_INFO);
+typedef COORD(WINAPI* PROCGETCONSOLEFONTSIZE)(HANDLE, DWORD);
+typedef DWORD(WINAPI* PROCGETNUMBEROFCONSOLEFONTS)();
+typedef BOOL(WINAPI* PROCGETCURRENTCONSOLEFONT)(HANDLE, BOOL, PCONSOLE_FONT_INFO);
+typedef BOOL(WINAPI* PROCSetBufferSize)(HANDLE hConsoleOutput, COORD dwSize);
+typedef HWND(WINAPI* PROCGETCONSOLEWINDOW)();
 
 #if 0 //条件编译，0表示关闭
 PROCSETCONSOLEFONT SetConsoleFont;
@@ -586,8 +586,8 @@ int cct_getfontinfo(void)
 	PROCGETCONSOLEFONTSIZE GetConsoleFontSize = (PROCGETCONSOLEFONTSIZE)GetProcAddress(hKernel32, "GetConsoleFontSize");
 	PROCGETNUMBEROFCONSOLEFONTS GetNumberOfConsoleFonts = (PROCGETNUMBEROFCONSOLEFONTS)GetProcAddress(hKernel32, "GetNumberOfConsoleFonts");
 	PROCGETCURRENTCONSOLEFONT GetCurrentConsoleFont = (PROCGETCURRENTCONSOLEFONT)GetProcAddress(hKernel32, "GetCurrentConsoleFont");
-//	PROCSetBufferSize SetConsoleBufSize = (PROCSetBufferSize)GetProcAddress(hKernel32,"SetConsoleScreenBufferSize");
-//	PROCGETCONSOLEWINDOW GetConsoleWindow = (PROCGETCONSOLEWINDOW)GetProcAddress(hKernel32,"GetConsoleWindow");
+	//	PROCSetBufferSize SetConsoleBufSize = (PROCSetBufferSize)GetProcAddress(hKernel32,"SetConsoleScreenBufferSize");
+	//	PROCGETCONSOLEWINDOW GetConsoleWindow = (PROCGETCONSOLEWINDOW)GetProcAddress(hKernel32,"GetConsoleWindow");
 
 	CONSOLE_FONT_INFOEX infoex;
 	char fontname[64];
@@ -653,9 +653,9 @@ void cct_setconsolefont(const int font_no)
   输入参数：
   返 回 值：
   说    明：GBK编码的cmd窗口只支持"点阵字体"和"新宋体"两种，
-            给出fontname时，非"新宋体"全部做为缺省字体(Terminal-"点阵字体")
+			给出fontname时，非"新宋体"全部做为缺省字体(Terminal-"点阵字体")
 ***************************************************************************/
-void cct_setfontsize(const char *fontname, const int high, const int width)
+void cct_setfontsize(const char* fontname, const int high, const int width)
 {
 	CONSOLE_FONT_INFOEX infoex = { 0 };
 

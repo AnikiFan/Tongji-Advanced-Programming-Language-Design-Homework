@@ -12,7 +12,7 @@ void reload(void)
 	char input[100];
 	int xcoo, ycoo;
 	cct_getxy(xcoo, ycoo);
-	cout << " " ;
+	cout << " ";
 	cct_gotoxy(xcoo, ycoo);
 	cct_showch(xcoo, ycoo, ' ', background, coverLength);
 	cct_setcolor(defaultColor);
@@ -22,7 +22,7 @@ void reload(void)
 	//cout << "*";
 	//
 	//cin.ignore(10000, '\n');
-	
+
 	while (1) {
 		cin.getline(input, 99, '\n');
 		if ((input[0] == 'E' || input[0] == 'e') &&
@@ -95,14 +95,14 @@ int search(int srcRow, int srcCol, int matrix[][10], int rowMax, int colMax, int
 		search(srcRow - 1, srcCol, matrix, rowMax, colMax, option, x, y, rowInterval, colInterval, pivotMatrix, sum);
 	if (srcCol != 0 && matrix[srcRow][srcCol - 1] == pivot && pivotMatrix[srcRow][srcCol - 1] == 0)
 		search(srcRow, srcCol - 1, matrix, rowMax, colMax, option, x, y, rowInterval, colInterval, pivotMatrix, sum);
-	if (srcRow != rowMax-1 && matrix[srcRow + 1][srcCol] == pivot && pivotMatrix[srcRow + 1][srcCol] == 0)
+	if (srcRow != rowMax - 1 && matrix[srcRow + 1][srcCol] == pivot && pivotMatrix[srcRow + 1][srcCol] == 0)
 		search(srcRow + 1, srcCol, matrix, rowMax, colMax, option, x, y, rowInterval, colInterval, pivotMatrix, sum);
-	if (srcCol != colMax-1 && matrix[srcRow][srcCol + 1] == pivot && pivotMatrix[srcRow][srcCol + 1] == 0)
+	if (srcCol != colMax - 1 && matrix[srcRow][srcCol + 1] == pivot && pivotMatrix[srcRow][srcCol + 1] == 0)
 		search(srcRow, srcCol + 1, matrix, rowMax, colMax, option, x, y, rowInterval, colInterval, pivotMatrix, sum);
 	return sum;
 }
 
-int victory(int matrix[][10], int rowMax, int colMax,int&total)
+int victory(int matrix[][10], int rowMax, int colMax, int& total)
 {
 	int i, j, u, v, pivotMatrix[10][10] = { 0 }, sum = 0;
 	total = 0;
@@ -110,7 +110,7 @@ int victory(int matrix[][10], int rowMax, int colMax,int&total)
 		for (j = 0; j < colMax; j++) {
 			sum = 0;
 			search(i, j, matrix, rowMax, colMax, 5, 0, 0, 0, 0, pivotMatrix, sum);
-			if (sum != 1&&sum!=-1)
+			if (sum != 1 && sum != -1)
 				return 0;
 			for (u = 0; u < 10; u++)
 				for (v = 0; v < 10; v++)

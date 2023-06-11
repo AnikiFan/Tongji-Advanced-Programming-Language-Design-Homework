@@ -21,10 +21,10 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{fec29858-75c4-43e8-92c1-f30fd74b7734}</ProjectGuid>
-    <RootNamespace>PROJECT2</RootNamespace>
+    <ProjectGuid>{3edd24d2-6cbe-4454-adca-f28a9dab30a2}</ProjectGuid>
+    <RootNamespace>cpphomework1</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
-    <ProjectName>90-b2</ProjectName>
+    <ProjectName>计算天数</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -128,15 +128,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="cmd_console_tools.cpp" />
-    <ClCompile Include="popstar-main.cpp" />
-    <ClCompile Include="popstar-base.cpp" />
-    <ClCompile Include="popstar-console.cpp" />
-    <ClCompile Include="popstar-tools.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="cmd_console_tools.h" />
-    <ClInclude Include="popstar.h" />
+    <ClCompile Include="7-b6.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

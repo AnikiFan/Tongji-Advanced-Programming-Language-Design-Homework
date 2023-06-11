@@ -1,14 +1,14 @@
-/* 2254298 ÐÅ11 ·¶äì */
-#include<iostream>//TODO:ÄêÔÂÈÕÒªÇóÕûÐÍ£¬²»¿¼ÂÇÊäÈë·ÇÕûÐÍµÄ´íÎó
+/* 2254298 ï¿½ï¿½11 ï¿½ï¿½ï¿½ï¿½ */
+#include<iostream>//TODO:ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÍµÄ´ï¿½ï¿½ï¿½
 #include<cmath>
-using namespace std;//TODO:Äê²»¿¼ÂÇÕûÐÍ·¶Î§£¬ÈÎºÎºÏÀíÕûÐÍ¾ùÈÏÎªÕýÈ·£¬°üÀ¨¸ºÊý£¬±¾ÌâµÄÄêÖ»ÅÐ¶ÏÊÇ·ñÈòÄê
+using namespace std;//TODO:ï¿½ê²»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í·ï¿½Î§ï¿½ï¿½ï¿½ÎºÎºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¾ï¿½ï¿½ï¿½Îªï¿½ï¿½È·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö»ï¿½Ð¶ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½
 int main()
 {
 	int year, month, day;
-	cout << "ÇëÊäÈëÄê£¬ÔÂ£¬ÈÕ" << endl;//TODO:¶ººÅÎªÖÐÎÄÈ«½Ç
+	cout << "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ê£¬ï¿½Â£ï¿½ï¿½ï¿½" << endl;//TODO:ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½È«ï¿½ï¿½
 	cin >> year >> month >> day;
-	if (month > 0 && month <= 12) {//ÅÐ¶ÏÔÂ·ÝÊÇ·ñºÏ·¨
-		if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0) {//Èç¹ûÊÇÈòÄê
+	if (month > 0 && month <= 12) {//ï¿½Ð¶ï¿½ï¿½Â·ï¿½ï¿½Ç·ï¿½Ï·ï¿½
+		if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0) {//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			if (month == 2 && !(1 <= day && day <= 29) ||
 				month == 1 && !(1 <= day && day <= 31) ||
 				month == 3 && !(1 <= day && day <= 31) ||
@@ -22,13 +22,13 @@ int main()
 				month == 9 && !(1 <= day && day <= 30) ||
 				month == 11 && !(1 <= day && day <= 30))
 
-				cout << "ÊäÈë´íÎó-ÈÕÓëÔÂµÄ¹ØÏµ·Ç·¨" << endl;
+				cout << "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½-ï¿½ï¿½ï¿½ï¿½ï¿½ÂµÄ¹ï¿½Ïµï¿½Ç·ï¿½" << endl;
 			else
-				cout << year << "-" << month << "-" << day << "ÊÇ" << year << "ÄêµÄµÚ"
+				cout << year << "-" << month << "-" << day << "ï¿½ï¿½" << year << "ï¿½ï¿½Äµï¿½"
 				<< month / 2 * 31 + (month - 1) / 2 * 30 - int(month >= 3) * 1 + int(month >= 9) * 1 - int(month >= 10) * 1 + int(month >= 11) * 1 - int(month >= 12) * 1 + int(month >= 13) * 1 + day
-				<< "Ìì" << endl;//TODO:ÖÐ¼äÎÞ¿Õ¸ñ,-ÎªÓ¢ÎÄ°ë½Ç
+				<< "ï¿½ï¿½" << endl;//TODO:ï¿½Ð¼ï¿½ï¿½Þ¿Õ¸ï¿½,-ÎªÓ¢ï¿½Ä°ï¿½ï¿½
 		}
-		else {//²»ÊÇÈòÄê
+		else {//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			if (month == 2 && !(1 <= day && day <= 28) ||
 				month == 1 && !(1 <= day && day <= 31) ||
 				month == 3 && !(1 <= day && day <= 31) ||
@@ -41,14 +41,14 @@ int main()
 				month == 6 && !(1 <= day && day <= 30) ||
 				month == 9 && !(1 <= day && day <= 30) ||
 				month == 11 && !(1 <= day && day <= 30))
-				cout << "ÊäÈë´íÎó-ÈÕÓëÔÂµÄ¹ØÏµ·Ç·¨" << endl;
+				cout << "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½-ï¿½ï¿½ï¿½ï¿½ï¿½ÂµÄ¹ï¿½Ïµï¿½Ç·ï¿½" << endl;
 			else
-				cout << year << "-" << month << "-" << day << "ÊÇ" << year << "ÄêµÄµÚ"
+				cout << year << "-" << month << "-" << day << "ï¿½ï¿½" << year << "ï¿½ï¿½Äµï¿½"
 				<< month / 2 * 31 + (month - 1) / 2 * 30 - int(month >= 3) * 2 + int(month >= 9) * 1 - int(month >= 10) * 1 + int(month >= 11) * 1 - int(month >= 12) * 1 + int(month >= 13) * 1 + day
-				<< "Ìì" << endl;//TODO:ÖÐ¼äÎÞ¿Õ¸ñ,-ÎªÓ¢ÎÄ°ë½Ç
+				<< "ï¿½ï¿½" << endl;//TODO:ï¿½Ð¼ï¿½ï¿½Þ¿Õ¸ï¿½,-ÎªÓ¢ï¿½Ä°ï¿½ï¿½
 		}
 	}
 	else
-		cout << "ÊäÈë´íÎó-ÔÂ·Ý²»ÕýÈ·" << endl;//TODO:Èç¹ûÔÂÈÕÍ¬Ê±´í£¬ÏÈÅÐ¶ÏÔÂ£¬Êä³ö´Ë¾ä
+		cout << "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½-ï¿½Â·Ý²ï¿½ï¿½ï¿½È·" << endl;//TODO:ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¬Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½ï¿½Â£ï¿½ï¿½ï¿½ï¿½ï¿½Ë¾ï¿½
 	return 0;
 }

@@ -96,8 +96,8 @@ int main()
 	cct_setfontsize("µדÕף×ÖÌו", 15);
 
 
-				
-	
+
+
 	while (1) {
 		option = menu(&rowMax, &colMax);
 		for (i = 0; i < 10; i++)

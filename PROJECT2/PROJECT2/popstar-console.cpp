@@ -312,20 +312,20 @@ void matrixInitialize(int maxRow, int maxCol, bool frame, int matrix[][10])
 			}
 	}
 	do
-	re
-	mi
-	fa
-	so
-	la
-	si
-	do
-	si
-	la
-	so
-	fa
-	mi
-	re
-	do
+		re
+		mi
+		fa
+		so
+		la
+		si
+		do
+			si
+			la
+			so
+			fa
+			mi
+			re
+			do
 				cct_setcolor(defaultColor);
 	return;
 }
@@ -376,12 +376,12 @@ void module4(int rowMax, int colMax, int matrix[][10])
 					//cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, coverLength);
 					//cct_setcolor(defaultColor);
 					cct_gotoxy(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4);
-					cout << "[当前鼠标] " << (char)('A' + (Y - 3) / blockheight) << "行" << (X - 4) / blockwidth << "列"<<covering;
+					cout << "[当前鼠标] " << (char)('A' + (Y - 3) / blockheight) << "行" << (X - 4) / blockwidth << "列" << covering;
 					if (maction == MOUSE_LEFT_BUTTON_CLICK || maction == MOUSE_LEFT_BUTTON_DOUBLE_CLICK) {
 						//cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, coverLength);
 						//cct_setcolor(defaultColor);
 						cct_gotoxy(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4);
-						cout << "选中了" << (char)('A' + (y - 3) / blockheight) << "行" << (x - 4) / blockwidth << "列"<<covering;
+						cout << "选中了" << (char)('A' + (y - 3) / blockheight) << "行" << (x - 4) / blockwidth << "列" << covering;
 						loop = 0;
 					}
 					if (maction == MOUSE_RIGHT_BUTTON_CLICK || maction == MOUSE_RIGHT_BUTTON_DOUBLE_CLICK || maction == MOUSE_LEFTRIGHT_BUTTON_CLICK) {
@@ -401,7 +401,7 @@ void module4(int rowMax, int colMax, int matrix[][10])
 					//cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, coverLength);
 					//cct_setcolor(defaultColor);
 					cct_gotoxy(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4);
-					cout << "[当前鼠标] 位置非法"<<covering;
+					cout << "[当前鼠标] 位置非法" << covering;
 				}
 
 
@@ -544,13 +544,13 @@ void module5(int rowMax, int colMax, int matrix[][10])
 					//cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, coverLength);
 					//cct_setcolor(defaultColor);
 					cct_gotoxy(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4);
-					cout << "[当前鼠标] " << (char)('A' + (Y - 3) / (blockheight + frame)) << "行" << (X - 4) / (blockwidth + 2 * frame) << "列"<<covering;
+					cout << "[当前鼠标] " << (char)('A' + (Y - 3) / (blockheight + frame)) << "行" << (X - 4) / (blockwidth + 2 * frame) << "列" << covering;
 					if (maction == MOUSE_LEFT_BUTTON_CLICK || maction == MOUSE_LEFT_BUTTON_DOUBLE_CLICK) {
 
 						//cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, coverLength);
 						//cct_setcolor(defaultColor);
 						cct_gotoxy(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4);
-						cout << "选中了" << (char)('A' + (y - 3) / (blockheight + frame)) << "行" << (x - 4) / (blockwidth + 2 * frame) << "列"<<covering;
+						cout << "选中了" << (char)('A' + (y - 3) / (blockheight + frame)) << "行" << (x - 4) / (blockwidth + 2 * frame) << "列" << covering;
 						loop = 0;
 					}
 					if (maction == MOUSE_RIGHT_BUTTON_CLICK || maction == MOUSE_RIGHT_BUTTON_DOUBLE_CLICK || maction == MOUSE_LEFTRIGHT_BUTTON_CLICK) {
@@ -570,7 +570,7 @@ void module5(int rowMax, int colMax, int matrix[][10])
 					//cct_showch(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4, ' ', background, coverLength);
 					//cct_setcolor(defaultColor);
 					cct_gotoxy(0, 32 + (rowMax - 8) * 3 + frame * 7 + frame * (rowMax - 8) - 4);
-					cout << "[当前鼠标] 位置非法"<<covering;
+					cout << "[当前鼠标] 位置非法" << covering;
 
 				}
 
@@ -1480,4 +1480,3 @@ void module7(int rowMax, int colMax, int matrix[][10])
 	}
 	return;
 }
-

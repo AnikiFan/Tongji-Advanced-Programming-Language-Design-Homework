@@ -93,7 +93,7 @@ void getCoordinate(int& row, int& col, int rowMax, int colMax)
 			col = input[1] - '0';
 			break;
 		}
-		cct_gotoxy(0, y+1);
+		cct_gotoxy(0, y + 1);
 		cout << "输入错误，请重新输入.";
 		cct_showch(x, y, ' ', background, 30);
 		cct_setcolor(defaultColor);
@@ -106,7 +106,7 @@ void getCoordinate(int& row, int& col, int rowMax, int colMax)
 
 void module1(int rowMax, int colMax, int matrix[][10])
 {
-	int row, col, x, y, sum = 0, pivotMatrix[10][10] = { 0 }, i, j,X,Y;
+	int row, col, x, y, sum = 0, pivotMatrix[10][10] = { 0 }, i, j, X, Y;
 	cin.ignore(1000, '\n');
 	cout << endl;
 	cout << "当前数组:" << endl;
