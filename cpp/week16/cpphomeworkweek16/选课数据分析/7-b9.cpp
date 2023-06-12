@@ -1,8 +1,10 @@
 /* 2254298 信11 范潇 */
 
 /* 允许按需加入系统的宏定义、需要的头文件等 */
+#define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
 #include<iomanip>
+#include<string.h>
 #include "read_stulist.h"
 using namespace std;
 
@@ -22,8 +24,9 @@ private:
 	char stu_name[MAX_NAME_LEN];  //姓名
 
 	/* 允许按需加入private数据成员、成员函数以及其它需要的内容 */
-
-
+	friend  class stu_list;
+	bool round1 = 0;
+	bool round2 = 0;
 
 
 public:
@@ -52,12 +55,12 @@ private:
 public:
 	stu_list();										//构造函数，按需完成初始化功能，如果不需要，保留空函数即可
 	int read(const char* filename, const int round);	//从文件中读入选课信息，round为1/2，表示选课轮次
-	int print(const char* prompt = NULL);				//打印最终的选课名单
+	void print(const char* prompt = NULL);				//打印最终的选课名单
 
 	/* 允许按需加入其它public成员函数（提示：合并、去重、排序等）
 	   不允许定义公有的数据成员
 	   不允许在成员函数中使用array / set / map / vector等STL容器 */
-
+	void merge();
 
 
 
@@ -82,7 +85,72 @@ stu_list::stu_list()
 
 }
 
-
+void stu_list::merge()
+{
+	student* p1 = list_round_1;
+	student* p2 = list_round_2;
+	stu_merge* p = list_merge;
+	stu_merge temp;
+	temp.stu_no = p1->no;
+	strcpy(temp.stu_name, p1->name);
+	p->stu_no = p1->no;
+	strcpy(p->stu_name, p1->name);
+	p->round1 = 1;
+	p++;
+	while (p1 - list_round_1 < list_num_1) {
+		if (p1->no != temp.stu_no) {
+			p->stu_no = temp.stu_no;
+			strcpy(p->stu_name, temp.stu_name);
+			p->round1 = 1;
+			p++;
+			temp.stu_no = p1->no;
+			strcpy(temp.stu_name, p1->name);
+		}
+		p1++;
+	}
+	temp.stu_no = p2->no;
+	strcpy(temp.stu_name, p2->name);
+	p->stu_no = p2->no;
+	strcpy(p->stu_name, p2->name);
+	p->round2 = 1;
+	p++;
+	while (p2 - list_round_2 < list_num_2) {
+		if (p2->no != temp.stu_no) {
+			p->stu_no = temp.stu_no;
+			strcpy(p->stu_name, temp.stu_name);
+			p->round2 = 1;
+			p++;
+			temp.stu_no = p2->no;
+			strcpy(temp.stu_name, p2->name);
+		}
+		p2++;
+	}
+	//此时每一轮中无重复,但两轮中仍有重复
+	list_merge_num = p - list_merge;
+	int i, j, k;
+	char nametemp[MAX_NAME_LEN];
+	int notemp, roundtemp1, roundtemp2;
+	for (i = 0; i < list_merge_num - 1; i++) {
+		k = i;
+		for (j = i + 1; j < list_merge_num; j++)
+			if (list_merge[j].stu_no < list_merge[k].stu_no)
+				k = j;
+		notemp = list_merge[k].stu_no;
+		list_merge[k].stu_no = list_merge[i].stu_no;
+		list_merge[i].stu_no = notemp;
+		strcpy(nametemp, list_merge[k].stu_name);
+		strcpy(list_merge[k].stu_name, list_merge[i].stu_name);
+		strcpy(list_merge[i].stu_name, nametemp);
+		roundtemp1 = list_merge[k].round1;
+		list_merge[k].round1 = list_merge[i].round1;
+		list_merge[i].round1 = roundtemp1;
+		roundtemp2 = list_merge[k].round2;
+		list_merge[k].round2 = list_merge[i].round2;
+		list_merge[i].round2 = roundtemp2;
+	}
+	//排序
+	return;
+}
 
 
 
@@ -132,17 +200,46 @@ int stu_list::read(const char* filename, const int round)
   返 回 值：
   说    明：打印最终的选课名单
 ***************************************************************************/
-int stu_list::print(const char* prompt)
+void stu_list::print(const char* prompt)
 {
-		cout << prompt << endl;
-		seperator;
+	int sum = 1;
+	cout << prompt << endl;
+	seperator
 		cout << setw(NoLength) << setiosflags(ios::left) << "序号"
-			<< setw(codeLength) << "学号"
-			<< setw(nameLength) << "姓名"
-			<< setw(roundOneLength) << "第一轮"
-			<< setw(roundTwoLength) << "第二轮" << endl;
-		seperator;
-	return 0;
+		<< setw(codeLength) << "学号"
+		<< setw(nameLength) << "姓名"
+		<< setw(roundOneLength) << "第一轮"
+		<< setw(roundTwoLength) << "第二轮" << endl;
+	seperator
+		stu_merge* p = list_merge;
+	for (; p - list_merge < list_merge_num; p++) {
+		if (p->stu_no == 0) {
+			seperator
+				return;
+		}
+		else if (p - list_merge == list_merge_num - 1) {
+			cout << setw(NoLength) << sum << setw(codeLength) << p->stu_no << setw(nameLength) << p->stu_name;
+			if (p->round1)
+				cout << setw(roundOneLength) << "Y" << setw(roundTwoLength) << "退课" << endl;
+			else
+				cout << setw(roundTwoLength) << "\\" << setw(roundTwoLength) << "补选" << endl;
+			seperator
+				return;
+		}
+		else {
+			if (p->round1 == 0 && ((p + 1)->stu_no != p->stu_no))
+				cout << setw(NoLength) << sum << setw(codeLength) << p->stu_no << setw(nameLength) << p->stu_name << setw(roundTwoLength) << "\\" << setw(roundTwoLength) << "补选" << endl;
+			else if ((p + 1)->stu_no == p->stu_no) {
+				cout << setw(NoLength) << sum << setw(codeLength) << p->stu_no << setw(nameLength) << p->stu_name << setw(roundTwoLength) << "Y" << setw(roundTwoLength) << "Y" << endl;
+				p++;
+			}
+			else
+				cout << setw(NoLength) << sum << setw(codeLength) << p->stu_no << setw(nameLength) << p->stu_name << setw(roundTwoLength) << "Y" << setw(roundTwoLength) << "退课" << endl;
+			sum++;
+		}
+	}
+	seperator
+		return;
 }
 
 /***************************************************************************
@@ -172,8 +269,7 @@ int main(int argc, char** argv)
 
 	/* 处理数据 */
 
-
-
+	list.merge();
 
 	/* 打印 */
 	list.print("最终选课名单");
