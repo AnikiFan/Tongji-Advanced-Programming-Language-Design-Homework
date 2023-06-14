@@ -96,7 +96,6 @@ void stu_list::merge()
 	p->stu_no = p1->no;
 	strcpy(p->stu_name, p1->name);
 	p->round1 = 1;
-	p++;
 	while (p1 - list_round_1 < list_num_1) {
 		if (p1->no != temp.stu_no) {
 			p->stu_no = temp.stu_no;
@@ -108,12 +107,18 @@ void stu_list::merge()
 		}
 		p1++;
 	}
+	if ((p - 1)->stu_no != (p1 - 1)->no) {
+		p->stu_no = temp.stu_no;
+		strcpy(p->stu_name, temp.stu_name);
+		p->round1 = 1;
+		p++;
+	}
 	temp.stu_no = p2->no;
 	strcpy(temp.stu_name, p2->name);
 	p->stu_no = p2->no;
 	strcpy(p->stu_name, p2->name);
 	p->round2 = 1;
-	p++;
+	//cout << p->stu_name << endl << endl;
 	while (p2 - list_round_2 < list_num_2) {
 		if (p2->no != temp.stu_no) {
 			p->stu_no = temp.stu_no;
@@ -125,6 +130,13 @@ void stu_list::merge()
 		}
 		p2++;
 	}
+	if ((p - 1)->stu_no != (p2 - 1)->no) {
+		p->stu_no = temp.stu_no;
+		strcpy(p->stu_name, temp.stu_name);
+		p->round2 = 1;
+		p++;
+	}
+//	cout << (p-1)->stu_name << endl << endl;
 	//此时每一轮中无重复,但两轮中仍有重复
 	list_merge_num = p - list_merge;
 	int i, j, k;
@@ -212,6 +224,7 @@ void stu_list::print(const char* prompt)
 		<< setw(roundTwoLength) << "第二轮" << endl;
 	seperator
 		stu_merge* p = list_merge;
+	//cout << p->stu_name << endl << endl;
 	for (; p - list_merge < list_merge_num; p++) {
 		if (p->stu_no == 0) {
 			seperator
@@ -222,13 +235,13 @@ void stu_list::print(const char* prompt)
 			if (p->round1)
 				cout << setw(roundOneLength) << "Y" << setw(roundTwoLength) << "退课" << endl;
 			else
-				cout << setw(roundTwoLength) << "\\" << setw(roundTwoLength) << "补选" << endl;
+				cout << setw(roundTwoLength) << "/" << setw(roundTwoLength) << "补选" << endl;
 			seperator
 				return;
 		}
 		else {
 			if (p->round1 == 0 && ((p + 1)->stu_no != p->stu_no))
-				cout << setw(NoLength) << sum << setw(codeLength) << p->stu_no << setw(nameLength) << p->stu_name << setw(roundTwoLength) << "\\" << setw(roundTwoLength) << "补选" << endl;
+				cout << setw(NoLength) << sum << setw(codeLength) << p->stu_no << setw(nameLength) << p->stu_name << setw(roundTwoLength) << "/" << setw(roundTwoLength) << "补选" << endl;
 			else if ((p + 1)->stu_no == p->stu_no) {
 				cout << setw(NoLength) << sum << setw(codeLength) << p->stu_no << setw(nameLength) << p->stu_name << setw(roundTwoLength) << "Y" << setw(roundTwoLength) << "Y" << endl;
 				p++;
