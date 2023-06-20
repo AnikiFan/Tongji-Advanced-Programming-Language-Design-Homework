@@ -3,27 +3,30 @@
 /* warning, this file is reserved for testing file only*/
 #include<iostream>
 using namespace std;
+#define srcage 10
+struct test
+{
+	double a;
+	double b;
+}test1;
+struct demo
+{
+	char a;
+	test test1;
+}demo1;
+int fun(int num)
+{
+	if (num == 1) {
+		cout <<"第一个学生说:我" << srcage << "岁了" << endl;
+		return srcage+2;
+	}
+	int temp = fun(num - 1) + 2;
+	cout <<"第"<<num<<"个学生说:"<< "我" << temp << "岁了" << endl;
+	return temp+2;
+}
 int main()
 {
-	class Time {
-	private:
-		int hour;
-		int minute;
-		int sec;
-	public:
-		Time(int h = 0, int m = 0, int s = 0)
-		{
-			hour = h;
-			minute = m;
-			sec = s;
-		}
-		void display()
-		{
-			cout << hour << ':' << minute << ';' << sec << endl;
-		}
-	};
-	Time t[10] = { (1,2,3),(4,5),6,7,8,9,10 };
-	for (int i = 0; i < 10; i++)
-		t[i].display();
+	int a = { 1,2 };
+	cout << *a++ << endl;
 	return 0;
 }
